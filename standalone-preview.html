@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeLabx — Engenharia Visual & Sites de Alta Conversão</title>
+  <meta name="description" content="Criamos experiências digitais profissionais para apresentar seus serviços, fortalecer sua presença online e facilitar o contato com seus clientes." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563EB'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>CX</text></svg>" />
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            space: {
+              950: '#030408',
+              900: '#06070E',
+              850: '#090C1B',
+              800: '#0E1329',
+              700: '#151C3B',
+              600: '#1D2752'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float-slow': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Starfield Background */
+    body {
+      background-color: #05060B;
+      color: #F3F4F6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 150px 120px, rgba(165, 180, 252, 0.5), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 320px 80px, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 450px 290px, rgba(192, 132, 252, 0.4), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 600px 180px, rgba(125, 211, 252, 0.5), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 750px 380px, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 900px 140px, rgba(255, 255, 255, 0.45), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 1200px 90px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0));
+      background-repeat: repeat;
+      background-size: 800px 600px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Top-Left Signature Diagonal Light Beam (Frames 0.0s, 1.0s, 14.0s) */
+    .hero-diagonal-beam {
+      position: absolute;
+      top: -150px;
+      left: -200px;
+      width: 900px;
+      height: 1200px;
+      transform: rotate(-44deg);
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(59, 130, 246, 0.03) 25%, 
+        rgba(99, 102, 241, 0.14) 45%, 
+        rgba(168, 85, 247, 0.22) 50%, 
+        rgba(56, 189, 248, 0.12) 55%, 
+        rgba(59, 130, 246, 0.02) 75%, 
+        transparent 100%
+      );
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-beam-streak {
+      position: absolute;
+      top: -50px;
+      left: 50px;
+      width: 4px;
+      height: 900px;
+      transform: rotate(-44deg);
+      background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(129, 140, 248, 0.6) 30%, 
+        rgba(56, 189, 248, 0.2) 70%, 
+        transparent 100%
+      );
+      box-shadow: 0 0 30px 4px rgba(129, 140, 248, 0.8);
+      pointer-events: none;
+      z-index: 2;
+      filter: blur(1px);
+    }
+
+    /* Final CTA Spotlight Cone Beam (Frames 12.0s & 13.0s) */
+    .final-cta-spotlight {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 520px;
+      background: radial-gradient(ellipse at 50% 100%, 
+        rgba(59, 130, 246, 0.45) 0%, 
+        rgba(124, 58, 237, 0.25) 35%, 
+        rgba(30, 58, 138, 0.12) 65%, 
+        transparent 80%
+      );
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .final-cta-cone-lines {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 400px;
+      background: conic-gradient(from 180deg at 50% 100%, 
+        transparent 35deg, 
+        rgba(56, 189, 248, 0.18) 75deg, 
+        rgba(147, 51, 234, 0.28) 90deg, 
+        rgba(56, 189, 248, 0.18) 105deg, 
+        transparent 145deg
+      );
+      filter: blur(25px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glass Panels */
+    .glass-panel {
+      background: rgba(13, 17, 33, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-panel-elevated {
+      background: rgba(15, 21, 42, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .text-gradient-neon {
+      background: linear-gradient(135deg, #FFFFFF 20%, #93C5FD 60%, #C084FC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-purple {
+      background: linear-gradient(135deg, #E879F9 0%, #C084FC 50%, #818CF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white">
+
+  <!-- Viewport Frame (Exact canvas wrapper from video) -->
+  <div class="mx-auto max-w-[1720px] p-2 sm:p-4 md:p-6 lg:p-8">
+    <div class="relative rounded-2xl md:rounded-3xl border border-white/[0.08] bg-[#070913]/90 shadow-[0_20px_100px_rgba(0,0,0,0.95)] overflow-hidden">
+      
+      <!-- HEADER / NAVIGATION (Frames 0.0s, 1.0s, 14.0s) -->
+      <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 transition-all">
+        <div class="max-w-7xl mx-auto rounded-full bg-[#0b0e1e]/80 backdrop-blur-md border border-white/10 py-3 px-6 flex items-center justify-between shadow-2xl">
+          <!-- Logo -->
+          <a href="#inicio" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+              <span class="text-white font-bold text-sm">CX</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="text-lg font-bold tracking-tight text-white">CodeLab<span class="text-blue-400">x</span></span>
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            </div>
+          </a>
+
+          <!-- Nav Links -->
+          <nav class="hidden md:flex items-center gap-2">
+            <a href="#inicio" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Início</a>
+            <a href="#oportunidade" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Oportunidade</a>
+            <a href="#solucoes" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Soluções</a>
+            <a href="#capacidades" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Capacidades</a>
+            <a href="#demonstracoes" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Demonstrações</a>
+            <a href="#diferenciais" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Diferenciais</a>
+            <a href="#processo" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Processo</a>
+          </nav>
+
+          <!-- WhatsApp CTA Button -->
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20criar%20o%20site%20da%20minha%20empresa%20com%20a%20CodeLabx." 
+              target="_blank" 
+              class="px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-blue-400/30 transition flex items-center gap-1.5"
+            >
+              <span>Solicitar Orçamento</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO SECTION (Frames 0.0s, 1.0s, 14.0s) -->
+      <section id="inicio" class="relative min-h-screen pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden flex flex-col items-center justify-center text-center">
+        <!-- Top-left signature light beam -->
+        <div class="hero-diagonal-beam"></div>
+        <div class="hero-beam-streak"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-medium text-blue-300 mb-8 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+            <span>✨ Engenharia visual & desenvolvimento de alto padrão</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.1] mb-6">
+            Seu próximo site pode <span class="text-gradient-neon">mudar a forma</span> como sua empresa se apresenta.
+          </h1>
+
+          <p class="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10">
+            Criamos experiências digitais profissionais para apresentar seus serviços, fortalecer sua presença online e facilitar o contato com seus clientes.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4 mb-16 w-full sm:w-auto">
+            <a 
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20criar%20meu%20site%20com%20a%20CodeLabx."
+              target="_blank"
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_35px_rgba(59,130,246,0.6)] transition border border-blue-300/40"
+            >
+              Quero criar meu site →
+            </a>
+            <a 
+              href="#demonstracoes" 
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-zinc-200 glass-pill hover:bg-white/10 transition border border-white/15"
+            >
+              Conhecer os projetos
+            </a>
+          </div>
+
+          <!-- Central Dashboard Mockup (Matching Frames 0.0s, 1.0s, 14.0s) -->
+          <div class="w-full max-w-5xl relative">
+            <div class="relative rounded-2xl md:rounded-3xl glass-panel-elevated p-4 sm:p-6 md:p-8 border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.8)] text-left">
+              <!-- Top window header -->
+              <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                    <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                  </div>
+                  <span class="text-xs font-mono text-zinc-400">codelabx.core // live-metrics</span>
+                </div>
+
+                <div class="flex items-center p-1 rounded-full bg-black/40 border border-white/10 text-xs">
+                  <button id="btnRealtime" onclick="setMockupTab('realtime')" class="px-3 py-1 rounded-full bg-blue-600 text-white font-medium shadow">Tempo Real</button>
+                  <button id="btnInsights" onclick="setMockupTab('insights')" class="px-3 py-1 rounded-full text-zinc-400 hover:text-white">Insights & SEO</button>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>Alta Conversão Ativa</span>
+                </div>
+              </div>
+
+              <!-- Metrics row & chart -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
+                <div class="lg:col-span-8 space-y-5">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Painel de Conversão CodeLabx</h2>
+                      <p class="text-xs text-zinc-400">Monitoramento em tempo real do tráfego e agendamentos qualificados.</p>
+                    </div>
+                  </div>
+
+                  <!-- 38, 26, 103 metric cards matching reference video -->
+                  <div class="grid grid-cols-3 gap-3">
+                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                      <div class="text-zinc-400 text-xs">Novos Leads</div>
+                      <div class="text-2xl sm:text-3xl font-extrabold text-white">38</div>
+                      <div class="text-[10px] text-emerald-400 font-medium">↑ 18% hoje</div>
+                    </div>
+                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                      <div class="text-zinc-400 text-xs">WhatsApp</div>
+                      <div class="text-2xl sm:text-3xl font-extrabold text-white">26</div>
+                      <div class="text-[10px] text-emerald-400 font-medium">↑ Conversão ágil</div>
+                    </div>
+                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                      <div class="text-zinc-400 text-xs">Visitas Hoje</div>
+                      <div class="text-2xl sm:text-3xl font-extrabold text-white">103</div>
+                      <div class="text-[10px] text-blue-400 font-medium">Rejeição 12%</div>
+                    </div>
+                  </div>
+
+                  <!-- Luminous SVG chart -->
+                  <div class="p-4 rounded-xl bg-black/40 border border-white/10">
+                    <div class="h-32 w-full relative">
+                      <svg class="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="chartCyan" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4" />
+                            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
+                          </linearGradient>
+                          <linearGradient id="chartPurple" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#A855F7" stop-opacity="0.3" />
+                            <stop offset="100%" stop-color="#A855F7" stop-opacity="0" />
+                          </linearGradient>
+                        </defs>
+                        <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30 L500,120 L0,120 Z" fill="url(#chartPurple)" />
+                        <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30" fill="none" stroke="#A855F7" stroke-width="2.5" />
+                        <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15 L500,120 L0,120 Z" fill="url(#chartCyan)" />
+                        <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15" fill="none" stroke="#38BDF8" stroke-width="3" />
+                        <circle cx="500" cy="15" r="5" fill="#38BDF8" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right widget card -->
+                <div class="lg:col-span-4 space-y-4">
+                  <div class="p-5 rounded-2xl bg-gradient-to-b from-blue-950/70 via-indigo-950/50 to-space-900 border border-blue-500/30">
+                    <span class="text-xs font-semibold text-blue-300">🛡️ Engenharia CodeLabx</span>
+                    <h3 class="text-sm font-bold text-white mt-2 mb-1">Velocidade & Retenção Máximas</h3>
+                    <p class="text-xs text-zinc-400 mb-4">Páginas otimizadas para carregar em menos de 0.8s e levar o cliente direto ao agendamento.</p>
+
+                    <div class="space-y-2 text-xs">
+                      <div class="flex justify-between text-zinc-300">
+                        <span>Velocidade Mobile</span>
+                        <span class="text-emerald-400 font-bold">99 / 100</span>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full h-1.5">
+                        <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-1.5 rounded-full w-[99%]"></div>
+                      </div>
+                    </div>
+
+                    <a 
+                      href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20o%20site%20da%20minha%20cl%C3%ADnica." 
+                      target="_blank"
+                      class="mt-5 w-full py-2.5 px-3 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 text-xs font-semibold flex items-center justify-center gap-2 border border-blue-400/40 transition"
+                    >
+                      Falar no WhatsApp com Especialista →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH LOGO CLOUD (Frame 2.0s) -->
+      <section class="py-10 border-y border-white/[0.06] bg-black/40 text-center">
+        <p class="text-xs uppercase tracking-widest text-zinc-500 font-semibold mb-6">Tecnologias de padrão internacional que sustentam cada projeto</p>
+        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-70 font-mono text-xs sm:text-sm text-zinc-400">
+          <span>⚡ Next.js</span>
+          <span>⚛️ React 18</span>
+          <span>🎨 Tailwind CSS</span>
+          <span>🛡️ TypeScript</span>
+          <span>🌐 Cloudflare CDN</span>
+          <span>🚀 Vercel Edge</span>
+          <span>💬 WhatsApp API</span>
+        </div>
+      </section>
+
+      <!-- PROBLEM SECTION (Frames 2.0s - 3.5s) -->
+      <section id="oportunidade" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold mb-6">
+              ⚠️ O Desafio da Presença Digital
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
+              Empresas perdem pacientes e clientes <span class="text-gradient-purple">todos os dias</span> por falta de um site profissional.
+            </h2>
+            <p class="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+              Nos primeiros 3 segundos, o visitante decide se confia no seu negócio ou se busca o concorrente. Um site amador, lento ou difícil de navegar transmite insegurança imediata e desvaloriza seus serviços premium.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div class="p-5 rounded-2xl glass-panel border border-red-500/30">
+              <h3 class="text-base font-bold text-white mb-1">❌ Design Genérico & Sem Personalidade</h3>
+              <p class="text-xs text-zinc-400">Templates prontos que parecem iguais a centenas de outros sites. O paciente não percebe o valor diferenciado da sua clínica.</p>
+            </div>
+            <div class="p-5 rounded-2xl glass-panel border border-amber-500/30">
+              <h3 class="text-base font-bold text-white mb-1">⏳ Lentidão Excessiva no Carregamento</h3>
+              <p class="text-xs text-zinc-400">Sites inchados que demoram mais de 3 segundos para abrir no celular, queimando o orçamento dos seus anúncios.</p>
+            </div>
+            <div class="p-5 rounded-2xl glass-panel border border-blue-500/30">
+              <h3 class="text-base font-bold text-white mb-1">📱 Ausência de Fluxo Ágil para WhatsApp</h3>
+              <p class="text-xs text-zinc-400">Formulários longos que ninguém preenche e botões escondidos que impedem o agendamento imediato de procedimentos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE SECTION (Frames 4.0s - 6.0s) -->
+      <section id="solucoes" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Estrutura Técnica & Plataforma Unificada</h2>
+        <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto mb-16">Do primeiro impacto visual ao clique no botão de WhatsApp: cada módulo opera em perfeita harmonia.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+          <div class="lg:col-span-7 space-y-4 text-left">
+            <div class="p-4 rounded-2xl glass-panel border border-blue-500/30">
+              <h3 class="text-base font-bold text-white">🎨 Identidade Visual & UI</h3>
+              <p class="text-xs text-zinc-400">Design autoral com tipografia refinada e acabamento de alto padrão.</p>
+            </div>
+            <div class="p-4 rounded-2xl glass-panel border border-indigo-500/30">
+              <h3 class="text-base font-bold text-white">⚡ Engenharia de Conversão</h3>
+              <p class="text-xs text-zinc-400">Roteamento inteligente para o WhatsApp com mensagens contextualizadas.</p>
+            </div>
+            <div class="p-4 rounded-2xl glass-panel border border-purple-500/30">
+              <h3 class="text-base font-bold text-white">🚀 Velocidade Extrema & SEO</h3>
+              <p class="text-xs text-zinc-400">Carregamento sub-segundo e metatags estruturadas para o Google.</p>
+            </div>
+          </div>
+
+          <!-- Luminous AI Chip center matching video -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center">
+            <div class="w-48 h-48 rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-700 to-violet-800 p-1 shadow-[0_0_50px_rgba(59,130,246,0.7)] border border-blue-300/50 flex flex-col items-center justify-center">
+              <div class="w-full h-full rounded-[22px] bg-[#0c1024]/90 flex flex-col items-center justify-center p-4">
+                <span class="text-3xl font-black text-white">CORE</span>
+                <span class="text-[11px] font-mono text-cyan-300 uppercase tracking-widest mt-1">CodeLabx Engine</span>
+                <span class="mt-3 text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">● 100% Otimizado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEMONSTRATIVE PROJECTS (Fase 3.6 - 3 Aesthetic Clinics) -->
+      <section id="demonstracoes" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-purple-300 mb-4 border border-purple-500/30">
+          ✨ Portfólio & Demonstrações Conceituais
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Sites concebidos para clínicas de estética de alto padrão</h2>
+        <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto mb-6">Navegue pelas demonstrações completas para vivenciar o acabamento visual, a velocidade e a experiência que entregamos.</p>
+        
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-zinc-400 mb-12">
+          <span>🛡️ <strong>Aviso de transparência:</strong> Demonstrações conceituais criadas pela CodeLabx para comprovar capacidade técnica.</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
+          <!-- Clinic 1 -->
+          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-amber-400 bg-amber-400/10">High-End & Luxo</span>
+              <h3 class="text-xl font-bold text-white mt-4 mb-1">Lumière Estética Avançada</h3>
+              <p class="text-xs text-zinc-400 mb-4">Clínica de estética premium com foco em protocolos faciais e corporais exclusivos e atendimento sensorial.</p>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
+                <div>✓ Protocolo Lumière Gold</div>
+                <div>✓ HydroFacial Radiant</div>
+                <div>✓ Dra. Nicole Valença (Biomédica)</div>
+              </div>
+            </div>
+            <button onclick="openDemoModal('lumiere')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+              Visualizar Demonstração Completa 👁️
+            </button>
+          </div>
+
+          <!-- Clinic 2 -->
+          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-cyan-400 bg-cyan-400/10">Inovação Médica</span>
+              <h3 class="text-xl font-bold text-white mt-4 mb-1">Aura Derma & Laser</h3>
+              <p class="text-xs text-zinc-400 mb-4">Clínica moderna focada em tecnologia de ponta, lasers fracionados e ultrassom microfocado.</p>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
+                <div>✓ Ultrassom Microfocado Facial</div>
+                <div>✓ Laser Erbium Fracionado</div>
+                <div>✓ Dr. Matheus Rangel (Dermatologista)</div>
+              </div>
+            </div>
+            <button onclick="openDemoModal('aura')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+              Visualizar Demonstração Completa 👁️
+            </button>
+          </div>
+
+          <!-- Clinic 3 -->
+          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-purple-400 bg-purple-400/10">Harmonização & Naturalidade</span>
+              <h3 class="text-xl font-bold text-white mt-4 mb-1">Sculpt Face Harmonização</h3>
+              <p class="text-xs text-zinc-400 mb-4">Especializada em harmonização facial anatômica, toxina botulínica e bioestimuladores de colágeno.</p>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
+                <div>✓ Full Face Harmonia Natural</div>
+                <div>✓ Bioestimulador de Colágeno</div>
+                <div>✓ Dra. Camila Bittencourt (HOF)</div>
+              </div>
+            </div>
+            <button onclick="openDemoModal('sculpt')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+              Visualizar Demonstração Completa 👁️
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA (Frames 12.0s & 13.0s) -->
+      <section class="relative py-28 md:py-40 text-center flex flex-col items-center justify-center overflow-hidden">
+        <!-- Spotlight Cone Beam from below -->
+        <div class="final-cta-spotlight"></div>
+        <div class="final-cta-cone-lines"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-blue-300 block mb-4">CodeLabx Studio</span>
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+            Vamos criar o site da sua empresa?
+          </h2>
+          <p class="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10">
+            Apresente seus serviços com profissionalismo e tenha uma presença digital feita para o seu negócio.
+          </p>
+
+          <a 
+            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20site%20da%20minha%20empresa." 
+            target="_blank"
+            class="inline-flex items-center gap-3 px-10 py-5 rounded-full text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_50px_rgba(59,130,246,0.9)] transition border border-blue-200/50 hover:scale-105"
+          >
+            <span>💬 Solicitar orçamento</span>
+            <span>→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="py-12 border-t border-white/10 bg-[#06070E] px-4 sm:px-6 lg:px-8 text-center text-xs text-zinc-500">
+        <p>© 2026 CodeLabx. Todos os direitos reservados. WhatsApp centralizado para substituição imediata.</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Interactive Demo Modal Container -->
+  <div id="demoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-xl">
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel-elevated border border-white/20 p-6 sm:p-10 text-left">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+        <div>
+          <span id="modalBadge" class="text-xs font-bold uppercase text-blue-400">Demonstração Interativa</span>
+          <h2 id="modalTitle" class="text-2xl font-black text-white mt-1">Nome da Clínica</h2>
+        </div>
+        <button onclick="closeDemoModal()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg">✕</button>
+      </div>
+
+      <p id="modalDesc" class="text-zinc-300 text-sm mb-6 leading-relaxed"></p>
+
+      <div class="mb-8">
+        <h3 class="text-base font-bold text-white mb-3">Catálogo de Tratamentos & Protocolos:</h3>
+        <div id="modalTreatments" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-950 to-indigo-950 border border-blue-500/30 text-center">
+        <h4 class="text-lg font-bold text-white mb-2">Gostou deste padrão visual para o seu negócio?</h4>
+        <p class="text-xs text-zinc-300 mb-4">Construímos seu site personalizado com este mesmo nível de sofisticação e conversão.</p>
+        <a 
+          id="modalWhatsAppBtn"
+          href="https://wa.me/5511999999999" 
+          target="_blank" 
+          class="inline-block px-6 py-3 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+        >
+          Conversar sobre este modelo no WhatsApp →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const clinicsData = {
+      lumiere: {
+        title: "Lumière Estética Avançada",
+        badge: "High-End & Luxo",
+        desc: "Clínica de estética premium focada em protocolos corporais e faciais de luxo, tratamentos não invasivos e atendimento sensorial de alto padrão.",
+        treatments: [
+          { name: "Protocolo Lumière Gold", desc: "Drenagem francesa associada à radiofrequência para luminosidade e remodelamento." },
+          { name: "HydroFacial Radiant", desc: "Limpeza profunda ultrassônica com infusão de peptídeos botânicos." },
+          { name: "Sculpt Body Silhouette", desc: "Terapia combinada para tonificação muscular sem downtime." },
+          { name: "Laser Glow Skin", desc: "Revitalização e uniformização do tom da pele com efeito de porcelana." }
+        ]
+      },
+      aura: {
+        title: "Aura Derma & Laser",
+        badge: "Inovação Médica",
+        desc: "Clínica moderna com foco em tecnologias a laser, ultrassom microfocado e dermatologia estética orientada a dados.",
+        treatments: [
+          { name: "Ultrassom Microfocado Facial", desc: "Efeito lifting não-cirúrgico com estímulo profundo de colágeno." },
+          { name: "Laser Erbium Fracionado", desc: "Renovação celular intensa para suavização de cicatrizes e poros dilatados." },
+          { name: "Protocolo Clareador Íntimo & Axilar", desc: "Ação seletiva contra hiperpigmentação com tecnologia Q-Switched." },
+          { name: "Remoção e Clareamento Avançado", desc: "Tecnologia picosegundos com emissão ultrarrápida sem agressão térmica." }
+        ]
+      },
+      sculpt: {
+        title: "Sculpt Face Harmonização",
+        badge: "Harmonização & Naturalidade",
+        desc: "Especializada em escultura facial anatômica, toxina botulínica preventiva e bioestimuladores de colágeno com foco absoluto em elegância natural.",
+        treatments: [
+          { name: "Full Face Harmonia Natural", desc: "Mapeamento dos vetores de sustentação facial com ácido hialurônico." },
+          { name: "Toxina Botulínica Preventiva", desc: "Suavização das linhas de expressão mantendo a mímica natural." },
+          { name: "Bioestimulador de Colágeno Facial", desc: "Indução biológica de neocolares com durabilidade de até 2 anos." },
+          { name: "Preenchimento Labial Russian Contour", desc: "Definição de arco do cupido e hidratação profunda sem exagero." }
+        ]
+      }
+    };
+
+    function setMockupTab(tab) {
+      const btnR = document.getElementById('btnRealtime');
+      const btnI = document.getElementById('btnInsights');
+      if (tab === 'realtime') {
+        btnR.className = "px-3 py-1 rounded-full bg-blue-600 text-white font-medium shadow";
+        btnI.className = "px-3 py-1 rounded-full text-zinc-400 hover:text-white";
+      } else {
+        btnI.className = "px-3 py-1 rounded-full bg-indigo-600 text-white font-medium shadow";
+        btnR.className = "px-3 py-1 rounded-full text-zinc-400 hover:text-white";
+      }
+    }
+
+    function openDemoModal(clinicKey) {
+      const data = clinicsData[clinicKey];
+      if (!data) return;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalBadge').innerText = data.badge;
+      document.getElementById('modalDesc').innerText = data.desc;
+      
+      const treatContainer = document.getElementById('modalTreatments');
+      treatContainer.innerHTML = '';
+      data.treatments.forEach(t => {
+        const div = document.createElement('div');
+        div.className = "p-4 rounded-xl bg-white/[0.03] border border-white/10";
+        div.innerHTML = `<h5 class="text-sm font-bold text-white mb-1">${t.name}</h5><p class="text-xs text-zinc-400">${t.desc}</p>`;
+        treatContainer.appendChild(div);
+      });
+
+      document.getElementById('modalWhatsAppBtn').href = `https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20um%20site%20no%20estilo%20da%20demonstra%C3%A7%C3%A3o%20${encodeURIComponent(data.title)}.`;
+
+      const modal = document.getElementById('demoModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDemoModal() {
+      const modal = document.getElementById('demoModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>
