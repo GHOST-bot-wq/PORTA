@@ -1,7 +1,6 @@
 import React from 'react';
-import { SITE_CONFIG } from '../config/site';
+import { SITE_CONFIG, getWhatsAppLink } from '../config/site';
 import { Workflow, ArrowRight } from 'lucide-react';
-import { getWhatsAppLink } from '../config/site';
 
 export const ProcessSection: React.FC = () => {
   return (
@@ -12,14 +11,14 @@ export const ProcessSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-cyan-400 mb-4 border border-cyan-500/30">
           <Workflow className="w-3.5 h-3.5" />
-          <span>Metodologia Transparente</span>
+          <span>Etapas Claras</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
-          Como construímos o seu site passo a passo
+          Como funciona o processo de criação
         </h2>
-        <p className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-          Um fluxo de trabalho organizado, sem complicações técnicas para você e focado na entrega rápida e de alto padrão.
+        <p className="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">
+          Apresentamos as etapas de forma transparente e direta, para você acompanhar cada fase do desenvolvimento com tranquilidade.
         </p>
       </div>
 
@@ -47,7 +46,7 @@ export const ProcessSection: React.FC = () => {
               </div>
 
               <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">
-                Fase 0{index + 1}
+                Etapa {index + 1}
               </div>
             </div>
           ))}
@@ -55,12 +54,12 @@ export const ProcessSection: React.FC = () => {
 
         <div className="text-center mt-12">
           <a
-            href={getWhatsAppLink("Olá! Gostaria de entender os prazos e etapas para desenvolver o site da minha empresa.")}
+            href={getWhatsAppLink(SITE_CONFIG.whatsapp.processMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold text-zinc-200 glass-pill hover:bg-white/10 hover:text-white transition group border border-white/15"
           >
-            <span>Dúvidas sobre o processo? Fale com a equipe no WhatsApp</span>
+            <span>Conversar sobre o projeto da sua empresa no WhatsApp</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

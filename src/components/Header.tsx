@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SITE_CONFIG, getWhatsAppLink } from '../config/site';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, MessageCircle } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,21 +20,19 @@ export const Header: React.FC = () => {
         className={`max-w-7xl mx-auto rounded-full transition-all duration-300 ${
           scrolled 
             ? 'glass-panel-elevated py-2.5 px-5 sm:px-7 shadow-[0_10px_30px_rgba(0,0,0,0.6)]' 
-            : 'bg-[#0b0e1e]/60 backdrop-blur-md border border-white/10 py-3 px-6'
-        } flex items-center justify-between`}
+            : 'bg-[#0b0e1e]/80 backdrop-blur-md border border-white/10 py-3 px-6'
+        } flex items-center justify-between shadow-2xl`}
       >
-        {/* Brand Logo (Matching Resq.io aesthetic) */}
+        {/* Brand Logo */}
         <a href="#inicio" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.8)] transition-all">
             <span className="text-white font-bold text-sm tracking-wider">CX</span>
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1">
-              <span className="text-lg font-bold tracking-tight text-white group-hover:text-blue-300 transition-colors">
-                CodeLab<span className="text-blue-400">x</span>
-              </span>
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_6px_#22d3ee]"></span>
-            </div>
+          <div className="flex items-center gap-1">
+            <span className="text-lg font-bold tracking-tight text-white group-hover:text-blue-300 transition-colors">
+              CodeLab<span className="text-blue-400">x</span>
+            </span>
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_6px_#22d3ee]"></span>
           </div>
         </a>
 
@@ -51,16 +49,16 @@ export const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Right CTA Button */}
+        {/* Right WhatsApp CTA Button */}
         <div className="hidden sm:flex items-center gap-3">
           <a
-            href={getWhatsAppLink()}
+            href={getWhatsAppLink(SITE_CONFIG.whatsapp.headerMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.45)] hover:shadow-[0_0_28px_rgba(59,130,246,0.7)] transition-all duration-300 border border-blue-400/30"
           >
-            <Sparkles className="w-3.5 h-3.5 text-cyan-300 group-hover:rotate-12 transition-transform" />
-            <span>Solicitar Orçamento</span>
+            <MessageCircle className="w-3.5 h-3.5 text-cyan-300" />
+            <span>Falar no WhatsApp</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
@@ -91,14 +89,14 @@ export const Header: React.FC = () => {
             ))}
             <div className="pt-3 mt-2 border-t border-white/10">
               <a
-                href={getWhatsAppLink()}
+                href={getWhatsAppLink(SITE_CONFIG.whatsapp.headerMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
               >
-                <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
-                <span>Solicitar Orçamento no WhatsApp</span>
+                <MessageCircle className="w-3.5 h-3.5 text-cyan-300" />
+                <span>Conversar no WhatsApp</span>
               </a>
             </div>
           </div>

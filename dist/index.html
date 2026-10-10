@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeLabx — Um site profissional para apresentar melhor o seu negócio</title>
+  <meta name="description" content="Criamos sites personalizados que valorizam seus serviços, fortalecem sua presença digital e facilitam o contato dos seus clientes com sua empresa." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563EB'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>CX</text></svg>" />
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            space: {
+              950: '#030408',
+              900: '#06070E',
+              850: '#090C1B',
+              800: '#0E1329',
+              700: '#151C3B',
+              600: '#1D2752'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float-slow': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Starfield Background */
+    body {
+      background-color: #05060B;
+      color: #F3F4F6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 150px 120px, rgba(165, 180, 252, 0.5), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 320px 80px, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 450px 290px, rgba(192, 132, 252, 0.4), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 600px 180px, rgba(125, 211, 252, 0.5), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 750px 380px, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 900px 140px, rgba(255, 255, 255, 0.45), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 1200px 90px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0));
+      background-repeat: repeat;
+      background-size: 800px 600px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Top-Left Signature Diagonal Light Beam (Frames 0.0s, 1.0s, 14.0s) */
+    .hero-diagonal-beam {
+      position: absolute;
+      top: -150px;
+      left: -200px;
+      width: 900px;
+      height: 1200px;
+      transform: rotate(-44deg);
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(59, 130, 246, 0.03) 25%, 
+        rgba(99, 102, 241, 0.14) 45%, 
+        rgba(168, 85, 247, 0.22) 50%, 
+        rgba(56, 189, 248, 0.12) 55%, 
+        rgba(59, 130, 246, 0.02) 75%, 
+        transparent 100%
+      );
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-beam-streak {
+      position: absolute;
+      top: -50px;
+      left: 50px;
+      width: 4px;
+      height: 900px;
+      transform: rotate(-44deg);
+      background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(129, 140, 248, 0.6) 30%, 
+        rgba(56, 189, 248, 0.2) 70%, 
+        transparent 100%
+      );
+      box-shadow: 0 0 30px 4px rgba(129, 140, 248, 0.8);
+      pointer-events: none;
+      z-index: 2;
+      filter: blur(1px);
+    }
+
+    /* Final CTA Spotlight Cone Beam (Frames 12.0s & 13.0s) */
+    .final-cta-spotlight {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 520px;
+      background: radial-gradient(ellipse at 50% 100%, 
+        rgba(59, 130, 246, 0.45) 0%, 
+        rgba(124, 58, 237, 0.25) 35%, 
+        rgba(30, 58, 138, 0.12) 65%, 
+        transparent 80%
+      );
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .final-cta-cone-lines {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 400px;
+      background: conic-gradient(from 180deg at 50% 100%, 
+        transparent 35deg, 
+        rgba(56, 189, 248, 0.18) 75deg, 
+        rgba(147, 51, 234, 0.28) 90deg, 
+        rgba(56, 189, 248, 0.18) 105deg, 
+        transparent 145deg
+      );
+      filter: blur(25px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glass Panels */
+    .glass-panel {
+      background: rgba(13, 17, 33, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-panel-elevated {
+      background: rgba(15, 21, 42, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .text-gradient-neon {
+      background: linear-gradient(135deg, #FFFFFF 20%, #93C5FD 60%, #C084FC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-purple {
+      background: linear-gradient(135deg, #E879F9 0%, #C084FC 50%, #818CF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Focus visible */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #38BDF8;
+      outline-offset: 2px;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white">
+
+  <!-- Viewport Frame (Exact canvas wrapper from video) -->
+  <div class="mx-auto max-w-[1720px] p-2 sm:p-4 md:p-6 lg:p-8">
+    <div class="relative rounded-2xl md:rounded-3xl border border-white/[0.08] bg-[#070913]/90 shadow-[0_20px_100px_rgba(0,0,0,0.95)] overflow-hidden">
+      
+      <!-- HEADER / NAVIGATION (Frames 0.0s, 1.0s, 14.0s) -->
+      <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 transition-all">
+        <div class="max-w-7xl mx-auto rounded-full bg-[#0b0e1e]/85 backdrop-blur-md border border-white/10 py-3 px-6 flex items-center justify-between shadow-2xl">
+          <!-- Logo -->
+          <a href="#inicio" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+              <span class="text-white font-bold text-sm">CX</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="text-lg font-bold tracking-tight text-white">CodeLab<span class="text-blue-400">x</span></span>
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            </div>
+          </a>
+
+          <!-- Nav Links -->
+          <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+            <a href="#inicio" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Início</a>
+            <a href="#oportunidade" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Oportunidade</a>
+            <a href="#solucoes" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Soluções</a>
+            <a href="#demonstracoes" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Projetos</a>
+            <a href="#diferenciais" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Diferenciais</a>
+            <a href="#processo" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Processo</a>
+          </nav>
+
+          <!-- WhatsApp CTA Button -->
+          <div class="flex items-center gap-3">
+            <a 
+              id="headerWhatsAppLink"
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20site%20da%20minha%20empresa." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-blue-400/30 transition flex items-center gap-1.5"
+            >
+              <span>Falar no WhatsApp</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO SECTION (Frames 0.0s, 1.0s, 14.0s) -->
+      <section id="inicio" class="relative min-h-screen pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden flex flex-col items-center justify-center text-center">
+        <!-- Top-left signature light beam -->
+        <div class="hero-diagonal-beam"></div>
+        <div class="hero-beam-streak"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-medium text-blue-300 mb-8 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+            <span>✨ Criação de sites profissionais sob medida</span>
+          </div>
+
+          <!-- Headline obrigatória da Etapa 2 -->
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.1] mb-6">
+            Um site profissional para <span class="text-gradient-neon">apresentar melhor</span> o seu negócio.
+          </h1>
+
+          <!-- Subtítulo obrigatório da Etapa 2 -->
+          <p class="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+            Criamos sites personalizados que valorizam seus serviços, fortalecem sua presença digital e facilitam o contato dos seus clientes com sua empresa.
+          </p>
+
+          <!-- CTAs do Hero -->
+          <div class="flex flex-col sm:flex-row items-center gap-4 mb-16 w-full sm:w-auto">
+            <a 
+              id="heroWhatsAppLink"
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20criar%20meu%20site%20com%20a%20CodeLabx."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_35px_rgba(59,130,246,0.6)] transition border border-blue-300/40"
+            >
+              Quero criar meu site →
+            </a>
+            <a 
+              href="#demonstracoes" 
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-zinc-200 glass-pill hover:bg-white/10 transition border border-white/15"
+            >
+              Ver projetos
+            </a>
+          </div>
+
+          <!-- Central Dashboard Mockup - Ilustrativo e Conceitual (Sem dados fictícios) -->
+          <div class="w-full max-w-5xl relative">
+            <div class="relative rounded-2xl md:rounded-3xl glass-panel-elevated p-4 sm:p-6 md:p-8 border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.8)] text-left">
+              <!-- Top window header -->
+              <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                    <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                  </div>
+                  <span class="text-xs font-mono text-zinc-400">codelabx.preview // demonstracao-conceitual</span>
+                </div>
+
+                <div class="flex items-center p-1 rounded-full bg-black/40 border border-white/10 text-xs">
+                  <button id="btnRealtime" onclick="setMockupTab('estrutura')" class="px-3 py-1 rounded-full bg-blue-600 text-white font-medium shadow">Estrutura Visual</button>
+                  <button id="btnInsights" onclick="setMockupTab('recursos')" class="px-3 py-1 rounded-full text-zinc-400 hover:text-white">Recursos do Site</button>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                  <span>Demonstração de Interface</span>
+                </div>
+              </div>
+
+              <!-- Content grid -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
+                <div class="lg:col-span-8 space-y-5">
+                  <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Apresentação Visual & Navegação Integrada</h2>
+                    <p class="text-xs text-zinc-400">Organização visual planejada para conduzir o visitante com clareza até o contato comercial.</p>
+                  </div>
+
+                  <!-- 3 Conceptual Feature Cards (Sem números fictícios) -->
+                  <div class="grid grid-cols-3 gap-3">
+                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                      <div class="text-zinc-400 text-xs">Apresentação</div>
+                      <div class="text-sm sm:text-base font-bold text-white mt-0.5">Design Sob Medida</div>
+                      <div class="text-[10px] text-zinc-400 mt-1">Identidade exclusiva</div>
+                    </div>
+                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                      <div class="text-zinc-400 text-xs">Conversão</div>
+                      <div class="text-sm sm:text-base font-bold text-white mt-0.5">WhatsApp Direto</div>
+                      <div class="text-[10px] text-emerald-400 mt-1">Contato em 1 clique</div>
+                    </div>
+                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                      <div class="text-zinc-400 text-xs">Acessibilidade</div>
+                      <div class="text-sm sm:text-base font-bold text-white mt-0.5">Foco no Celular</div>
+                      <div class="text-[10px] text-blue-400 mt-1">Navegação sem atrito</div>
+                    </div>
+                  </div>
+
+                  <!-- Luminous SVG Flow Chart (Preservando a atmosfera do vídeo sem dados falsos) -->
+                  <div class="p-4 rounded-xl bg-black/40 border border-white/10">
+                    <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+                      <span class="font-medium text-zinc-300">Fluxo da Experiência do Visitante</span>
+                      <span class="text-[11px] text-zinc-500 font-mono">Da primeira impressão ao WhatsApp</span>
+                    </div>
+                    <div class="h-32 w-full relative">
+                      <svg class="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="chartCyan" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4" />
+                            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
+                          </linearGradient>
+                          <linearGradient id="chartPurple" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#A855F7" stop-opacity="0.3" />
+                            <stop offset="100%" stop-color="#A855F7" stop-opacity="0" />
+                          </linearGradient>
+                        </defs>
+                        <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30 L500,120 L0,120 Z" fill="url(#chartPurple)" />
+                        <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30" fill="none" stroke="#A855F7" stroke-width="2.5" />
+                        <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15 L500,120 L0,120 Z" fill="url(#chartCyan)" />
+                        <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15" fill="none" stroke="#38BDF8" stroke-width="3" />
+                        <circle cx="500" cy="15" r="5" fill="#38BDF8" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right widget card -->
+                <div class="lg:col-span-4 space-y-4">
+                  <div class="p-5 rounded-2xl bg-gradient-to-b from-blue-950/70 via-indigo-950/50 to-space-900 border border-blue-500/30">
+                    <span class="text-xs font-semibold text-blue-300">🛡️ Padrão CodeLabx</span>
+                    <h3 class="text-sm font-bold text-white mt-2 mb-1">Clareza & Facilidade de Contato</h3>
+                    <p class="text-xs text-zinc-400 mb-4">Páginas desenhadas para explicar o que você faz e permitir que o cliente envie uma mensagem sem etapas desnecessárias.</p>
+
+                    <div class="space-y-3 text-xs">
+                      <div class="flex justify-between text-zinc-300">
+                        <span>Adaptação Móvel</span>
+                        <span class="text-emerald-400 font-medium">Celular & Tablet</span>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full h-1.5">
+                        <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-1.5 rounded-full w-full"></div>
+                      </div>
+
+                      <div class="flex justify-between text-zinc-300">
+                        <span>Organização Visual</span>
+                        <span class="text-cyan-400 font-medium">Navegação Fluida</span>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full h-1.5">
+                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded-full w-full"></div>
+                      </div>
+                    </div>
+
+                    <a 
+                      href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20o%20site%20da%20minha%20empresa." 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="mt-5 w-full py-2.5 px-3 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 text-xs font-semibold flex items-center justify-center gap-2 border border-blue-400/40 transition"
+                    >
+                      Conversar no WhatsApp →
+                    </a>
+                  </div>
+
+                  <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex items-center gap-3">
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></div>
+                    <div class="text-xs">
+                      <span class="text-white font-medium">Canal de Atendimento: </span>
+                      <span class="text-zinc-400">WhatsApp Comercial</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH LOGO CLOUD (Frame 2.0s) -->
+      <section class="py-10 border-y border-white/[0.06] bg-black/40 text-center">
+        <p class="text-xs uppercase tracking-widest text-zinc-500 font-semibold mb-6">Tecnologias modernas que sustentam cada projeto</p>
+        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-70 font-mono text-xs sm:text-sm text-zinc-400">
+          <span>⚡ Next.js</span>
+          <span>⚛️ React 18</span>
+          <span>🎨 Tailwind CSS</span>
+          <span>🛡️ TypeScript</span>
+          <span>🌐 Cloudflare CDN</span>
+          <span>🚀 Vercel Edge</span>
+          <span>💬 WhatsApp API</span>
+        </div>
+      </section>
+
+      <!-- PROBLEM SECTION (Etapa 2: Problema e oportunidade) -->
+      <section id="oportunidade" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-semibold mb-6">
+              ℹ️ Presença Digital e Clareza Comercial
+            </div>
+            
+            <!-- Título sugerido da Etapa 2 -->
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
+              Seu trabalho merece uma apresentação à altura.
+            </h2>
+            
+            <!-- Texto sugerido da Etapa 2 -->
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+              Quando alguém conhece sua empresa pela internet, precisa entender o que você oferece e como entrar em contato. Um site bem planejado reúne essas informações em um só lugar, com uma apresentação profissional e adaptada ao celular.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 mb-8 space-y-3">
+              <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                <strong class="text-white">Como a CodeLabx ajuda:</strong> organizamos seus serviços com objetividade, criamos um visual limpo e deixamos o link do WhatsApp acessível em todas as seções para facilitar novas conversas com potenciais clientes.
+              </p>
+            </div>
+
+            <a
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20profissional%20para%20o%20meu%20neg%C3%B3cio."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-blue-400 hover:text-blue-300 transition"
+            >
+              <span>Conversar sobre o site da sua empresa</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div class="p-5 rounded-2xl glass-panel border border-white/10">
+              <h3 class="text-base font-bold text-white mb-1">Informações espalhadas ou confusas</h3>
+              <p class="text-xs sm:text-sm text-zinc-400">Quando uma empresa depende apenas de redes sociais, o cliente muitas vezes tem dificuldade em entender o catálogo completo de serviços e como solicitar um atendimento.</p>
+            </div>
+            <div class="p-5 rounded-2xl glass-panel border border-white/10">
+              <h3 class="text-base font-bold text-white mb-1">Páginas pesadas ou desorganizadas no celular</h3>
+              <p class="text-xs sm:text-sm text-zinc-400">A maioria dos visitantes acessa pelo smartphone. Se a página demora para carregar ou corta textos na tela pequena, a experiência se torna frustrante.</p>
+            </div>
+            <div class="p-5 rounded-2xl glass-panel border border-white/10">
+              <h3 class="text-base font-bold text-white mb-1">Dificuldade para iniciar o contato</h3>
+              <p class="text-xs sm:text-sm text-zinc-400">Formulários longos ou botões difíceis de encontrar criam barreiras desnecessárias para quem já tem interesse em falar com sua equipe comercial.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE SECTION (Etapa 2: Seção de soluções) -->
+      <section id="solucoes" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
+          ✨ Serviços Oferecidos
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Soluções desenvolvidas para o seu negócio</h2>
+        <p class="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto mb-16 font-normal">Desenvolvemos páginas sob medida para atender exatamente à necessidade da sua empresa, da apresentação visual à facilidade de contato comercial.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div class="p-6 rounded-3xl glass-panel border border-blue-500/30 hover:border-white/40 transition flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-4">🌐</div>
+              <h3 class="text-base font-bold text-white mb-2">Sites Institucionais</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Apresentação completa da sua empresa, história, diferenciais e catálogo de serviços em uma estrutura elegante e profissional.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Solução CodeLabx</div>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-indigo-500/30 hover:border-white/40 transition flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-indigo-400 mb-4">📄</div>
+              <h3 class="text-base font-bold text-white mb-2">Landing Pages</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Páginas objetivas e focadas na conversão, ideais para campanhas de anúncios, lançamento de produtos ou serviços específicos.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Solução CodeLabx</div>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-purple-500/30 hover:border-white/40 transition flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-400 mb-4">💼</div>
+              <h3 class="text-base font-bold text-white mb-2">Sites para Prestadores de Serviços</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Estrutura pensada para consultores, profissionais independentes e empresas locais transmitirem autoridade e receberem novos contatos.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Solução CodeLabx</div>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-cyan-500/30 hover:border-white/40 transition flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 mb-4">🖼️</div>
+              <h3 class="text-base font-bold text-white mb-2">Apresentação de Produtos & Portfólios</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Galerias visuais organizadas para expor projetos anteriores, catálogo de produtos ou serviços com fotos de alta qualidade.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Solução CodeLabx</div>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-emerald-500/30 hover:border-white/40 transition flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 mb-4">💬</div>
+              <h3 class="text-base font-bold text-white mb-2">Integração Direta com WhatsApp</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Botões estrategicamente posicionados com mensagens pré-formatadas para facilitar e agilizar o contato do cliente com você.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Solução CodeLabx</div>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-blue-400/30 hover:border-white/40 transition flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-300 mb-4">🔍</div>
+              <h3 class="text-base font-bold text-white mb-2">Design Responsivo & SEO Básico</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Adaptação precisa para celulares, tablets e computadores, com estrutura semântica preparada para os mecanismos de busca do Google.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Solução CodeLabx</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BENTO CAPABILITIES (Frames 7.0s - 9.5s) -->
+      <section id="capacidades" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-cyan-400 mb-4 border border-cyan-500/30">
+            ✨ Experiência & Navegação
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Tudo o que sua empresa precisa em uma página moderna</h2>
+          <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">Um layout desenhado para organizar seus serviços, destacar seus diferenciais e transformar visitantes em conversas reais.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-6xl mx-auto">
+          <!-- Card 1 (5 cols) -->
+          <div class="md:col-span-5 rounded-3xl glass-panel-elevated p-6 sm:p-8 border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-6">📱</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">Apresentação clara dos serviços da sua empresa</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6">Quem acessa seu site encontra rapidamente o que procura, com textos objetivos e fácil escolha do serviço desejado.</p>
+
+              <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 mb-4 space-y-2">
+                <span class="text-[11px] font-mono text-zinc-400 block">Exemplo de navegação por categoria:</span>
+                <div class="grid grid-cols-3 gap-1.5 text-xs">
+                  <span class="py-2 px-1 rounded-xl text-center bg-blue-600 text-white font-medium">Consultoria</span>
+                  <span class="py-2 px-1 rounded-xl text-center bg-white/5 text-zinc-300">Projetos</span>
+                  <span class="py-2 px-1 rounded-xl text-center bg-white/5 text-zinc-300">Atendimento</span>
+                </div>
+                <div class="pt-2 text-xs text-zinc-300 flex items-center justify-between border-t border-white/5">
+                  <span>Mensagem contextualizada:</span>
+                  <span class="text-cyan-400 font-medium text-[11px]">Direcionada ao WhatsApp</span>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+              <span class="text-zinc-400">Navegação sem barreiras</span>
+              <span class="text-cyan-300 font-medium font-mono">Formato intuitivo</span>
+            </div>
+          </div>
+
+          <!-- Card 2 & Subcards (7 cols) -->
+          <div class="md:col-span-7 flex flex-col gap-6">
+            <div class="rounded-3xl glass-panel-elevated p-6 sm:p-7 border border-white/10">
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 class="text-base sm:text-lg font-bold text-white">Identidade Visual Profissional</h3>
+                  <p class="text-xs text-zinc-400">Design consistente que valoriza o trabalho da sua empresa</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">Personalizado</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-2 text-xs">
+                <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                  <span class="text-[11px] text-zinc-400 block mb-1">Tipografia & Cores</span>
+                  <span class="text-white font-medium">Alinhadas à sua marca</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                  <span class="text-[11px] text-zinc-400 block mb-1">Fotos & Galeria</span>
+                  <span class="text-white font-medium">Otimizadas para tela</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                  <span class="text-[11px] text-zinc-400 block mb-1">Estrutura de Seções</span>
+                  <span class="text-white font-medium">Hierarquia bem definida</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="rounded-3xl glass-panel p-5 sm:p-6 border border-white/10">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-3">💬</div>
+                <h3 class="text-base font-bold text-white mb-1">Contato Direto no WhatsApp</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed mb-4">Links de conversa estrategicamente distribuídos para que o interessado fale com você sem formulários complexos.</p>
+                <div class="p-2 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-[11px] text-emerald-300">
+                  ✓ Caminho direto para novas conversas
+                </div>
+              </div>
+
+              <div class="rounded-3xl glass-panel p-5 sm:p-6 border border-white/10">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-3">⚡</div>
+                <h3 class="text-base font-bold text-white mb-1">Desempenho e Velocidade</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed mb-4">Código limpo, imagens comprimidas e estrutura técnica bem configurada para carregar com agilidade em celulares.</p>
+                <div class="p-2 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-[11px] text-cyan-300 flex justify-between">
+                  <span>Estrutura Técnica:</span>
+                  <span class="font-mono font-medium">Otimizada & Leve</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOUNDATION PYRAMID (Frames 10.0s - 11.5s) -->
+      <section class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center bg-space-950/70">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
+          🛡️ Qualidade de Ponta a Ponta
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Construído sobre uma base sólida</h2>
+        <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">Cada projeto da CodeLabx combina design visual sob medida, código moderno e facilidade de manutenção para a sua empresa.</p>
+
+        <div class="max-w-4xl mx-auto flex flex-col items-center gap-6">
+          <div class="w-full max-w-sm p-6 rounded-2xl glass-panel-elevated border border-blue-400/40 text-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-cyan-300 mx-auto mb-3">🛡️</div>
+            <h3 class="text-base font-bold text-white mb-1">Design Personalizado & Exclusivo</h3>
+            <p class="text-xs text-zinc-400">Identidade visual pensada exclusivamente para valorizar a proposta de valor do seu negócio.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+            <div class="p-6 rounded-2xl glass-panel border border-indigo-500/30 text-center">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-indigo-300 mx-auto mb-3">⚡</div>
+              <h3 class="text-base font-bold text-white mb-1">Desempenho & Navegação Ágil</h3>
+              <p class="text-xs text-zinc-400">Desenvolvimento com código leve e organizado, garantindo carregamento rápido em computadores e celulares.</p>
+            </div>
+            <div class="p-6 rounded-2xl glass-panel border border-purple-500/30 text-center">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-300 mx-auto mb-3">🔍</div>
+              <h3 class="text-base font-bold text-white mb-1">Estrutura Pronta para SEO</h3>
+              <p class="text-xs text-zinc-400">HTML semântico e metadados configurados para que os motores de busca compreendam o conteúdo do seu site.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-3xl">
+            <div class="p-6 rounded-2xl glass-panel border border-cyan-500/30 text-center">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300 mx-auto mb-3">💬</div>
+              <h3 class="text-base font-bold text-white mb-1">Integração com WhatsApp</h3>
+              <p class="text-xs text-zinc-400">Links diretos com mensagens personalizadas para agilizar o atendimento inicial aos interessados.</p>
+            </div>
+            <div class="p-6 rounded-2xl glass-panel border border-blue-500/30 text-center">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-300 mx-auto mb-3">🌐</div>
+              <h3 class="text-base font-bold text-white mb-1">Hospedagem Estável com SSL</h3>
+              <p class="text-xs text-zinc-400">Configuração segura com certificado digital SSL e infraestrutura em nuvem de alta disponibilidade.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEMONSTRATIVE PROJECTS (Etapa 2: Portfólio Conceitual Diversificado) -->
+      <section id="demonstracoes" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-purple-300 mb-4 border border-purple-500/30">
+          ✨ Portfólio Conceitual
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Demonstrações conceituais de projetos</h2>
+        <p class="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto mb-6 font-normal">Navegue pelas demonstrações completas para avaliar o acabamento visual, a facilidade de navegação e a experiência de contato que entregamos para diferentes segmentos.</p>
+        
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-zinc-400 max-w-2xl mx-auto mb-12 text-left sm:text-center">
+          <span>🛡️ <strong>Aviso de transparência:</strong> Os projetos abaixo são demonstrações visuais e conceituais desenvolvidas pela CodeLabx para comprovar capacidade técnica e de design, sem representar contratos comerciais vigentes ou métricas reais de terceiros.</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
+          <!-- Projeto 1: Saúde & Estética -->
+          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-amber-400 bg-amber-400/10">Saúde & Estética</span>
+                <span class="text-[11px] font-mono text-zinc-500">Demo 01</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Lumière Estética & Bem-Estar</h3>
+              <p class="text-xs font-semibold text-zinc-400 mb-2">Clínica de estética e cuidados corporais</p>
+              <p class="text-xs text-zinc-400 mb-4">Demonstração visual com foco em sofisticação sensorial, catálogo claro de procedimentos e botão de contato direto para agendamento.</p>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
+                <div>✓ Protocolos faciais e corporais</div>
+                <div>✓ Catálogo organizado por categorias</div>
+                <div>✓ Estrutura adaptada para agendamento no WhatsApp</div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <button onclick="openDemoModal('lumiere')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                Visualizar Demonstração Completa 👁️
+              </button>
+              <a 
+                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20no%20estilo%20da%20demonstra%C3%A7%C3%A3o%20Lumi%C3%A8re%20Est%C3%A9tica." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition"
+              >
+                Conversar sobre este formato no WhatsApp ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Projeto 2: Empresas & Serviços B2B -->
+          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-cyan-400 bg-cyan-400/10">Empresas & B2B</span>
+                <span class="text-[11px] font-mono text-zinc-500">Demo 02</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Nexus Engenharia & Consultoria</h3>
+              <p class="text-xs font-semibold text-zinc-400 mb-2">Consultoria e projetos técnicos de engenharia</p>
+              <p class="text-xs text-zinc-400 mb-4">Demonstração voltada para empresas corporativas e prestadores de serviços técnicos, destacando áreas de atuação, histórico de projetos e proposta comercial direta.</p>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
+                <div>✓ Gestão e coordenação de obras</div>
+                <div>✓ Laudos técnicos e perícias</div>
+                <div>✓ Contato ágil com diretores e consultores</div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <button onclick="openDemoModal('nexus')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                Visualizar Demonstração Completa 👁️
+              </button>
+              <a 
+                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20no%20estilo%20da%20demonstra%C3%A7%C3%A3o%20Nexus%20Engenharia." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition"
+              >
+                Conversar sobre este formato no WhatsApp ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Projeto 3: Negócios Locais & Profissionais -->
+          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-purple-400 bg-purple-400/10">Negócios Locais</span>
+                <span class="text-[11px] font-mono text-zinc-500">Demo 03</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Studio Vertex Arquitetura</h3>
+              <p class="text-xs font-semibold text-zinc-400 mb-2">Projetos de interiores e reformas residenciais</p>
+              <p class="text-xs text-zinc-400 mb-4">Demonstração visual pensada para profissionais que precisam valorizar seu portfólio visual, explicar serviços e atrair orçamentos qualificados.</p>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
+                <div>✓ Galeria de projetos executados</div>
+                <div>✓ Explicação clara das etapas de projeto</div>
+                <div>✓ Solicitação imediata de briefing no WhatsApp</div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <button onclick="openDemoModal('vertex')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                Visualizar Demonstração Completa 👁️
+              </button>
+              <a 
+                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20no%20estilo%20da%20demonstra%C3%A7%C3%A3o%20Studio%20Vertex." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition"
+              >
+                Conversar sobre este formato no WhatsApp ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIFFERENTIATORS (Etapa 2: Diferenciais) -->
+      <section id="diferenciais" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-space-950/50 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
+          🛡️ Vantagens Reais
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">O que a sua empresa recebe</h2>
+        <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">Cada aspecto do seu site é planejado para apresentar seu negócio com clareza, credibilidade e facilidade de contato.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
+            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">🎨</div>
+            <h3 class="text-base font-bold text-white mb-2">Design personalizado</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Criamos um layout sob medida para valorizar a proposta única da sua empresa, sem parecer uma cópia genérica.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
+            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">📱</div>
+            <h3 class="text-base font-bold text-white mb-2">Adaptação para celular, tablet e computador</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Sua página ajusta perfeitamente tamanhos de fontes, botões e imagens para qualquer tamanho de tela.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
+            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">📋</div>
+            <h3 class="text-base font-bold text-white mb-2">Organização clara dos serviços</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Quem acessa entende com facilidade o que você faz, sem se perder em termos técnicos ou menus confusos.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
+            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">💬</div>
+            <h3 class="text-base font-bold text-white mb-2">Facilidade de contato pelo WhatsApp</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Botões de conversa em posições estratégicas com mensagens pré-formatadas para encurtar o caminho do cliente até você.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
+            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">🧭</div>
+            <h3 class="text-base font-bold text-white mb-2">Navegação intuitiva</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Estrutura linear e confortável, pensada para responder às principais dúvidas do visitante sem esforço.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
+            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">⚡</div>
+            <h3 class="text-base font-bold text-white mb-2">Atenção à qualidade técnica e desempenho</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Código leve, sem plugins pesados ou ferramentas lentas, proporcionando carregamento ágil e estável.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS (Etapa 2: Processo de criação em 5 etapas) -->
+      <section id="processo" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-cyan-400 mb-4 border border-cyan-500/30">
+          🔄 Etapas Claras
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Como funciona o processo de criação</h2>
+        <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">Apresentamos as etapas de forma transparente e direta, para você acompanhar cada fase do desenvolvimento com tranquilidade.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6 text-left">
+          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">01</span>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Entendimento do negócio</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">Conversamos para entender o que sua empresa oferece, quem é o seu público e quais informações precisam ficar claras no site.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 1</div>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">02</span>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Planejamento da estrutura</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">Organizamos a sequência ideal das seções, a disposição dos textos e os pontos de contato para garantir uma navegação fluida.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 2</div>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">03</span>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Design e desenvolvimento</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">Criamos a identidade visual personalizada da página, adaptada ao celular e computador, com código limpo e carregamento rápido.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 3</div>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">04</span>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Revisão e ajustes</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">Apresentamos o projeto para sua avaliação, refinando detalhes visuais, textos e links para que tudo fique exatamente como você deseja.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 4</div>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">05</span>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Publicação</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">Conectamos seu domínio, ativamos o certificado de segurança SSL e deixamos o link do WhatsApp pronto para receber seus clientes.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 5</div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20as%20etapas%20e%20in%C3%ADcio%20do%20desenvolvimento%20do%20meu%20site."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold text-zinc-200 glass-pill hover:bg-white/10 hover:text-white transition border border-white/15"
+          >
+            <span>Conversar sobre o projeto da sua empresa no WhatsApp →</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- FINAL CTA (Frames 12.0s & 13.0s - Etapa 2: CTA Final) -->
+      <section class="relative py-28 md:py-40 text-center flex flex-col items-center justify-center overflow-hidden">
+        <!-- Spotlight Cone Beam from below -->
+        <div class="final-cta-spotlight"></div>
+        <div class="final-cta-cone-lines"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+          <div class="flex items-center justify-center gap-2 mb-6">
+            <div class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white shadow-[0_0_12px_rgba(59,130,246,0.5)]">
+              CX
+            </div>
+            <span class="text-sm font-semibold tracking-wider uppercase text-blue-300 font-mono">CodeLabx Studio</span>
+          </div>
+
+          <!-- Título obrigatório da Etapa 2 -->
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+            Vamos criar o site da sua empresa?
+          </h2>
+
+          <!-- Texto obrigatório da Etapa 2 -->
+          <p class="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+            Conte um pouco sobre seu negócio e vamos conversar sobre a melhor forma de apresentar seus serviços na internet.
+          </p>
+
+          <!-- Botão obrigatório da Etapa 2 -->
+          <div class="relative group inline-block">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
+            <a 
+              id="finalWhatsAppBtn"
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20melhor%20forma%20de%20apresentar%20meus%20servi%C3%A7os%20em%20um%20site%20profissional." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="relative inline-flex items-center gap-3 px-10 py-5 rounded-full text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_50px_rgba(59,130,246,0.9)] transition border border-blue-200/50 hover:scale-105"
+            >
+              <span>💬 Conversar pelo WhatsApp</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400">
+            <div>✓ Atendimento direto pelo WhatsApp</div>
+            <div>✓ Design sob medida para sua empresa</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="py-14 border-t border-white/10 bg-[#06070E] px-4 sm:px-6 lg:px-8 text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.08]">
+          <div class="md:col-span-5 space-y-4">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                <span class="text-white font-bold text-sm">CX</span>
+              </div>
+              <span class="text-xl font-bold tracking-tight text-white">CodeLab<span class="text-blue-400">x</span></span>
+            </div>
+            <p class="text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
+              Criação de sites profissionais e personalizados para empresas em geral, prestadores de serviços e negócios locais. Design visual de alto padrão e facilidade de contato via WhatsApp.
+            </p>
+            <div class="pt-2 text-xs text-zinc-500 font-mono">
+              Atendimento online para empresas de todo o Brasil
+            </div>
+          </div>
+
+          <div class="md:col-span-4 space-y-3">
+            <h4 class="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">Navegação</h4>
+            <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
+              <a href="#inicio" class="text-zinc-400 hover:text-white transition">Início</a>
+              <a href="#oportunidade" class="text-zinc-400 hover:text-white transition">Oportunidade</a>
+              <a href="#solucoes" class="text-zinc-400 hover:text-white transition">Soluções</a>
+              <a href="#demonstracoes" class="text-zinc-400 hover:text-white transition">Projetos</a>
+              <a href="#diferenciais" class="text-zinc-400 hover:text-white transition">Diferenciais</a>
+              <a href="#processo" class="text-zinc-400 hover:text-white transition">Processo</a>
+            </div>
+          </div>
+
+          <div class="md:col-span-3 space-y-3">
+            <h4 class="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">Atendimento Direto</h4>
+            <p class="text-xs text-zinc-400">Inicie uma conversa no WhatsApp para tirar dúvidas ou solicitar uma proposta:</p>
+            <a 
+              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20site%20da%20minha%20empresa." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-semibold transition"
+            >
+              <span>WhatsApp: +55 (11) 99999-9999</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+          <p>© 2026 CodeLabx. Todos os direitos reservados. Demonstrações conceituais com propósitos ilustrativos de apresentação técnica.</p>
+          <a href="#inicio" class="text-zinc-400 hover:text-white transition">Voltar ao topo ↑</a>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Interactive Demo Modal Container -->
+  <div id="demoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-xl">
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel-elevated border border-white/20 p-6 sm:p-10 text-left">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+        <div>
+          <span id="modalBadge" class="text-xs font-bold uppercase text-blue-400">Demonstração Interativa</span>
+          <h2 id="modalTitle" class="text-2xl font-black text-white mt-1">Nome do Projeto</h2>
+          <p id="modalCategory" class="text-xs text-zinc-400 font-mono mt-0.5"></p>
+        </div>
+        <button onclick="closeDemoModal()" aria-label="Fechar modal" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg">✕</button>
+      </div>
+
+      <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-zinc-300 mb-6 flex items-start gap-2">
+        <span>🛡️</span>
+        <div><strong>Aviso de transparência:</strong> Estrutura conceitual desenvolvida para ilustrar a organização de serviços e a estética que entregamos. Todo o conteúdo final é adaptado à sua empresa.</div>
+      </div>
+
+      <p id="modalDesc" class="text-zinc-300 text-sm mb-6 leading-relaxed"></p>
+
+      <div class="mb-8">
+        <h3 class="text-base font-bold text-white mb-3">Catálogo de Serviços da Demonstração:</h3>
+        <div id="modalTreatments" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+      </div>
+
+      <!-- Professional / Team Section in Modal -->
+      <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 mb-8 flex flex-col sm:flex-row items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-bold shrink-0">
+          CX
+        </div>
+        <div>
+          <h4 id="modalDocName" class="text-sm font-bold text-white">Apresentação da Equipe / Profissional</h4>
+          <span id="modalDocRole" class="text-xs text-blue-300 font-medium block">Espaço para credenciais e diferenciais</span>
+          <p id="modalDocBio" class="text-xs text-zinc-400 mt-1 leading-relaxed"></p>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-950 to-indigo-950 border border-blue-500/30 text-center">
+        <h4 class="text-lg font-bold text-white mb-2">Gostou deste padrão visual para o seu negócio?</h4>
+        <p class="text-xs text-zinc-300 mb-4">Construímos seu site personalizado com este mesmo nível de sofisticação, clareza e facilidade de contato.</p>
+        <a 
+          id="modalWhatsAppBtn"
+          href="https://wa.me/5511999999999" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-block px-6 py-3 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+        >
+          Conversar sobre este modelo no WhatsApp →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Configuração centralizada do WhatsApp para fácil substituição
+    const WHATSAPP_NUMBER = "5511999999999";
+
+    const projectsData = {
+      lumiere: {
+        title: "Lumière Estética & Bem-Estar",
+        badge: "Projeto Conceitual • High-End",
+        category: "Segmento: Saúde, Estética & Bem-Estar",
+        desc: "Demonstração visual desenvolvida com foco em sofisticação sensorial, catálogo de procedimentos estruturado e agendamento direto pelo WhatsApp.",
+        docName: "Dra. Nicole Valença (Biomédica Esteta)",
+        docRole: "Diretora Clínica & Responsável Técnica",
+        docBio: "Estrutura planejada para apresentar formação, especializações e transmitir confiança imediata a novos clientes.",
+        treatments: [
+          { name: "Protocolos Faciais de Hidratação", desc: "Apresentação clara de etapas, benefícios e recomendações ao cliente." },
+          { name: "Cuidados Corporais e Relaxamento", desc: "Estrutura descritiva para orientar quem busca bem-estar e cuidados integrados." },
+          { name: "Revitalização e Uniformização", desc: "Espaço dedicado para esclarecer dúvidas comuns antes do contato com a recepção." },
+          { name: "Terapias Manuais e Drenagem", desc: "Organização por categorias que facilita a escolha no celular sem rolagem cansativa." }
+        ]
+      },
+      nexus: {
+        title: "Nexus Engenharia & Consultoria",
+        badge: "Projeto Conceitual • Corporativo",
+        category: "Segmento: Empresas, Consultoria & B2B",
+        desc: "Demonstração voltada para empresas e prestadores de serviços técnicos, destacando áreas de atuação, histórico de projetos e proposta comercial direta.",
+        docName: "Eng. Roberto Albuquerque",
+        docRole: "Sócio-Diretor & Coordenador de Projetos",
+        docBio: "Área destinada a apresentar a solidez técnica da empresa, anos de experiência de mercado e conformidade regulatória.",
+        treatments: [
+          { name: "Gestão e Coordenação de Obras", desc: "Detalhamento de escopo, etapas de execução e conformidade regulatória." },
+          { name: "Laudos Técnicos e Perícias", desc: "Estrutura clara para orientar condomínios, construtoras e investidores." },
+          { name: "Eficiência Energética e Sustentabilidade", desc: "Apresentação de valor econômico e redução de custos operacionais." },
+          { name: "Adequação às Normas Regulamentadoras", desc: "Informações organizadas para contratações ágeis com contato comercial." }
+        ]
+      },
+      vertex: {
+        title: "Studio Vertex Arquitetura",
+        badge: "Projeto Conceitual • Portfólio",
+        category: "Segmento: Negócios Locais, Arquitetura & Design",
+        desc: "Demonstração visual pensada para profissionais que precisam valorizar seu portfólio visual, explicar serviços e atrair orçamentos qualificados.",
+        docName: "Arq. Mariana Silveira",
+        docRole: "Arquiteta Titular & Designer de Interiores",
+        docBio: "Seção formatada para contar a essência criativa do escritório, a abordagem personalizada de cada projeto e inspirar novos clientes.",
+        treatments: [
+          { name: "Design de Interiores Residencial", desc: "Apresentação do conceito de conforto, iluminação e escolha criteriosa de materiais." },
+          { name: "Arquitetura Comercial e Escritórios", desc: "Soluções espaciais pensadas para identidade de marca e produtividade da equipe." },
+          { name: "Consultoria Rápida de Decoração", desc: "Serviço com escopo enxuto para quem precisa de direcionamento pontual." },
+          { name: "Acompanhamento e Gestão de Reformas", desc: "Comunicação clara de prazos, orçamento de fornecedores e entrega final." }
+        ]
+      }
+    };
+
+    function setMockupTab(tab) {
+      const btnR = document.getElementById('btnRealtime');
+      const btnI = document.getElementById('btnInsights');
+      if (tab === 'estrutura') {
+        btnR.className = "px-3 py-1 rounded-full bg-blue-600 text-white font-medium shadow";
+        btnI.className = "px-3 py-1 rounded-full text-zinc-400 hover:text-white";
+      } else {
+        btnI.className = "px-3 py-1 rounded-full bg-indigo-600 text-white font-medium shadow";
+        btnR.className = "px-3 py-1 rounded-full text-zinc-400 hover:text-white";
+      }
+    }
+
+    function openDemoModal(projectKey) {
+      const data = projectsData[projectKey];
+      if (!data) return;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalBadge').innerText = data.badge;
+      document.getElementById('modalCategory').innerText = data.category;
+      document.getElementById('modalDesc').innerText = data.desc;
+      document.getElementById('modalDocName').innerText = data.docName;
+      document.getElementById('modalDocRole').innerText = data.docRole;
+      document.getElementById('modalDocBio').innerText = data.docBio;
+      
+      const treatContainer = document.getElementById('modalTreatments');
+      treatContainer.innerHTML = '';
+      data.treatments.forEach(t => {
+        const div = document.createElement('div');
+        div.className = "p-4 rounded-xl bg-white/[0.03] border border-white/10";
+        div.innerHTML = `<h5 class="text-sm font-bold text-white mb-1">${t.name}</h5><p class="text-xs text-zinc-400 leading-relaxed">${t.desc}</p>`;
+        treatContainer.appendChild(div);
+      });
+
+      const cleanNum = WHATSAPP_NUMBER.replace(/\D/g, '');
+      const encodedMsg = encodeURIComponent(`Olá! Vi o modelo conceitual "${data.title}" na CodeLabx e gostaria de conversar sobre um site sob medida para minha empresa.`);
+      document.getElementById('modalWhatsAppBtn').href = `https://wa.me/${cleanNum}?text=${encodedMsg}`;
+
+      const modal = document.getElementById('demoModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDemoModal() {
+      const modal = document.getElementById('demoModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Fechar modal ao clicar fora
+    window.addEventListener('click', function(e) {
+      const modal = document.getElementById('demoModal');
+      if (e.target === modal) {
+        closeDemoModal();
+      }
+    });
+
+    // Fechar modal com tecla ESC
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeDemoModal();
+      }
+    });
+  </script>
+</body>
+</html>

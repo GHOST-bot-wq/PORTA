@@ -1,9 +1,9 @@
 import React from 'react';
 import { SITE_CONFIG } from '../config/site';
-import { Palette, Smartphone, MessageCircle, Zap, Search, ShieldCheck } from 'lucide-react';
+import { Palette, Smartphone, ListFilter, MessageCircle, Compass, Zap, ShieldCheck } from 'lucide-react';
 
 export const DifferentiatorsSection: React.FC = () => {
-  const icons = [Palette, Smartphone, MessageCircle, Zap, Search, ShieldCheck];
+  const icons = [Palette, Smartphone, ListFilter, MessageCircle, Compass, Zap];
 
   return (
     <section id="diferenciais" className="relative py-24 md:py-32 overflow-hidden bg-space-950/50">
@@ -11,16 +11,16 @@ export const DifferentiatorsSection: React.FC = () => {
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[350px] bg-blue-900/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-400 mb-4 border border-blue-500/30">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
           <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Por Que Escolher a CodeLabx</span>
+          <span>Vantagens Reais</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
-          Diferenciais que geram autoridade e vendas
+          O que a sua empresa recebe
         </h2>
-        <p className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-          Cada detalhe do seu site é pensado estrategicamente para fortalecer sua reputação e facilitar o contato com novos clientes.
+        <p className="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">
+          Cada aspecto do seu site é planejado para apresentar seu negócio com clareza, credibilidade e facilidade de contato.
         </p>
       </div>
 

@@ -1,35 +1,38 @@
 /**
  * CODELABX — CONFIGURAÇÃO CENTRALIZADA
  * 
- * 🔴 ATENÇÃO: SUBSTITUA O NÚMERO DO WHATSAPP ABAIXO ANTES DE PUBLICAR EM PRODUÇÃO!
- * Altere apenas o valor da constante WHATSAPP_NUMBER para o número comercial da agência com DDI e DDD (ex: "5511999999999").
+ * 🔴 CONFIGURAÇÃO DO WHATSAPP:
+ * Altere apenas o valor da constante 'number' para o número comercial da agência com DDI e DDD (ex: "5511999999999").
  */
 
 export const SITE_CONFIG = {
   name: "CodeLabx",
-  tagline: "Engenharia visual e desenvolvimento de sites de alta conversão",
+  tagline: "Sites profissionais sob medida para empresas e prestadores de serviços",
   domain: "codelabx.com.br",
   
   // -------------------------------------------------------------
-  // CONFIGURAÇÃO DO WHATSAPP (SUBSTITUA AQUI)
+  // CONFIGURAÇÃO ÚNICA DO WHATSAPP (SUBSTITUA AQUI)
   // -------------------------------------------------------------
   whatsapp: {
     // Formato internacional: código do país (55) + DDD (ex: 11) + número (9 dígitos)
-    // ⚠️ SUBSTITUA O NÚMERO ABAIXO:
     number: "5511999999999",
     displayNumber: "+55 (11) 99999-9999",
     
-    // Mensagens pré-configuradas para conversão ágil
-    defaultMessage: "Olá! Gostaria de solicitar um orçamento para criar o site profissional da minha empresa com a CodeLabx.",
-    demoInquiryMessage: "Olá! Vi a demonstração da clínica na CodeLabx e gostaria de um site com esse mesmo nível de acabamento para o meu negócio.",
-    customQuoteMessage: "Olá! Gostaria de conversar com um especialista da CodeLabx sobre um projeto de site sob medida."
+    // Mensagens contextuais
+    defaultMessage: "Olá! Quero criar meu site com a CodeLabx.",
+    headerMessage: "Olá! Gostaria de solicitar um orçamento para o site da minha empresa.",
+    opportunityMessage: "Olá! Gostaria de conversar sobre a criação de um site profissional para o meu negócio.",
+    servicesMessage: "Olá! Quero entender qual a melhor solução de site para apresentar os serviços da minha empresa.",
+    demoInquiryMessage: "Olá! Vi as demonstrações no site da CodeLabx e gostaria de conversar sobre um projeto semelhante para o meu negócio.",
+    processMessage: "Olá! Gostaria de conversar sobre as etapas e início do desenvolvimento do meu site.",
+    finalCtaMessage: "Olá! Gostaria de conversar sobre a melhor forma de apresentar meus serviços em um site profissional."
   },
 
-  // Redes e contato
+  // Contato institucional
   contact: {
     email: "contato@codelabx.com.br",
-    location: "São Paulo, SP — Atendimento Brasil e Exterior",
-    hours: "Segunda a Sexta, 09h às 19h"
+    location: "Atendimento online para empresas de todo o Brasil",
+    hours: "Segunda a Sexta, 09h às 18h"
   },
 
   // Links de navegação do menu
@@ -37,166 +40,153 @@ export const SITE_CONFIG = {
     { label: "Início", href: "#inicio" },
     { label: "Oportunidade", href: "#oportunidade" },
     { label: "Soluções", href: "#solucoes" },
-    { label: "Capacidades", href: "#capacidades" },
-    { label: "Demonstrações", href: "#demonstracoes" },
+    { label: "Projetos", href: "#demonstracoes" },
     { label: "Diferenciais", href: "#diferenciais" },
     { label: "Processo", href: "#processo" }
   ],
 
-  // 3 Projetos Demonstrativos de Clínicas de Estética Fictícias (Requisito da Fase 3.6)
+  // Demonstrações Conceituais (Projetos desenvolvidos para comprovar capacidade técnica e visual)
   demonstrativeClinics: [
     {
       id: "lumiere",
-      name: "Lumière Estética Avançada",
-      tagline: "Clínica de Estética Premium",
-      badge: "High-End & Luxo",
-      subtitle: "Experiência de bem-estar sofisticada, protocolos faciais e corporais exclusivos com atendimento ultra-personalizado.",
+      name: "Lumière Estética & Bem-Estar",
+      category: "Saúde & Estética",
+      badge: "Projeto Conceitual • High-End",
+      tagline: "Clínica de estética e cuidados corporais",
+      subtitle: "Demonstração visual com foco em sofisticação sensorial, catálogo claro de procedimentos e botão de contato direto para agendamento.",
       accentColor: "#F59E0B",
       theme: "dark-gold",
       highlights: [
-        "Protocolos corporais de luxo",
-        "Ambiente intimista e sensorial",
-        "Atendimento com concierge",
-        "Tecnologias importadas não-invasivas"
+        "Apresentação visual elegante de serviços",
+        "Detalhamento claro de procedimentos",
+        "Ambiente mobile planejado para toque rápido",
+        "Botão de WhatsApp com mensagem contextual"
       ],
       treatments: [
-        { title: "Protocolo Lumière Gold", category: "Corporal", desc: "Associação de drenagem linfática francesa e radiofrequência multipolar para remodelamento e luminosidade da pele." },
-        { title: "HydroFacial Radiant", category: "Facial", desc: "Limpeza profunda ultrassônica com infusão de peptídeos botânicos e ácido hialurônico de alta pureza." },
-        { title: "Sculpt Body Silhouette", category: "Corporal", desc: "Terapia combinada para tonificação muscular e redução localizada sem tempo de recuperação." },
-        { title: "Laser Glow Skin", category: "Facial", desc: "Revitalização e uniformização do tom da pele com efeito de porcelana e estímulo natural de elastina." }
+        { title: "Protocolos Faciais de Hidratação", category: "Facial", desc: "Apresentação estruturada de etapas, benefícios e recomendações ao cliente." },
+        { title: "Cuidados Corporais e Relaxamento", category: "Corporal", desc: "Estrutura descritiva para orientar quem busca bem-estar e cuidados integrados." },
+        { title: "Revitalização e Uniformização", category: "Facial", desc: "Espaço dedicado para esclarecer dúvidas comuns antes do contato com a recepção." },
+        { title: "Terapias Manuais e Drenagem", category: "Corporal", desc: "Organização por categorias que facilita a escolha no celular sem rolagem cansativa." }
       ],
       doctor: {
-        name: "Dra. Nicole Valença",
-        role: "Diretora Clínica & Biomédica Esteta",
-        crbm: "CRBM 14.892",
-        bio: "Mais de 11 anos dedicados ao aprimoramento da estética de luxo e bem-estar integral."
-      },
-      stats: {
-        satisfaction: "99.4%",
-        treatmentsDone: "4.800+",
-        returnRate: "92%"
+        name: "Demonstração de Perfil Profissional",
+        role: "Espaço para Apresentação do Especialista / Responsável",
+        council: "Ex: Registro profissional, formação e área de atuação",
+        bio: "Seção planejada para humanizar o negócio, apresentar as credenciais da equipe e transmitir segurança a quem acessa a página pela primeira vez."
       }
     },
     {
-      id: "aura",
-      name: "Aura Derma & Laser",
-      tagline: "Clínica Moderna com Foco em Tecnologias",
-      badge: "Inovação Médica",
-      subtitle: "Catálogo completo de procedimentos a laser, ultrassom microfocado e dermatologia estética orientada a dados.",
-      accentColor: "#06B6D4",
+      id: "nexus",
+      name: "Nexus Engenharia & Consultoria",
+      category: "Empresas & Serviços B2B",
+      badge: "Projeto Conceitual • Corporativo",
+      tagline: "Consultoria e projetos técnicos de engenharia",
+      subtitle: "Demonstração voltada para empresas e prestadores de serviços técnicos, destacando áreas de atuação, histórico de projetos e proposta comercial.",
+      accentColor: "#38BDF8",
       theme: "dark-cyan",
       highlights: [
-        "Ultrassom Microfocado (Liftera / Ultraformer)",
-        "Lasers fracionados de última geração",
-        "Catálogo interativo com simulação",
-        "Agendamento inteligente via WhatsApp"
+        "Apresentação corporativa sóbria e moderna",
+        "Divisão clara de consultorias e laudos",
+        "Formato ideal para negociações comerciais",
+        "Contato imediato com diretores e consultores"
       ],
       treatments: [
-        { title: "Ultrassom Microfocado Facial", category: "Tecnologia", desc: "Efeito lifting não-cirúrgico com estímulo profundo de colágeno nas camadas musculares da face." },
-        { title: "Laser Erbium Fracionado", category: "Resurfacing", desc: "Renovação celular intensa para suavização de cicatrizes de acne, textura e poros dilatados." },
-        { title: "Protocolo Clareador Íntimo & Axilar", category: "Laser Q-Switched", desc: "Ação seletiva contra hiperpigmentação com resultados visíveis a partir da 2ª sessão." },
-        { title: "Remoção e Clareamento Avançado", category: "Tecnologia", desc: "Tecnologia picosegundos com emissão ultrarrápida sem agressão térmica ao tecido adjacente." }
+        { title: "Gestão e Coordenação de Obras", category: "Engenharia", desc: "Detalhamento de escopo, etapas de execução e conformidade regulatória." },
+        { title: "Laudos Técnicos e Perícias", category: "Consultoria", desc: "Estrutura clara para orientar condomínios, construtoras e investidores." },
+        { title: "Eficiência Energética e Sustentabilidade", category: "Sustentabilidade", desc: "Apresentação de valor econômico e redução de custos para empresas parceiras." },
+        { title: "Adequação às Normas Regulamentadoras", category: "Compliance", desc: "Informações organizadas para contratações ágeis com contato imediato." }
       ],
       doctor: {
-        name: "Dr. Matheus Rangel",
-        role: "Médico Dermatologista",
-        crm: "CRM/SP 192.441 | RQE 83.109",
-        bio: "Membro da Sociedade Brasileira de Dermatologia e pesquisador em tecnologias a laser."
-      },
-      stats: {
-        satisfaction: "98.9%",
-        treatmentsDone: "7.200+",
-        techDevices: "14 Equipamentos"
+        name: "Demonstração de Equipe Corporativa",
+        role: "Espaço para Sócios, Diretores ou Engenheiros Responsáveis",
+        council: "Ex: CREA / Informações de registro institucional",
+        bio: "Área destinada a apresentar a solidez técnica da empresa, anos de atuação no mercado e o compromisso ético com os projetos entregues."
       }
     },
     {
-      id: "sculpt",
-      name: "Sculpt Face Harmonização",
-      tagline: "Especializada em Harmonização Facial & Botox",
-      badge: "Harmonização & Naturalidade",
-      subtitle: "Escultura facial anatômica, toxina botulínica preventiva e bioestimuladores de colágeno com foco absoluto em elegância natural.",
-      accentColor: "#8B5CF6",
+      id: "vertex",
+      name: "Studio Vertex Arquitetura",
+      category: "Negócios Locais & Profissionais",
+      badge: "Projeto Conceitual • Portfólio",
+      tagline: "Projetos de interiores e reformas residenciais",
+      subtitle: "Demonstração visual pensada para profissionais que precisam valorizar seu portfólio visual, explicar serviços e atrair orçamentos qualificados.",
+      accentColor: "#A855F7",
       theme: "dark-purple",
       highlights: [
-        "Preenchimento labial com contorno anatômico",
-        "Toxina botulínica com preservação da expressão",
-        "Bioestimuladores de colágeno (Radiesse / Sculptra)",
-        "Planejamento 3D facial prévio"
+        "Galeria visual com estética clean",
+        "Explicação descomplicada do processo de projeto",
+        "Destaque para antes e depois dos ambientes",
+        "Canal ágil no WhatsApp para solicitação de briefing"
       ],
       treatments: [
-        { title: "Full Face Harmonia Natural", category: "Planejamento 3D", desc: "Mapeamento dos vetores de sustentação facial com ácido hialurônico para rejuvenescimento sutil." },
-        { title: "Toxina Botulínica Preventiva", category: "Injetáveis", desc: "Suavização das linhas de expressão na testa, glabela e periorbital mantendo a mímica natural." },
-        { title: "Bioestimulador de Colágeno Facial", category: "Firmeza", desc: "Indução biológica de neocolares para combater a flacidez progressiva com durabilidade de até 2 anos." },
-        { title: "Preenchimento Labial Russian Contour", category: "Lábios", desc: "Definição de arco do cupido, hidratação profunda e volumização proporcional ao rosto." }
+        { title: "Design de Interiores Residencial", category: "Residencial", desc: "Apresentação do conceito de conforto, iluminação e escolha criteriosa de materiais." },
+        { title: "Arquitetura Comercial e Escritórios", category: "Comercial", desc: "Soluções espaciais pensadas para identidade de marca e produtividade da equipe." },
+        { title: "Consultoria Rápida de Decoração", category: "Consultoria", desc: "Serviço com escopo enxuto para quem precisa de direcionamento pontual." },
+        { title: "Acompanhamento e Gestão de Reformas", category: "Gestão", desc: "Comunicação clara de prazos, orçamento de fornecedores e entrega final." }
       ],
       doctor: {
-        name: "Dra. Camila Bittencourt",
-        role: "Cirurgiã-Dentista & Especialista em HOF",
-        cro: "CRO/SP 115.342",
-        bio: "Especialista em Harmonização Orofacial com certificações em Harvard e Viena."
-      },
-      stats: {
-        satisfaction: "99.8%",
-        treatmentsDone: "3.600+",
-        naturalLookGuarantee: "100%"
+        name: "Demonstração de Titular do Studio",
+        role: "Espaço para o Arquiteto ou Designer Principal",
+        council: "Ex: CAU / Associação profissional",
+        bio: "Seção formatada para contar a essência criativa do escritório, a abordagem personalizada de cada projeto e inspirar novos clientes."
       }
     }
   ],
 
-  // 5 Etapas do processo de criação (Fase 3.8)
+  // 5 Etapas do processo de criação (ETAPA 2: Processo de criação)
   processSteps: [
     {
       number: "01",
-      title: "Entendimento do Negócio",
-      desc: "Mergulho profundo no seu nicho, seu público de alto valor, diferenciais competitivos e objetivos comerciais."
+      title: "Entendimento do negócio",
+      desc: "Conversamos para entender o que sua empresa oferece, quem é o seu público e quais informações precisam ficar claras no site."
     },
     {
       number: "02",
-      title: "Planejamento da Estrutura",
-      desc: "Definição do fluxo de navegação, arquitetura da informação, pontos de contato estratégicos e hierarquia editorial."
+      title: "Planejamento da estrutura",
+      desc: "Organizamos a sequência ideal das seções, a disposição dos textos e os pontos de contato para garantir uma navegação fluida."
     },
     {
       number: "03",
-      title: "Design & Desenvolvimento",
-      desc: "Criação visual exclusiva com motion design, tipografia refinada, código limpo e carregamento instantâneo."
+      title: "Design e desenvolvimento",
+      desc: "Criamos a identidade visual personalizada da página, adaptada ao celular e computador, com código limpo e carregamento rápido."
     },
     {
       number: "04",
-      title: "Revisão & Ajustes",
-      desc: "Alinhamento iterativo com você para validar cada detalhe visual, textos, responsividade em múltiplos aparelhos e botões."
+      title: "Revisão e ajustes",
+      desc: "Apresentamos o projeto para sua avaliação, refinando detalhes visuais, textos e links para que tudo fique exatamente como você deseja."
     },
     {
       number: "05",
-      title: "Publicação & Entrega",
-      desc: "Configuração de domínio, SSL, CDN global, SEO básico estruturado e integração perfeita com o seu WhatsApp."
+      title: "Publicação",
+      desc: "Conectamos seu domínio, ativamos o certificado de segurança SSL e deixamos o link do WhatsApp pronto para receber seus clientes."
     }
   ],
 
-  // Diferenciais CodeLabx (Fase 3.7)
+  // Diferenciais Reais (ETAPA 2: Diferenciais)
   differentiators: [
     {
-      title: "Design Personalizado & Exclusivo",
-      desc: "Nada de templates pré-fabricados ou páginas idênticas aos concorrentes. Cada pixel é desenhado sob medida."
+      title: "Design personalizado",
+      desc: "Criamos um layout sob medida para valorizar a proposta única da sua empresa, sem parecer uma cópia genérica."
     },
     {
-      title: "100% Responsivo & Mobile First",
-      desc: "Mais de 80% do seu público virá pelo celular. Adaptamos intencionalmente cada espaçamento e tipografia."
+      title: "Adaptação para celular, tablet e computador",
+      desc: "Sua página ajusta perfeitamente tamanhos de fontes, botões e imagens para qualquer tamanho de tela."
     },
     {
-      title: "Engenharia Focada em WhatsApp",
-      desc: "Botões de conversão posicionados estrategicamente com mensagens pré-formatadas para encurtar o ciclo de venda."
+      title: "Organização clara dos serviços",
+      desc: "Quem acessa entende com facilidade o que você faz, sem se perder em termos técnicos ou menus confusos."
     },
     {
-      title: "Carregamento Instantâneo (< 1s)",
-      desc: "Desenvolvido com tecnologia moderna sem a lentidão de construtores pesados. Nota máxima em velocidade."
+      title: "Facilidade de contato pelo WhatsApp",
+      desc: "Botões de conversa em posições estratégicas com mensagens pré-formatadas para encurtar o caminho do cliente até você."
     },
     {
-      title: "Estrutura Pronta para SEO",
-      desc: "HTML semântico, metatags Open Graph, sitemap e indexação correta para o Google encontrar seus serviços."
+      title: "Navegação intuitiva",
+      desc: "Estrutura linear e confortável, pensada para responder às principais dúvidas do visitante sem esforço."
     },
     {
-      title: "Autoridade Visual Imediata",
-      desc: "Um design que justifica valores premium e transmite a solidez que pacientes e clientes exigentes procuram."
+      title: "Qualidade técnica e desempenho",
+      desc: "Código leve, sem plugins pesados ou ferramentas lentas, proporcionando carregamento ágil e estável."
     }
   ]
 };

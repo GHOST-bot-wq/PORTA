@@ -1,6 +1,6 @@
 import React from 'react';
 import { SITE_CONFIG, getWhatsAppLink } from '../config/site';
-import { MessageSquare, ArrowUp, Sparkles, Heart } from 'lucide-react';
+import { MessageSquare, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -24,19 +24,18 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
-              Desenvolvimento de sites de alto padrão para empresas e clínicas de estética. 
-              Engenharia visual, velocidade extrema e foco em conversão para WhatsApp.
+              Criação de sites profissionais e personalizados para empresas em geral, prestadores de serviços e negócios locais. Design visual de alto padrão e facilidade de contato via WhatsApp.
             </p>
 
             <div className="pt-2 text-xs text-zinc-500 font-mono">
-              São Paulo, SP • Atendimento Brasil & Internacional
+              Atendimento online para empresas de todo o Brasil
             </div>
           </div>
 
           {/* Navigation Links (4 cols) */}
           <div className="md:col-span-4 space-y-3">
             <h4 className="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">
-              Navegação Rápida
+              Navegação
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs sm:text-sm">
               {SITE_CONFIG.navLinks.map((link) => (
@@ -57,7 +56,7 @@ export const Footer: React.FC = () => {
               Atendimento Direto
             </h4>
             <p className="text-xs text-zinc-400">
-              Solicite um orçamento sob medida ou tire dúvidas com nossa equipe:
+              Inicie uma conversa no WhatsApp para tirar dúvidas ou solicitar uma proposta:
             </p>
             <a
               href={getWhatsAppLink()}
@@ -75,7 +74,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Disclaimer & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <p>
-            © {new Date().getFullYear()} CodeLabx. Todos os direitos reservados. Projetos demonstrativos conceituais com propósitos ilustrativos de design.
+            © {new Date().getFullYear()} CodeLabx. Todos os direitos reservados. Demonstrações conceituais com propósitos ilustrativos de apresentação técnica.
           </p>
 
           <button
