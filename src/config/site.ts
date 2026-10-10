@@ -16,8 +16,8 @@ export const SITE_CONFIG = {
   // CONFIGURAÇÃO DO WHATSAPP
   // -------------------------------------------------------------
   whatsapp: {
-    number: "5511999999999",
-    displayNumber: "+55 (11) 99999-9999",
+    number: "5562991747342",
+    displayNumber: "+55 (62) 99174-7342",
     
     // Mensagens contextuais com base na copy
     defaultMessage: "Olá! Conheci a CodeLabx pelo site e gostaria de conversar sobre a criação de um site para minha empresa.",

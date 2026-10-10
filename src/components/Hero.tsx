@@ -24,8 +24,8 @@ export const Hero: React.FC = () => {
 
         {/* Main Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-[1.12] mb-6">
-          Seu próximo cliente pode estar procurando sua empresa agora.{' '}
-          <span className="text-gradient-neon block sm:inline">O que ele vai encontrar?</span>
+          Um site profissional{' '}
+          <span className="text-gradient-neon block sm:inline">para apresentar melhor o seu negócio.</span>
         </h1>
 
         {/* Subtitle */}

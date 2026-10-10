@@ -323,334 +323,337 @@
 </head>
 <body class="selection:bg-blue-600 selection:text-white bg-space-950 font-sans antialiased text-slate-200">
 
-  <!-- Viewport Canvas Frame - Moldura de alta fidelidade visual -->
-  <div class="mx-auto max-w-[1720px] p-2 sm:p-4 md:p-6 lg:p-8">
-    <div class="relative rounded-2xl md:rounded-3xl border border-white/[0.08] bg-space-900/95 shadow-[0_25px_120px_rgba(0,0,0,0.95)] overflow-hidden">
-      
-      <!-- Linha de Grid Técnico Subliminar de Fundo da Moldura -->
-      <div class="tech-grid-bg absolute inset-0 pointer-events-none z-0"></div>
+  <!-- Grid Técnico Subliminar de Fundo -->
+  <div class="tech-grid-bg fixed inset-0 pointer-events-none z-0"></div>
 
-      <!-- HEADER / NAVEGAÇÃO ELEGANTE -->
-      <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-3.5 transition-all">
-        <div class="max-w-7xl mx-auto rounded-full bg-space-900/85 backdrop-blur-xl border border-white/[0.12] py-2.5 px-6 flex items-center justify-between shadow-[0_12px_40px_rgba(0,0,0,0.7)]">
-          <!-- Logo com Identidade Visual -->
-          <a href="#inicio" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full">
+      <!-- HEADER / NAVEGAÇÃO COM MENU MOBILE -->
+      <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-10 py-4 transition-all">
+        <div class="max-w-7xl mx-auto rounded-full bg-space-900/90 backdrop-blur-xl border border-white/[0.10] py-3 px-5 sm:px-6 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+          <!-- Logo -->
+          <a href="#inicio" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full shrink-0">
             <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_16px_rgba(59,130,246,0.55)] group-hover:shadow-[0_0_24px_rgba(59,130,246,0.85)] transition-all">
               <span class="text-white font-mono font-bold text-xs tracking-wider">CX</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <span class="text-base font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">
+              <span class="text-sm font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">
                 CodeLab<span class="text-cyan-400">x</span>
               </span>
+              <span class="font-mono text-slate-400 text-xs hidden sm:inline">&gt;_</span>
               <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]"></span>
             </div>
           </a>
 
-          <!-- Nav Links Técnicos -->
-          <nav class="hidden lg:flex items-center gap-1">
-            <a href="#inicio" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Início</a>
-            <a href="#dores" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Dores</a>
-            <a href="#solucoes" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Soluções</a>
-            <a href="#servicos" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Serviços</a>
-            <a href="#projetos" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Projetos</a>
-            <a href="#diferenciais" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Diferenciais</a>
-            <a href="#processo" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Processo</a>
-            <a href="#duvidas" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Dúvidas</a>
+          <!-- Nav Desktop -->
+          <nav class="hidden lg:flex items-center gap-0.5">
+            <a href="#inicio" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Início</a>
+            <a href="#solucoes" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Soluções</a>
+            <a href="#projetos" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Projetos</a>
+            <a href="#diferenciais" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Diferenciais</a>
+            <a href="#processo" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Processo</a>
           </nav>
 
-          <!-- WhatsApp CTA Button -->
+          <!-- CTA + Hamburger -->
           <div class="flex items-center gap-3">
             <a 
               id="headerWhatsAppLink"
-              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
+              href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
               target="_blank" 
               rel="noopener noreferrer"
-              class="btn-shimmer px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-blue-400/35 transition flex items-center gap-1.5"
+              class="btn-shimmer hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.45)] border border-blue-400/30 transition"
             >
-              <span>Falar no WhatsApp</span>
-              <span class="text-cyan-200">↗</span>
+              <span>💬</span>
+              <span>Fale conosco</span>
             </a>
+
+            <!-- Botão Hamburger Mobile -->
+            <button 
+              id="mobileMenuBtn"
+              onclick="toggleMobileMenu()"
+              aria-label="Abrir menu de navegação"
+              class="lg:hidden flex flex-col justify-center items-center w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition gap-1.5"
+            >
+              <span id="ham1" class="block w-5 h-[1.5px] bg-slate-300 transition-all duration-300"></span>
+              <span id="ham2" class="block w-5 h-[1.5px] bg-slate-300 transition-all duration-300"></span>
+              <span id="ham3" class="block w-4 h-[1.5px] bg-slate-300 transition-all duration-300 self-start"></span>
+            </button>
           </div>
         </div>
       </header>
 
-      <!-- SEÇÃO 1 — HERO / PRIMEIRA DOBRA COM IMPACTO CINEMATOGRÁFICO -->
-      <section id="inicio" class="relative min-h-screen pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center z-10">
+      <!-- MENU MOBILE DRAWER OVERLAY -->
+      <div id="mobileMenuOverlay" class="fixed inset-0 z-40 hidden bg-black/85 backdrop-blur-xl" onclick="toggleMobileMenu()"></div>
+      <div id="mobileMenuDrawer" class="fixed top-0 right-0 bottom-0 z-40 w-72 bg-space-900/98 border-l border-white/10 transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
+        <div class="flex items-center justify-between px-6 py-5 border-b border-white/10">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
+              <span class="text-white font-mono font-bold text-[10px]">CX</span>
+            </div>
+            <span class="text-sm font-bold text-white">CodeLab<span class="text-cyan-400">x</span></span>
+          </div>
+          <button onclick="toggleMobileMenu()" aria-label="Fechar menu" class="text-slate-400 hover:text-white text-xl">✕</button>
+        </div>
+        <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
+          <a href="#inicio" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">01</span> Início</a>
+          <a href="#dores" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">02</span> Diagnóstico</a>
+          <a href="#solucoes" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">03</span> Soluções</a>
+          <a href="#servicos" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">04</span> Serviços</a>
+          <a href="#projetos" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">05</span> Projetos</a>
+          <a href="#diferenciais" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">06</span> Diferenciais</a>
+          <a href="#processo" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 border-b border-white/5 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">07</span> Processo</a>
+          <a href="#duvidas" onclick="toggleMobileMenu()" class="text-sm font-medium text-slate-200 hover:text-white py-3 flex items-center gap-2"><span class="text-cyan-400 font-mono text-xs">08</span> Dúvidas</a>
+        </nav>
+        <div class="px-6 pb-8">
+          <a 
+            href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="toggleMobileMenu()"
+            class="btn-shimmer w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 shadow-[0_0_25px_rgba(59,130,246,0.5)] transition"
+          >
+            <span>💬</span>
+            <span>Falar no WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 1 — HERO / PRIMEIRA DOBRA — LAYOUT ASSIMÉTRICO EDITORIAL -->
+      <section id="inicio" class="relative min-h-screen pt-28 pb-20 md:pt-32 md:pb-0 overflow-hidden flex items-center z-10">
         <!-- Feixes de Luz Óptica da Direção de Arte -->
         <div class="optical-beam-hero"></div>
         <div class="optical-beam-streak"></div>
 
-        <!-- Glows de Atmosfera -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[680px] h-[340px] bg-blue-600/15 rounded-full blur-[130px] pointer-events-none"></div>
-        <div class="absolute top-1/3 left-1/4 w-[480px] h-[280px] bg-purple-600/10 rounded-full blur-[110px] pointer-events-none"></div>
+        <!-- Glow Ambiental Direito (Iluminação Azul/Violeta do Mockup) -->
+        <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-700/20 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-violet-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[350px] h-[350px] bg-blue-900/20 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          
-          <!-- Etiqueta Superior com Código de Precisão -->
-          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-space-850/80 border border-blue-500/30 text-xs font-mono text-cyan-300 mb-8 shadow-[0_0_18px_rgba(56,189,248,0.2)] tracking-wider">
-            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span>CRIAÇÃO DE SITES PROFISSIONAIS SOB MEDIDA</span>
-            <span class="text-slate-500">//</span>
-            <span class="text-slate-400 text-[10px]">DIGITAL CRAFT</span>
-          </div>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-4rem)]">
 
-          <!-- Título Principal com Quebras Editoriais Deliberadas -->
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-[1.12] mb-6">
-            Seu próximo cliente pode estar procurando sua empresa agora.
-            <span class="text-title-gradient block sm:inline">O que ele vai encontrar?</span>
-          </h1>
+          <!-- COLUNA ESQUERDA — COPY EDITORIAL -->
+          <div class="flex flex-col justify-center py-12 lg:py-20 relative">
 
-          <!-- Subtítulo Aprovado -->
-          <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4 font-normal">
-            Tenha um site profissional, feito sob medida para o seu negócio, que apresente seus serviços com clareza, transmita confiança e facilite o primeiro contato com seus potenciais clientes.
-          </p>
+            <!-- Labels Verticais Técnicos (Desktop Sidebar) -->
+            <div class="hidden xl:flex flex-col gap-1.5 absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
+              <span class="text-[9px] font-mono tracking-[0.25em] text-slate-500 uppercase">ESTRATÉGIA</span>
+              <span class="text-[9px] font-mono tracking-[0.25em] text-slate-500 uppercase">DESIGN</span>
+              <span class="text-[9px] font-mono tracking-[0.25em] text-slate-500 uppercase">TECNOLOGIA</span>
+            </div>
 
-          <!-- Parágrafo Complementar Aprovado -->
-          <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed mb-6 font-normal">
-            Chega de depender de informações espalhadas, perfis que não explicam tudo o que você oferece ou apresentações que não fazem justiça à qualidade do seu trabalho.
-          </p>
+            <!-- Breadcrumb Técnico -->
+            <div class="flex items-center gap-2.5 text-xs font-mono text-slate-500 mb-6 reveal-ready">
+              <span class="text-slate-600">—</span>
+              <span class="uppercase tracking-widest text-slate-400">CODELABX</span>
+              <span class="text-slate-600">/</span>
+              <span class="text-cyan-400/80">DIGITAL EXPERIENCES</span>
+            </div>
 
-          <!-- Frase de Reforço com Estilo Technical Badge -->
-          <div class="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-blue-950/40 border border-cyan-500/25 text-xs sm:text-sm font-medium text-cyan-300 mb-10 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span class="text-cyan-400">✦</span>
-            <span>Seu negócio merece ser visto com o mesmo profissionalismo com que você trabalha.</span>
-          </div>
+            <!-- Título Principal Aprovado -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold tracking-tight leading-[1.08] mb-6 reveal-ready" style="transition-delay:0.05s">
+              <span class="text-white">Um site profissional</span><br>
+              <span class="text-title-gradient">para apresentar melhor</span><br>
+              <span class="text-white">o seu negócio.</span>
+            </h1>
 
-          <!-- CTAs Principais e Microtexto -->
-          <div class="flex flex-col items-center gap-3 mb-16 w-full sm:w-auto">
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <!-- CTA Principal (WhatsApp) -->
+            <!-- Subtítulo Aprovado -->
+            <p class="text-base sm:text-lg text-slate-300 max-w-lg leading-relaxed mb-3 font-normal reveal-ready" style="transition-delay:0.1s">
+              Elevamos sua presença digital com design exclusivo e tecnologia de ponta. Soluções sob medida para marcas que buscam o extraordinário.
+            </p>
+
+            <!-- Parágrafo Complementar Aprovado -->
+            <p class="text-sm text-slate-400 max-w-md leading-relaxed mb-8 font-normal reveal-ready" style="transition-delay:0.12s">
+              Chega de depender de informações espalhadas, perfis que não explicam tudo o que você oferece ou apresentações que não fazem justiça à qualidade do seu trabalho.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 reveal-ready" style="transition-delay:0.18s">
               <a 
                 id="heroWhatsAppLink"
-                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
+                href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-shimmer w-full sm:w-auto px-9 py-4 rounded-full text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_35px_rgba(59,130,246,0.65)] hover:shadow-[0_0_50px_rgba(59,130,246,0.9)] transition-all duration-300 border border-blue-300/40 flex items-center justify-center gap-2 group"
+                class="btn-shimmer flex items-center gap-2.5 px-8 py-4 rounded-full text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_35px_rgba(59,130,246,0.65)] hover:shadow-[0_0_50px_rgba(59,130,246,0.9)] transition-all duration-300 border border-blue-300/30 group"
               >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 <span>Quero criar meu site</span>
-                <span class="text-cyan-200 group-hover:translate-x-1 transition-transform">→</span>
               </a>
 
-              <!-- CTA Secundário -->
               <a 
                 href="#projetos" 
-                class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white transition-all duration-300 border border-white/15 flex items-center justify-center gap-2"
+                class="flex items-center gap-2 px-7 py-4 rounded-full text-sm font-semibold text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white transition-all duration-300 border border-white/15"
               >
                 <span>Ver projetos</span>
+                <span>→</span>
               </a>
             </div>
 
             <!-- Microtexto -->
-            <span class="text-xs text-slate-400 flex items-center gap-2 pt-1 font-mono">
+            <p class="mt-5 text-xs text-slate-500 font-mono flex items-center gap-2 reveal-ready" style="transition-delay:0.22s">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
               Converse diretamente com a CodeLabx pelo WhatsApp, sem compromisso.
-            </span>
+            </p>
           </div>
 
-          <!-- SHOWCASE DE ENGENHARIA DIGITAL EM CAMADAS 3D (Substituindo o Mockup Genérico) -->
-          <div class="w-full max-w-5xl relative group perspective-1000">
-            <!-- Glow Tridimensional Traseiro -->
-            <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-600/30 via-cyan-500/20 to-purple-600/30 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition duration-700 pointer-events-none"></div>
+          <!-- COLUNA DIREITA — SHOWCASE 3D PERSPECTIVA -->
+          <div class="relative flex items-center justify-center lg:justify-end py-8 lg:py-0 lg:h-screen min-h-[440px]">
 
-            <div class="relative rounded-2xl md:rounded-3xl chassis-panel p-4 sm:p-6 md:p-8 crosshair-corner text-left">
+            <!-- Tag técnica acima do mockup -->
+            <div class="absolute top-8 lg:top-24 right-4 lg:right-0 flex items-center gap-2 text-[10px] font-mono text-slate-400 tracking-widest z-20">
+              <span class="w-3 h-[1px] bg-cyan-500/60"></span>
+              <span>DESIGN + DESENVOLVIMENTO</span>
+              <span class="w-3 h-[1px] bg-cyan-500/60"></span>
+            </div>
+
+            <!-- Marcadores de precisão cantos -->
+            <div class="absolute top-20 lg:top-28 left-0 lg:left-4 text-[9px] font-mono text-cyan-500/40 tracking-wider z-20 hidden md:block">
+              <div class="flex items-center gap-1.5"><span class="w-2.5 h-[1px] bg-cyan-500/40"></span><span>+</span></div>
+            </div>
+            <div class="absolute bottom-8 right-0 text-[9px] font-mono text-cyan-500/40 tracking-wider z-20 hidden md:block">
+              <div class="flex items-center gap-1.5"><span>+</span><span class="w-2.5 h-[1px] bg-cyan-500/40"></span></div>
+            </div>
+
+            <!-- Container 3D Perspectiva Principal -->
+            <div id="heroDevice3D" class="relative w-full max-w-[580px] lg:max-w-none lg:w-[calc(100%+2rem)] select-none" style="perspective: 1200px;">
               
-              <!-- Barra Superior do Showcase com Controles de Engenharia -->
-              <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10">
-                <div class="flex items-center gap-3">
-                  <div class="flex items-center gap-1.5">
-                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+              <!-- MOCKUP DESKTOP PRINCIPAL — tela em perspectiva com tilt 3D -->
+              <div id="heroTiltDevice" class="relative transition-transform duration-100 ease-out" style="transform: rotateY(-12deg) rotateX(4deg); transform-origin: 60% 50%;">
+                
+                <!-- Glow traseiro do device -->
+                <div class="absolute -inset-3 bg-gradient-to-br from-blue-600/25 via-indigo-500/20 to-violet-600/25 rounded-3xl blur-2xl pointer-events-none"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-violet-500/10 rounded-3xl blur-xl pointer-events-none"></div>
+
+                <!-- Monitor / Laptop Bezel -->
+                <div class="relative rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.85),0_0_0_1.5px_rgba(56,189,248,0.35),inset_0_1px_0_rgba(255,255,255,0.12)]"
+                  style="background: linear-gradient(145deg, #0f1827 0%, #080d18 60%, #060b15 100%);">
+                  
+                  <!-- Barra Superior do Browser -->
+                  <div class="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.08] bg-black/40">
+                    <div class="flex gap-1.5">
+                      <div class="w-2.5 h-2.5 rounded-full bg-red-500/75"></div>
+                      <div class="w-2.5 h-2.5 rounded-full bg-amber-500/75"></div>
+                      <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/75"></div>
+                    </div>
+                    <div class="flex-1 mx-3 rounded-full bg-white/[0.05] border border-white/[0.08] px-3 py-0.5 text-[10px] font-mono text-slate-500 flex items-center gap-1.5">
+                      <span class="text-emerald-400 text-[8px]">●</span>
+                      <span>yourbrand.com.br</span>
+                    </div>
+                    <div class="hidden sm:flex items-center gap-1.5 text-[10px] font-mono text-slate-500">
+                      <span>Fale conosco</span>
+                    </div>
                   </div>
-                  <div class="h-4 w-[1px] bg-white/10 mx-1"></div>
-                  <span class="text-xs font-mono text-slate-400">system.codelabx // interactive-preview</span>
+
+                  <!-- Conteúdo da Tela — Hero de um site fictício -->
+                  <div class="relative overflow-hidden" style="min-height: 340px;">
+                    <!-- Background do site dentro do mockup -->
+                    <div class="absolute inset-0" style="background: linear-gradient(135deg, #08101e 0%, #060d1a 40%, #0a0a1a 100%);"></div>
+                    
+                    <!-- Nav interna do site mockup -->
+                    <div class="relative z-10 flex items-center justify-between px-5 py-3 border-b border-white/5">
+                      <span class="text-[10px] font-bold text-white font-mono">YOURBRAND</span>
+                      <div class="hidden sm:flex items-center gap-3 text-[9px] text-slate-400">
+                        <span>Início</span><span>Serviços</span><span>Sobre</span><span>Contato</span>
+                      </div>
+                      <div class="text-[9px] px-2.5 py-1 rounded-full bg-blue-600/80 text-white font-medium">Fale conosco</div>
+                    </div>
+
+                    <!-- Hero do site mockup -->
+                    <div class="relative z-10 p-5 sm:p-6">
+                      <!-- Glow interior -->
+                      <div class="absolute top-0 right-0 w-48 h-48 bg-blue-700/25 rounded-full blur-3xl pointer-events-none"></div>
+                      <div class="absolute bottom-0 right-8 w-32 h-32 bg-violet-600/20 rounded-full blur-2xl pointer-events-none"></div>
+                      
+                      <div class="max-w-[52%]">
+                        <h2 class="text-base sm:text-lg font-extrabold text-white leading-tight mb-2">
+                          Soluções <span class="text-blue-400">digitais</span><br>para o seu negócio
+                        </h2>
+                        <p class="text-[10px] text-slate-400 leading-relaxed mb-3">Sites modernos, rápidos e estratégicos para empresas que querem se destacar.</p>
+                        <button class="text-[9px] px-3 py-1.5 rounded-full bg-blue-600 text-white font-medium">Conheça nossas soluções</button>
+                      </div>
+                      
+                      <!-- Seção de serviços dentro do mockup -->
+                      <div class="mt-4 pt-3 border-t border-white/5">
+                        <div class="text-[9px] font-mono text-slate-500 mb-2">Nossos serviços</div>
+                        <div class="grid grid-cols-5 gap-1.5">
+                          <div class="p-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-center">
+                            <div class="text-[8px] text-slate-400">🏢</div>
+                            <div class="text-[7px] font-medium text-slate-300 mt-0.5 leading-tight">Sites institucio-nais</div>
+                          </div>
+                          <div class="p-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-center">
+                            <div class="text-[8px] text-slate-400">📄</div>
+                            <div class="text-[7px] font-medium text-slate-300 mt-0.5 leading-tight">Landing pages</div>
+                          </div>
+                          <div class="p-1.5 rounded-lg bg-white/[0.04] border border-blue-500/20 text-center">
+                            <div class="text-[8px] text-blue-400">🛒</div>
+                            <div class="text-[7px] font-medium text-slate-300 mt-0.5 leading-tight">Sites para venda</div>
+                          </div>
+                          <div class="p-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-center">
+                            <div class="text-[8px] text-slate-400">🗂️</div>
+                            <div class="text-[7px] font-medium text-slate-300 mt-0.5 leading-tight">Portfólios</div>
+                          </div>
+                          <div class="p-1.5 rounded-lg bg-white/[0.04] border border-emerald-500/20 text-center">
+                            <div class="text-[8px] text-emerald-400">💬</div>
+                            <div class="text-[7px] font-medium text-slate-300 mt-0.5 leading-tight">Integração WhatsApp</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Laser Line sutil na tela -->
+                    <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent pointer-events-none"></div>
+                  </div>
                 </div>
 
-                <!-- Seletor Interativo Real de Viewport (Desktop / Mobile / Blueprint) -->
-                <div class="flex items-center p-1 rounded-full bg-black/50 border border-white/10 text-xs font-mono">
-                  <button id="tabDesktop" onclick="setHeroMode('desktop')" class="px-3.5 py-1 rounded-full bg-blue-600 text-white font-medium shadow-[0_0_12px_rgba(59,130,246,0.6)] transition-all">
-                    🖥️ Desktop
-                  </button>
-                  <button id="tabMobile" onclick="setHeroMode('mobile')" class="px-3.5 py-1 rounded-full text-slate-400 hover:text-white transition-all">
-                    📱 Mobile
-                  </button>
-                  <button id="tabBlueprint" onclick="setHeroMode('blueprint')" class="px-3.5 py-1 rounded-full text-slate-400 hover:text-white transition-all">
-                    ⚡ Blueprint
-                  </button>
-                </div>
+                <!-- Sombra inferior do device -->
+                <div class="mx-8 h-4 rounded-b-full bg-blue-900/30 blur-xl"></div>
+              </div>
 
-                <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyan-300 text-xs font-mono">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                  <span>PREVIEW ATIVO</span>
+              <!-- PAINEL FLUTUANTE — Mockup mobile direita -->
+              <div class="absolute -right-4 lg:-right-8 top-8 lg:top-16 w-28 sm:w-32 shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-2xl overflow-hidden border border-blue-500/25 hidden sm:block animate-float-slow" style="transform: rotateY(-5deg) rotateX(2deg);">
+                <div class="bg-space-900/95 p-2">
+                  <div class="flex items-center gap-1 mb-1.5">
+                    <div class="w-full h-1 rounded-full bg-white/10"></div>
+                  </div>
+                  <div class="text-[8px] font-mono text-cyan-300 mb-1">SEU NEGÓCIO</div>
+                  <div class="text-[9px] font-bold text-white leading-tight mb-1.5">Seu negócio no próximo nível</div>
+                  <div class="h-8 rounded-lg bg-gradient-to-br from-blue-900/60 to-violet-900/60 border border-white/5 mb-1.5 flex items-center justify-center">
+                    <span class="text-[7px] text-slate-400">Imagem de capa</span>
+                  </div>
+                  <div class="text-[7px] px-1.5 py-1 rounded-lg bg-blue-600/60 text-white text-center">Falar no WhatsApp</div>
                 </div>
               </div>
 
-              <!-- Conteúdo Dinâmico do Showcase baseado no seletor -->
-              <div id="heroShowcaseContent" class="mt-6">
-                
-                <!-- MODO DESKTOP (Default) -->
-                <div id="modeDesktop" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                  <div class="lg:col-span-8 space-y-5">
-                    <div>
-                      <div class="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-                        <span>ARCHITECTURE // FLUID VIEWPORT</span>
-                      </div>
-                      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                        Apresentação Visual & Navegação Integrada
-                      </h2>
-                      <p class="text-xs text-slate-400">
-                        Organização visual planejada para conduzir o visitante com clareza até o contato comercial.
-                      </p>
-                    </div>
-
-                    <!-- 3 Cards Pilares com Estética de Precisão -->
-                    <div class="grid grid-cols-3 gap-3">
-                      <div class="p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-blue-500/40 transition group/card">
-                        <div class="text-slate-400 text-xs font-mono flex items-center justify-between">
-                          <span>DESIGN</span>
-                          <span class="text-blue-400">01</span>
-                        </div>
-                        <div class="text-sm sm:text-base font-bold text-white mt-1">Design Sob Medida</div>
-                        <div class="text-[10px] text-slate-400 font-mono mt-1">Identidade exclusiva</div>
-                      </div>
-
-                      <div class="p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 transition group/card">
-                        <div class="text-slate-400 text-xs font-mono flex items-center justify-between">
-                          <span>ROTA</span>
-                          <span class="text-emerald-400">02</span>
-                        </div>
-                        <div class="text-sm sm:text-base font-bold text-white mt-1">WhatsApp Direto</div>
-                        <div class="text-[10px] text-emerald-400 font-mono mt-1">Contato em 1 clique</div>
-                      </div>
-
-                      <div class="p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/40 transition group/card">
-                        <div class="text-slate-400 text-xs font-mono flex items-center justify-between">
-                          <span>MOBILE</span>
-                          <span class="text-cyan-400">03</span>
-                        </div>
-                        <div class="text-sm sm:text-base font-bold text-white mt-1">Foco no Celular</div>
-                        <div class="text-[10px] text-cyan-400 font-mono mt-1">Navegação sem atrito</div>
-                      </div>
-                    </div>
-
-                    <!-- Diagrama de Pulso Óptico & Fluxo de Conversão -->
-                    <div class="p-4 rounded-xl bg-black/50 border border-white/10 relative overflow-hidden">
-                      <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-mono">
-                        <span class="font-medium text-slate-300">Fluxo da Experiência do Visitante</span>
-                        <span class="text-[11px] text-cyan-400">Da primeira impressão ao WhatsApp</span>
-                      </div>
-                      <div class="h-32 w-full relative">
-                        <svg class="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
-                          <defs>
-                            <linearGradient id="optCyan" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.45" />
-                              <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
-                            </linearGradient>
-                            <linearGradient id="optPurple" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.35" />
-                              <stop offset="100%" stop-color="#A855F7" stop-opacity="0" />
-                            </linearGradient>
-                          </defs>
-                          <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3" />
-                          <line x1="0" y1="70" x2="500" y2="70" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3" />
-                          <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30 L500,120 L0,120 Z" fill="url(#optPurple)" />
-                          <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30" fill="none" stroke="#A855F7" stroke-width="2" />
-                          <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15 L500,120 L0,120 Z" fill="url(#optCyan)" />
-                          <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15" fill="none" stroke="#38BDF8" stroke-width="2.5" />
-                          <circle cx="500" cy="15" r="5" fill="#38BDF8" class="animate-pulse shadow-[0_0_12px_#38bdf8]" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Coluna Lateral de Telemetria e Padrão de Construção -->
-                  <div class="lg:col-span-4 space-y-4">
-                    <div class="p-5 rounded-2xl bg-gradient-to-b from-blue-950/80 via-space-850 to-space-900 border border-blue-500/35 relative overflow-hidden">
-                      <div class="flex items-center justify-between text-xs font-mono text-cyan-300 mb-2">
-                        <span>PADRÃO CODELABX</span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                      </div>
-                      <h3 class="text-sm font-bold text-white mb-1">Clareza & Facilidade de Contato</h3>
-                      <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                        Páginas desenhadas para explicar o que você faz e permitir que o cliente envie uma mensagem sem etapas desnecessárias.
-                      </p>
-
-                      <div class="space-y-3 text-xs font-mono">
-                        <div class="flex justify-between text-slate-300">
-                          <span>Adaptação Móvel</span>
-                          <span class="text-emerald-400">Celular & Tablet</span>
-                        </div>
-                        <div class="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-                          <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full rounded-full w-full"></div>
-                        </div>
-
-                        <div class="flex justify-between text-slate-300">
-                          <span>Organização Visual</span>
-                          <span class="text-cyan-400">Navegação Fluida</span>
-                        </div>
-                        <div class="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-                          <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded-full w-full"></div>
-                        </div>
-                      </div>
-
-                      <a 
-                        href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="btn-shimmer mt-5 w-full py-2.5 px-3 rounded-xl bg-blue-600/35 hover:bg-blue-600/55 text-blue-200 text-xs font-semibold flex items-center justify-center gap-2 border border-blue-400/40 transition"
-                      >
-                        <span>Conversar no WhatsApp</span>
-                        <span>→</span>
-                      </a>
-                    </div>
-
-                    <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex items-center gap-3">
-                      <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></div>
-                      <div class="text-xs font-mono">
-                        <span class="text-white font-medium">Canal de Atendimento: </span>
-                        <span class="text-slate-400">WhatsApp Comercial</span>
-                      </div>
-                    </div>
+              <!-- PAINEL FLUTUANTE — Código de sintaxe esquerda -->
+              <div class="absolute -left-4 lg:-left-10 bottom-12 lg:bottom-20 w-40 sm:w-48 shadow-[0_15px_50px_rgba(0,0,0,0.75)] rounded-xl overflow-hidden border border-cyan-500/20 hidden md:block" style="animation: floatSlow 9s ease-in-out infinite; animation-delay: 1.5s;">
+                <div class="bg-space-950/97 p-3 font-mono text-[9px] leading-loose">
+                  <div class="text-slate-500 mb-1">// site.config</div>
+                  <div><span class="text-blue-400">const</span> <span class="text-cyan-300">hero</span> <span class="text-white">=</span> <span class="text-orange-300">{'{}'}</span></div>
+                  <div class="pl-3"><span class="text-slate-400">title:</span> <span class="text-emerald-400">"Seu Negócio"</span><span class="text-white">,</span></div>
+                  <div class="pl-3"><span class="text-slate-400">whatsapp:</span> <span class="text-emerald-400">"ativo"</span><span class="text-white">,</span></div>
+                  <div class="pl-3"><span class="text-slate-400">design:</span> <span class="text-emerald-400">"premium"</span></div>
+                  <div><span class="text-orange-300">{'}'}</span></div>
+                  <div class="mt-1 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-emerald-400/70">online</span>
                   </div>
                 </div>
-
-                <!-- MODO MOBILE (Alternável) -->
-                <div id="modeMobile" class="hidden py-6">
-                  <div class="max-w-sm mx-auto p-4 rounded-3xl bg-black/80 border border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.15)] text-center space-y-4">
-                    <div class="w-16 h-1 rounded-full bg-white/20 mx-auto mb-2"></div>
-                    <div class="text-xs font-mono text-cyan-300">SIMULAÇÃO DE TOUCHSCREEN</div>
-                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-left space-y-2">
-                      <div class="text-xs font-bold text-white">Interface Adaptada ao Celular</div>
-                      <div class="text-[11px] text-slate-300">Botões com área de toque ergonômica, textos com leitura sem zoom e carregamento ágil em 4G/5G.</div>
-                    </div>
-                    <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
-                      ✓ Botão de WhatsApp fixo acessível ao polegar
-                    </div>
-                  </div>
-                </div>
-
-                <!-- MODO BLUEPRINT (Alternável) -->
-                <div id="modeBlueprint" class="hidden py-6">
-                  <div class="p-5 rounded-2xl bg-space-950/90 border border-indigo-500/30 font-mono text-xs text-slate-300 space-y-3">
-                    <div class="flex justify-between border-b border-white/10 pb-2 text-cyan-400">
-                      <span>// ENGENHARIA SEMÂNTICA & BOAS PRÁTICAS</span>
-                      <span>STATUS: 100% AUDITADO</span>
-                    </div>
-                    <p class="text-slate-400 text-xs leading-relaxed">
-                      Estrutura HTML5 limpa com cabeçalhos H1/H2 estruturados, OpenGraph configurado, meta tags para indexação e código leve sem dependências pesadas.
-                    </p>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] pt-2">
-                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">SSL SHA-256</div>
-                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">Mobile-First</div>
-                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">Fast Hydration</div>
-                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">WhatsApp Route</div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
+
+            <!-- Tags técnicas de profundidade -->
+            <div class="absolute bottom-8 left-0 space-y-0.5 hidden lg:block">
+              <div class="text-[9px] font-mono tracking-[0.2em] text-slate-600 uppercase">ESTRATÉGIA</div>
+              <div class="text-[9px] font-mono tracking-[0.2em] text-slate-600 uppercase">DESIGN</div>
+              <div class="text-[9px] font-mono tracking-[0.2em] text-slate-600 uppercase">TECNOLOGIA</div>
+            </div>
+
+            <!-- Scroll hint -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-8 flex items-center gap-2 text-xs text-slate-500 font-mono hidden lg:flex">
+              <div class="w-4 h-7 rounded-full border border-white/15 flex items-start justify-center pt-1">
+                <div class="w-0.5 h-2 rounded-full bg-white/30 animate-bounce"></div>
+              </div>
+              <span>Role para explorar</span>
+            </div>
           </div>
+
         </div>
       </section>
 
@@ -707,7 +710,7 @@
             </div>
 
             <a
-              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20melhorar%20a%20presen%C3%A7a%20digital%20da%20minha%20empresa%20com%20a%20CodeLabx."
+              href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Gostaria%20de%20melhorar%20a%20presen%C3%A7a%20digital%20da%20minha%20empresa%20com%20a%20CodeLabx."
               target="_blank"
               rel="noopener noreferrer"
               class="btn-shimmer inline-flex items-center gap-2 px-7 py-4 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_25px_rgba(59,130,246,0.5)] transition"
@@ -901,7 +904,7 @@
             O objetivo é simples: fazer com que conhecer sua empresa e entrar em contato com você seja uma experiência mais fácil e profissional.
           </p>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20um%20site%20para%20minha%20empresa%20e%20gostaria%20de%20entender%20como%20a%20CodeLabx%20pode%20me%20ajudar."
+            href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Quero%20um%20site%20para%20minha%20empresa%20e%20gostaria%20de%20entender%20como%20a%20CodeLabx%20pode%20me%20ajudar."
             target="_blank"
             rel="noopener noreferrer"
             class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition relative z-10"
@@ -1044,7 +1047,7 @@
             Não sabe qual modelo é melhor para seu negócio? Converse conosco. Vamos entender sua necessidade antes de definir a solução.
           </p>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20CodeLabx%20para%20encontrar%20a%20melhor%20solu%C3%A7%C3%A3o%20de%20site%20para%20minha%20empresa."
+            href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20CodeLabx%20para%20encontrar%20a%20melhor%20solu%C3%A7%C3%A3o%20de%20site%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
             class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
@@ -1258,7 +1261,7 @@
                 <span>👁️</span>
               </button>
               <a 
-                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Lumi%C3%A8re%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
+                href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Lumi%C3%A8re%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition border border-white/10 font-mono"
@@ -1313,7 +1316,7 @@
                 <span>👁️</span>
               </button>
               <a 
-                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Nexus%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
+                href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Nexus%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition border border-white/10 font-mono"
@@ -1368,7 +1371,7 @@
                 <span>👁️</span>
               </button>
               <a 
-                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Studio%20Vertex%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
+                href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Studio%20Vertex%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition border border-white/10 font-mono"
@@ -1386,7 +1389,7 @@
             Gostou de algum estilo? Podemos conversar sobre como adaptá-lo à identidade e às necessidades da sua empresa.
           </p>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20uma%20das%20demonstra%C3%A7%C3%B5es%20da%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa."
+            href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Vi%20uma%20das%20demonstra%C3%A7%C3%B5es%20da%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
             class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(168,85,247,0.5)] transition"
@@ -1509,7 +1512,7 @@
             Nosso compromisso é desenvolver uma apresentação digital profissional, personalizada e alinhada aos objetivos que definirmos para o seu projeto.
           </p>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20CodeLabx%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
+            href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20CodeLabx%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
             class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
@@ -1651,7 +1654,7 @@
           </p>
           <div class="pt-2">
             <a
-              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto%20de%20site%20com%20a%20CodeLabx%20pelo%20WhatsApp."
+              href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto%20de%20site%20com%20a%20CodeLabx%20pelo%20WhatsApp."
               target="_blank"
               rel="noopener noreferrer"
               class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
@@ -1813,7 +1816,7 @@
             Você não precisa decidir tudo agora. Comece entendendo o que faz sentido para o seu negócio.
           </p>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
+            href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-cyan-300 hover:text-white bg-white/5 hover:bg-white/10 border border-cyan-400/30 transition"
@@ -1867,7 +1870,7 @@
             <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
             <a 
               id="finalWhatsAppBtn"
-              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20profissional%20para%20minha%20empresa." 
+              href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20profissional%20para%20minha%20empresa." 
               target="_blank" 
               rel="noopener noreferrer"
               class="btn-shimmer relative inline-flex items-center gap-3 px-11 py-5 rounded-full text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_55px_rgba(59,130,246,0.95)] transition border border-blue-200/50 hover:scale-105"
@@ -1944,7 +1947,7 @@
               Inicie uma conversa para tirar dúvidas ou solicitar uma proposta comercial:
             </p>
             <a 
-              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
+              href="https://wa.me/5562991747342?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
               target="_blank" 
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-cyan-300 hover:text-white border border-blue-500/35 text-xs font-mono font-semibold transition"
@@ -1963,9 +1966,6 @@
           </a>
         </div>
       </footer>
-
-    </div>
-  </div>
 
   <!-- MODAL DE DEMONSTRAÇÃO CONCEITUAL CINEMATOGRÁFICO -->
   <div id="demoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-2xl">
@@ -2015,7 +2015,7 @@
         <p class="text-xs sm:text-sm text-slate-300 mb-5">Podemos conversar sobre como adaptá-lo à identidade e às necessidades da sua empresa.</p>
         <a 
           id="modalWhatsAppBtn"
-          href="https://wa.me/5511999999999" 
+          href="https://wa.me/5562991747342" 
           target="_blank" 
           rel="noopener noreferrer"
           class="btn-shimmer inline-block px-7 py-3.5 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.6)]"
@@ -2028,7 +2028,7 @@
 
   <!-- SCRIPTS DE INTERATIVIDADE, MOTION & TELEMETRIA -->
   <script>
-    const WHATSAPP_NUMBER = "5511999999999";
+    const WHATSAPP_NUMBER = "5562991747342";
 
     // Dados das Demonstrações Conceituais (Preservados na Íntegra)
     const projectsData = {
@@ -2196,6 +2196,52 @@
       }, { threshold: 0.1 });
 
       document.querySelectorAll('.reveal-ready').forEach(el => observer.observe(el));
+    }
+
+    // Menu Mobile — Toggle do Drawer
+    let mobileMenuOpen = false;
+    function toggleMobileMenu() {
+      mobileMenuOpen = !mobileMenuOpen;
+      const overlay = document.getElementById('mobileMenuOverlay');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const ham1 = document.getElementById('ham1');
+      const ham2 = document.getElementById('ham2');
+      const ham3 = document.getElementById('ham3');
+
+      if (mobileMenuOpen) {
+        overlay.classList.remove('hidden');
+        drawer.style.transform = 'translateX(0)';
+        document.body.style.overflow = 'hidden';
+        if (ham1) { ham1.style.transform = 'rotate(45deg) translateY(6px)'; }
+        if (ham2) { ham2.style.opacity = '0'; }
+        if (ham3) { ham3.style.transform = 'rotate(-45deg) translateY(-6px)'; ham3.style.width = '1.25rem'; }
+      } else {
+        overlay.classList.add('hidden');
+        drawer.style.transform = 'translateX(100%)';
+        document.body.style.overflow = '';
+        if (ham1) { ham1.style.transform = ''; }
+        if (ham2) { ham2.style.opacity = '1'; }
+        if (ham3) { ham3.style.transform = ''; ham3.style.width = '1rem'; }
+      }
+    }
+
+    // Hero Device — Tilt 3D suave ao mover o mouse (Desktop apenas)
+    const heroDevice = document.getElementById('heroTiltDevice');
+    const hero3DContainer = document.getElementById('heroDevice3D');
+    if (heroDevice && hero3DContainer && window.matchMedia('(min-width: 1024px)').matches) {
+      hero3DContainer.addEventListener('mousemove', (e) => {
+        const rect = hero3DContainer.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        const rotY = -12 + dx * 5;
+        const rotX = 4 - dy * 3;
+        heroDevice.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+      });
+      hero3DContainer.addEventListener('mouseleave', () => {
+        heroDevice.style.transform = 'rotateY(-12deg) rotateX(4deg)';
+      });
     }
   </script>
 </body>
