@@ -7,7 +7,7 @@ export const LogoCloud: React.FC = () => {
     { name: "React 18", icon: Layers, desc: "Interfaces Dinâmicas" },
     { name: "Tailwind CSS", icon: Zap, desc: "Design Customizado & Leve" },
     { name: "TypeScript", icon: Cpu, desc: "Arquitetura Robusta" },
-    { name: "Cloudflare CDN", icon: Globe, desc: "Distribuição Global < 50ms" },
+    { name: "Cloudflare CDN", icon: Globe, desc: "Distribuição e Segurança Global" },
     { name: "Vercel Edge", icon: Server, desc: "Infraestrutura Serverless" },
     { name: "WhatsApp API", icon: Smartphone, desc: "Conversão Direta" }
   ];

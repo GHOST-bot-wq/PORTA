@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { SITE_CONFIG, getWhatsAppLink } from '../config/site';
 import { ClinicModal } from './ClinicModal';
-import { Sparkles, Eye, ArrowUpRight, ShieldCheck, CheckCircle } from 'lucide-react';
+import { Sparkles, Eye, ArrowUpRight, ShieldCheck, CheckCircle, ArrowRight } from 'lucide-react';
 
 export const DemonstrativeProjects: React.FC = () => {
   const [activeModalId, setActiveModalId] = useState<string | null>(null);
 
   return (
-    <section id="demonstracoes" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="projetos" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 right-1/3 w-[650px] h-[350px] bg-purple-900/15 rounded-full blur-[140px] pointer-events-none" />
 
@@ -18,23 +18,23 @@ export const DemonstrativeProjects: React.FC = () => {
         </div>
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
-          Demonstrações conceituais de projetos
+          Veja como sua empresa também pode se apresentar
         </h2>
-        <p className="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 font-normal">
-          Navegue pelas demonstrações completas para avaliar o acabamento visual, a facilidade de navegação e a experiência de contato que entregamos para diferentes segmentos.
+        <p className="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 font-normal leading-relaxed">
+          Cada projeto tem sua própria identidade. Explore nossas demonstrações conceituais e visualize possibilidades de apresentação para diferentes tipos de negócio.
         </p>
 
-        {/* Commercial transparency notice */}
+        {/* Commercial transparency notice obrigatório do prompt */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-zinc-400 max-w-2xl mx-auto text-left sm:text-center">
           <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
           <span>
-            <strong>Aviso de transparência:</strong> Os projetos abaixo são demonstrações visuais e conceituais desenvolvidas pela CodeLabx para comprovar qualidade de design e organização de conteúdo, sem representar contratos comerciais vigentes ou métricas reais de terceiros.
+            <strong>Aviso de transparência:</strong> As demonstrações são projetos conceituais desenvolvidos pela CodeLabx para mostrar possibilidades de design e estrutura. Não representam, necessariamente, sites de clientes contratantes nem resultados comerciais comprovados.
           </span>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {SITE_CONFIG.demonstrativeClinics.map((project, index) => {
             return (
               <div
@@ -43,7 +43,6 @@ export const DemonstrativeProjects: React.FC = () => {
               >
                 {/* Project Header Banner inside Card */}
                 <div className="p-6 relative overflow-hidden bg-gradient-to-b from-white/[0.04] to-transparent">
-                  {/* Subtle ambient accent glow */}
                   <div
                     className="absolute -top-12 -right-12 w-36 h-36 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition pointer-events-none"
                     style={{ backgroundColor: project.accentColor }}
@@ -54,7 +53,7 @@ export const DemonstrativeProjects: React.FC = () => {
                       className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10"
                       style={{ color: project.accentColor }}
                     >
-                      {project.badge}
+                      {project.category}
                     </span>
                     <span className="text-[11px] font-mono text-zinc-500">
                       Demo 0{index + 1}
@@ -72,16 +71,11 @@ export const DemonstrativeProjects: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Mockup Preview Area */}
+                {/* Highlights Area */}
                 <div className="px-6 py-4">
                   <div className="rounded-2xl p-4 bg-black/60 border border-white/10 group-hover:border-white/20 transition space-y-3">
-                    <div className="flex items-center justify-between text-[11px] text-zinc-400 border-b border-white/10 pb-2">
-                      <span className="font-mono text-zinc-500">Segmento:</span>
-                      <span className="text-white font-medium">{project.category}</span>
-                    </div>
-
                     <div className="space-y-1.5">
-                      <span className="text-[10px] uppercase font-mono text-zinc-500 tracking-wider">Características:</span>
+                      <span className="text-[10px] uppercase font-mono text-zinc-500 tracking-wider">Destaques da demonstração:</span>
                       {project.highlights.slice(0, 2).map((h, i) => (
                         <div key={i} className="flex items-center gap-1.5 text-xs text-zinc-300">
                           <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -108,18 +102,34 @@ export const DemonstrativeProjects: React.FC = () => {
                   </button>
 
                   <a
-                    href={getWhatsAppLink(`Olá! Gostaria de conversar sobre um projeto no estilo da demonstração "${project.name}".`)}
+                    href={getWhatsAppLink(`Olá! Vi a demonstração "${project.name}" na CodeLabx e gostaria de saber como criar um projeto personalizado para minha empresa.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-2.5 px-4 rounded-xl text-xs font-medium text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition flex items-center justify-center gap-1.5"
                   >
-                    <span>Conversar sobre Este Formato no WhatsApp</span>
+                    <span>Conversar sobre este formato no WhatsApp</span>
                     <ArrowUpRight className="w-3 h-3 text-zinc-400" />
                   </a>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Fechamento e CTA do Portfólio */}
+        <div className="max-w-3xl mx-auto text-center p-8 rounded-3xl glass-panel-elevated border border-purple-500/30 shadow-[0_15px_40px_rgba(0,0,0,0.7)]">
+          <p className="text-base sm:text-lg font-medium text-white mb-6">
+            Gostou de algum estilo? Podemos conversar sobre como adaptá-lo à identidade e às necessidades da sua empresa.
+          </p>
+          <a
+            href={getWhatsAppLink(SITE_CONFIG.whatsapp.portfolioMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(168,85,247,0.5)] transition group"
+          >
+            <span>Quero um projeto personalizado</span>
+            <ArrowRight className="w-4 h-4 text-cyan-300 group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
       </div>
 

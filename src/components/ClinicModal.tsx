@@ -66,7 +66,7 @@ export const ClinicModal: React.FC<ClinicModalProps> = ({ clinicId, onClose }) =
           <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-start gap-3 text-xs text-zinc-300">
             <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
             <div>
-              <strong>Demonstração de Estrutura Conceitual:</strong> Os textos, categorias e dados a seguir exemplificam a organização de conteúdo que entregamos aos nossos clientes. Todo o conteúdo final é personalizado com os serviços e fotos reais da sua empresa.
+              <strong>Aviso de transparência:</strong> As demonstrações são projetos conceituais desenvolvidos pela CodeLabx para mostrar possibilidades de design e estrutura. Não representam, necessariamente, sites de clientes contratantes nem resultados comerciais comprovados.
             </div>
           </div>
 
@@ -212,20 +212,20 @@ export const ClinicModal: React.FC<ClinicModalProps> = ({ clinicId, onClose }) =
           <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-950/80 via-indigo-950/80 to-purple-950/80 border border-blue-500/30 text-center relative overflow-hidden">
             <div className="max-w-xl mx-auto space-y-4">
               <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-                Gostou deste padrão visual para a sua empresa?
+                Gostou de algum estilo?
               </h3>
               <p className="text-xs sm:text-sm text-zinc-300">
-                Criamos um site exclusivo com a sua identidade, fotos reais dos seus serviços e direcionamento direto para o seu WhatsApp.
+                Podemos conversar sobre como adaptá-lo à identidade e às necessidades da sua empresa.
               </p>
               <div className="pt-2">
                 <a
-                  href={getWhatsAppLink(`Olá! Vi o modelo conceitual "${project.name}" na CodeLabx e gostaria de conversar sobre um site sob medida para minha empresa.`)}
+                  href={getWhatsAppLink(`Olá! Vi o modelo conceitual "${project.name}" na CodeLabx e gostaria de saber como criar um projeto personalizado para minha empresa.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_25px_rgba(59,130,246,0.6)] transition"
                 >
                   <Sparkles className="w-4 h-4 text-cyan-300" />
-                  <span>Conversar sobre Este Projeto no WhatsApp</span>
+                  <span>Quero um projeto personalizado</span>
                 </a>
               </div>
             </div>

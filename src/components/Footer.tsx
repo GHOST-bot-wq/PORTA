@@ -7,6 +7,14 @@ export const Footer: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const footerNavLinks = [
+    { label: "Início", href: "#inicio" },
+    { label: "Soluções", href: "#solucoes" },
+    { label: "Projetos", href: "#projetos" },
+    { label: "Diferenciais", href: "#diferenciais" },
+    { label: "Processo", href: "#processo" }
+  ];
+
   return (
     <footer className="relative border-t border-white/10 bg-[#06070E] py-14 overflow-hidden text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,12 +31,17 @@ export const Footer: React.FC = () => {
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
-              Criação de sites profissionais e personalizados para empresas em geral, prestadores de serviços e negócios locais. Design visual de alto padrão e facilidade de contato via WhatsApp.
-            </p>
+            <div className="space-y-2 text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
+              <p className="font-medium text-zinc-300">
+                Sites profissionais e personalizados para empresas, prestadores de serviços e negócios locais.
+              </p>
+              <p>
+                Criamos experiências digitais que valorizam sua marca, organizam seus serviços e facilitam o contato com seus clientes.
+              </p>
+            </div>
 
             <div className="pt-2 text-xs text-zinc-500 font-mono">
-              Atendimento online para empresas de todo o Brasil
+              Atendimento online para empresas de todo o Brasil.
             </div>
           </div>
 
@@ -38,7 +51,7 @@ export const Footer: React.FC = () => {
               Navegação
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs sm:text-sm">
-              {SITE_CONFIG.navLinks.map((link) => (
+              {footerNavLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -53,10 +66,10 @@ export const Footer: React.FC = () => {
           {/* Direct WhatsApp Contact (3 cols) */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">
-              Atendimento Direto
+              Contato
             </h4>
             <p className="text-xs text-zinc-400">
-              Inicie uma conversa no WhatsApp para tirar dúvidas ou solicitar uma proposta:
+              Inicie uma conversa para tirar dúvidas ou solicitar uma proposta personalizada:
             </p>
             <a
               href={getWhatsAppLink()}
@@ -65,7 +78,7 @@ export const Footer: React.FC = () => {
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-semibold transition"
             >
               <MessageSquare className="w-4 h-4 text-cyan-400" />
-              <span>WhatsApp: {SITE_CONFIG.whatsapp.displayNumber}</span>
+              <span>Fale conosco: WhatsApp comercial</span>
             </a>
           </div>
 
@@ -74,15 +87,15 @@ export const Footer: React.FC = () => {
         {/* Bottom Disclaimer & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <p>
-            © {new Date().getFullYear()} CodeLabx. Todos os direitos reservados. Demonstrações conceituais com propósitos ilustrativos de apresentação técnica.
+            © {new Date().getFullYear()} CodeLabx. Todos os direitos reservados. As demonstrações apresentadas neste site têm finalidade ilustrativa e não constituem promessa de resultados comerciais.
           </p>
 
           <button
             onClick={scrollToTop}
             aria-label="Voltar ao topo"
-            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition p-2 rounded-lg hover:bg-white/5"
+            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition p-2 rounded-lg hover:bg-white/5 shrink-0"
           >
-            <span>Voltar ao topo</span>
+            <span>Voltar ao topo ↑</span>
             <ArrowUp className="w-4 h-4" />
           </button>
         </div>

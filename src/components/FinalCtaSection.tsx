@@ -23,19 +23,31 @@ export const FinalCtaSection: React.FC = () => {
           </span>
         </div>
 
-        {/* Headline (User prompt exact phrase) */}
+        {/* Headline */}
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.15] mb-6 max-w-3xl">
-          Vamos criar o site da sua empresa?
+          Sua empresa está pronta para dar o próximo passo?
         </h2>
 
-        {/* Subtitle (User prompt exact phrase) */}
-        <p className="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
-          Conte um pouco sobre seu negócio e vamos conversar sobre a melhor forma de apresentar seus serviços na internet.
+        {/* Text */}
+        <div className="text-base sm:text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-8 font-normal space-y-4">
+          <p>
+            Seu trabalho tem valor. Sua apresentação digital deve ajudar as pessoas a perceberem isso.
+          </p>
+          <p className="text-zinc-300">
+            Vamos conversar sobre o seu negócio, entender o que você precisa e avaliar como um site profissional pode ajudar a apresentar seus serviços com mais clareza e facilitar o contato com seus potenciais clientes.
+          </p>
+          <p className="text-zinc-400 text-sm sm:text-base">
+            Você não precisa ter tudo planejado. Basta nos contar o que sua empresa faz e o que gostaria de melhorar.
+          </p>
+        </div>
+
+        {/* Microtexto antes ou sobre o botão */}
+        <p className="text-xs sm:text-sm text-cyan-300 mb-4 font-medium">
+          Clique abaixo e fale diretamente com a CodeLabx pelo WhatsApp.
         </p>
 
-        {/* Glowing Central Button with Spotlight Cone Beam (Frames 12.0s & 13.0s) */}
-        <div className="relative group">
-          {/* Button glow bloom */}
+        {/* Glowing Central Button */}
+        <div className="relative group mb-6">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
 
           <a
@@ -45,13 +57,18 @@ export const FinalCtaSection: React.FC = () => {
             className="relative px-10 py-5 rounded-full text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_40px_rgba(59,130,246,0.8)] hover:shadow-[0_0_60px_rgba(59,130,246,1)] transition-all duration-300 flex items-center justify-center gap-3 border border-blue-200/50 hover:scale-105"
           >
             <MessageCircle className="w-5 h-5 text-cyan-200" />
-            <span>Conversar pelo WhatsApp</span>
+            <span>Quero conversar sobre meu site</span>
             <ArrowRight className="w-5 h-5 text-cyan-200 group-hover:translate-x-1.5 transition-transform" />
           </a>
         </div>
 
+        {/* Texto complementar obrigatório */}
+        <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed">
+          Sem formulários longos. Sem precisar entender de tecnologia. Apenas uma conversa para descobrir a melhor solução para sua empresa.
+        </p>
+
         {/* Badges under CTA */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400">
+        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>Atendimento direto pelo WhatsApp</span>
