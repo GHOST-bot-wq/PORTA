@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,30 +7,70 @@
   <meta name="description" content="Criação de sites personalizados para empresas e prestadores de serviços. Apresente seu negócio profissionalmente e facilite o contato com seus clientes pelo WhatsApp." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563EB'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>CX</text></svg>" />
   
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
           colors: {
             space: {
-              950: '#030408',
-              900: '#06070E',
-              850: '#090C1B',
-              800: '#0E1329',
-              700: '#151C3B',
-              600: '#1D2752'
+              950: '#030509',
+              900: '#060811',
+              850: '#0A0E1A',
+              800: '#0F1527',
+              750: '#141D35',
+              700: '#1B2645'
+            },
+            electric: {
+              400: '#38BDF8',
+              500: '#0EA5E9',
+              600: '#2563EB',
+              700: '#1D4ED8'
+            },
+            accent: {
+              cyan: '#06B6D4',
+              violet: '#8B5CF6',
+              purple: '#A855F7'
             }
           },
           animation: {
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-subtle': 'pulseSubtle 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float-slow': 'floatSlow 7s ease-in-out infinite',
+            'beam-sweep': 'beamSweep 8s linear infinite',
+            'shimmer': 'shimmer 3s ease-in-out infinite',
+            'laser-line': 'laserLine 3.5s ease-in-out infinite',
           },
           keyframes: {
-            float: {
+            pulseSubtle: {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.85' },
+            },
+            floatSlow: {
               '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            beamSweep: {
+              '0%': { transform: 'rotate(-45deg) translateX(-100%)' },
+              '100%': { transform: 'rotate(-45deg) translateX(200%)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            },
+            laserLine: {
+              '0%': { transform: 'translateX(-100%)' },
+              '50%': { transform: 'translateX(100%)' },
+              '100%': { transform: 'translateX(100%)' },
             }
           }
         }
@@ -39,189 +79,283 @@
   </script>
 
   <style>
-    /* Starfield Background */
+    /* Estilos Globais de Direção de Arte Dark Premium */
+    :root {
+      --bg-base: #030509;
+      --card-bg: rgba(10, 14, 26, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(56, 189, 248, 0.35);
+      --glow-blue: rgba(37, 99, 235, 0.22);
+      --glow-cyan: rgba(6, 182, 212, 0.25);
+    }
+
     body {
-      background-color: #05060B;
-      color: #F3F4F6;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-base);
+      color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       margin: 0;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0)),
-        radial-gradient(1.5px 1.5px at 150px 120px, rgba(165, 180, 252, 0.5), rgba(0, 0, 0, 0)),
-        radial-gradient(1px 1px at 320px 80px, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)),
-        radial-gradient(2px 2px at 450px 290px, rgba(192, 132, 252, 0.4), rgba(0, 0, 0, 0)),
-        radial-gradient(1.5px 1.5px at 600px 180px, rgba(125, 211, 252, 0.5), rgba(0, 0, 0, 0)),
-        radial-gradient(1px 1px at 750px 380px, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0)),
-        radial-gradient(2px 2px at 900px 140px, rgba(255, 255, 255, 0.45), rgba(0, 0, 0, 0)),
-        radial-gradient(1.5px 1.5px at 1200px 90px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0));
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.25), transparent),
+        radial-gradient(1px 1px at 160px 140px, rgba(56, 189, 248, 0.25), transparent),
+        radial-gradient(1.5px 1.5px at 340px 90px, rgba(168, 85, 247, 0.2), transparent),
+        radial-gradient(1px 1px at 580px 220px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 820px 110px, rgba(56, 189, 248, 0.3), transparent),
+        radial-gradient(1.5px 1.5px at 1100px 180px, rgba(255, 255, 255, 0.2), transparent);
       background-repeat: repeat;
-      background-size: 800px 600px;
+      background-size: 700px 500px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    /* Grid Técnico Subliminar de Fundo */
+    .tech-grid-bg {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
     }
 
-    /* Top-Left Signature Diagonal Light Beam */
-    .hero-diagonal-beam {
+    /* Linhas de Feixe de Precisão Óptica */
+    .optical-beam-hero {
       position: absolute;
-      top: -150px;
-      left: -200px;
-      width: 900px;
-      height: 1200px;
-      transform: rotate(-44deg);
+      top: -180px;
+      left: -120px;
+      width: 1000px;
+      height: 1100px;
+      transform: rotate(-42deg);
       background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(59, 130, 246, 0.03) 25%, 
-        rgba(99, 102, 241, 0.14) 45%, 
-        rgba(168, 85, 247, 0.22) 50%, 
-        rgba(56, 189, 248, 0.12) 55%, 
-        rgba(59, 130, 246, 0.02) 75%, 
+        rgba(37, 99, 235, 0.02) 20%, 
+        rgba(56, 189, 248, 0.12) 48%, 
+        rgba(168, 85, 247, 0.16) 52%, 
+        rgba(37, 99, 235, 0.06) 58%, 
         transparent 100%
+      );
+      filter: blur(34px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .optical-beam-streak {
+      position: absolute;
+      top: -60px;
+      left: 120px;
+      width: 2px;
+      height: 980px;
+      transform: rotate(-42deg);
+      background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(56, 189, 248, 0.7) 35%, 
+        rgba(147, 51, 234, 0.3) 70%, 
+        transparent 100%
+      );
+      box-shadow: 0 0 24px 3px rgba(56, 189, 248, 0.7);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Holofote Cônico Escultural do CTA Final */
+    .final-spotlight-beam {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 820px;
+      height: 560px;
+      background: radial-gradient(ellipse at 50% 100%, 
+        rgba(37, 99, 235, 0.5) 0%, 
+        rgba(124, 58, 237, 0.28) 35%, 
+        rgba(15, 23, 42, 0.1) 70%, 
+        transparent 85%
+      );
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .final-spotlight-conic {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 580px;
+      height: 440px;
+      background: conic-gradient(from 180deg at 50% 100%, 
+        transparent 38deg, 
+        rgba(56, 189, 248, 0.22) 75deg, 
+        rgba(168, 85, 247, 0.32) 90deg, 
+        rgba(56, 189, 248, 0.22) 105deg, 
+        transparent 142deg
       );
       filter: blur(28px);
       pointer-events: none;
       z-index: 1;
     }
 
-    .hero-beam-streak {
-      position: absolute;
-      top: -50px;
-      left: 50px;
-      width: 4px;
-      height: 900px;
-      transform: rotate(-44deg);
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.8) 0%, 
-        rgba(129, 140, 248, 0.6) 30%, 
-        rgba(56, 189, 248, 0.2) 70%, 
-        transparent 100%
-      );
-      box-shadow: 0 0 30px 4px rgba(129, 140, 248, 0.8);
-      pointer-events: none;
-      z-index: 2;
-      filter: blur(1px);
-    }
-
-    /* Final CTA Spotlight Cone Beam */
-    .final-cta-spotlight {
-      position: absolute;
-      bottom: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 520px;
-      background: radial-gradient(ellipse at 50% 100%, 
-        rgba(59, 130, 246, 0.45) 0%, 
-        rgba(124, 58, 237, 0.25) 35%, 
-        rgba(30, 58, 138, 0.12) 65%, 
-        transparent 80%
-      );
-      filter: blur(40px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .final-cta-cone-lines {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;
-      height: 400px;
-      background: conic-gradient(from 180deg at 50% 100%, 
-        transparent 35deg, 
-        rgba(56, 189, 248, 0.18) 75deg, 
-        rgba(147, 51, 234, 0.28) 90deg, 
-        rgba(56, 189, 248, 0.18) 105deg, 
-        transparent 145deg
-      );
-      filter: blur(25px);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Glass Panels */
-    .glass-panel {
-      background: rgba(13, 17, 33, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .glass-panel-elevated {
-      background: rgba(15, 21, 42, 0.82);
+    /* Superfícies Chassis & Vidro Técnico */
+    .chassis-panel {
+      background: rgba(8, 12, 22, 0.78);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .glass-pill {
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+    .chassis-panel:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 25px 55px -10px rgba(0, 0, 0, 0.85), 0 0 25px -5px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
-    .text-gradient-neon {
-      background: linear-gradient(135deg, #FFFFFF 20%, #93C5FD 60%, #C084FC 100%);
+    .chassis-panel-active {
+      background: rgba(11, 17, 32, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Marcador Técnico de Precisão */
+    .crosshair-corner {
+      position: relative;
+    }
+    .crosshair-corner::before, .crosshair-corner::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      pointer-events: none;
+    }
+    .crosshair-corner::before {
+      top: 6px;
+      left: 6px;
+      border-top: 1px solid rgba(56, 189, 248, 0.5);
+      border-left: 1px solid rgba(56, 189, 248, 0.5);
+    }
+    .crosshair-corner::after {
+      bottom: 6px;
+      right: 6px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.5);
+      border-right: 1px solid rgba(56, 189, 248, 0.5);
+    }
+
+    /* Tipografia e Gradientes de Destaque */
+    .text-title-gradient {
+      background: linear-gradient(135deg, #FFFFFF 30%, #BAE6FD 70%, #C084FC 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .text-gradient-purple {
-      background: linear-gradient(135deg, #E879F9 0%, #C084FC 50%, #818CF8 100%);
+    .text-cyan-gradient {
+      background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid #38BDF8;
-      outline-offset: 2px;
+    /* Shimmer Border para Botões Principais */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(60deg, transparent 35%, rgba(255, 255, 255, 0.25) 50%, transparent 65%);
+      transform: translateX(-100%);
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-shimmer:hover::after {
+      transform: translateX(100%);
     }
 
+    /* Reveal On Scroll Utility */
+    .reveal-ready {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efeito de Cursor Spotlight Dinâmico em Desktop */
+    .interactive-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .interactive-card::before {
+      content: '';
+      position: absolute;
+      top: var(--mouse-y, -1000px);
+      left: var(--mouse-x, -1000px);
+      width: 320px;
+      height: 320px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+    .interactive-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Acessibilidade: prefers-reduced-motion */
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
+      }
+      .reveal-ready {
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
   </style>
 </head>
-<body class="selection:bg-blue-600 selection:text-white">
+<body class="selection:bg-blue-600 selection:text-white bg-space-950 font-sans antialiased text-slate-200">
 
-  <!-- Viewport Canvas Frame -->
+  <!-- Viewport Canvas Frame - Moldura de alta fidelidade visual -->
   <div class="mx-auto max-w-[1720px] p-2 sm:p-4 md:p-6 lg:p-8">
-    <div class="relative rounded-2xl md:rounded-3xl border border-white/[0.08] bg-[#070913]/90 shadow-[0_20px_100px_rgba(0,0,0,0.95)] overflow-hidden">
+    <div class="relative rounded-2xl md:rounded-3xl border border-white/[0.08] bg-space-900/95 shadow-[0_25px_120px_rgba(0,0,0,0.95)] overflow-hidden">
       
-      <!-- HEADER / NAVEGAÇÃO -->
-      <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 transition-all">
-        <div class="max-w-7xl mx-auto rounded-full bg-[#0b0e1e]/85 backdrop-blur-md border border-white/10 py-3 px-6 flex items-center justify-between shadow-2xl">
-          <!-- Logo -->
-          <a href="#inicio" class="flex items-center gap-2 group">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-              <span class="text-white font-bold text-sm">CX</span>
+      <!-- Linha de Grid Técnico Subliminar de Fundo da Moldura -->
+      <div class="tech-grid-bg absolute inset-0 pointer-events-none z-0"></div>
+
+      <!-- HEADER / NAVEGAÇÃO ELEGANTE -->
+      <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-3.5 transition-all">
+        <div class="max-w-7xl mx-auto rounded-full bg-space-900/85 backdrop-blur-xl border border-white/[0.12] py-2.5 px-6 flex items-center justify-between shadow-[0_12px_40px_rgba(0,0,0,0.7)]">
+          <!-- Logo com Identidade Visual -->
+          <a href="#inicio" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_16px_rgba(59,130,246,0.55)] group-hover:shadow-[0_0_24px_rgba(59,130,246,0.85)] transition-all">
+              <span class="text-white font-mono font-bold text-xs tracking-wider">CX</span>
             </div>
-            <div class="flex items-center gap-1">
-              <span class="text-lg font-bold tracking-tight text-white">CodeLab<span class="text-blue-400">x</span></span>
-              <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <div class="flex items-center gap-1.5">
+              <span class="text-base font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">
+                CodeLab<span class="text-cyan-400">x</span>
+              </span>
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]"></span>
             </div>
           </a>
 
-          <!-- Nav Links -->
-          <nav class="hidden md:flex items-center gap-1 lg:gap-2">
-            <a href="#inicio" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Início</a>
-            <a href="#dores" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Dores</a>
-            <a href="#solucoes" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Soluções</a>
-            <a href="#servicos" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Serviços</a>
-            <a href="#projetos" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Projetos</a>
-            <a href="#diferenciais" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Diferenciais</a>
-            <a href="#processo" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Processo</a>
-            <a href="#duvidas" class="text-xs lg:text-sm font-medium text-zinc-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Dúvidas</a>
+          <!-- Nav Links Técnicos -->
+          <nav class="hidden lg:flex items-center gap-1">
+            <a href="#inicio" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Início</a>
+            <a href="#dores" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Dores</a>
+            <a href="#solucoes" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Soluções</a>
+            <a href="#servicos" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Serviços</a>
+            <a href="#projetos" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Projetos</a>
+            <a href="#diferenciais" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Diferenciais</a>
+            <a href="#processo" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Processo</a>
+            <a href="#duvidas" class="text-xs font-mono font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition">Dúvidas</a>
           </nav>
 
           <!-- WhatsApp CTA Button -->
@@ -231,241 +365,343 @@
               href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
               target="_blank" 
               rel="noopener noreferrer"
-              class="px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-blue-400/30 transition flex items-center gap-1.5"
+              class="btn-shimmer px-4 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-blue-400/35 transition flex items-center gap-1.5"
             >
               <span>Falar no WhatsApp</span>
-              <span>↗</span>
+              <span class="text-cyan-200">↗</span>
             </a>
           </div>
         </div>
       </header>
 
-      <!-- SEÇÃO 1 — HERO / PRIMEIRA DOBRA -->
-      <section id="inicio" class="relative min-h-screen pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden flex flex-col items-center justify-center text-center">
-        <!-- Top-left signature light beam -->
-        <div class="hero-diagonal-beam"></div>
-        <div class="hero-beam-streak"></div>
+      <!-- SEÇÃO 1 — HERO / PRIMEIRA DOBRA COM IMPACTO CINEMATOGRÁFICO -->
+      <section id="inicio" class="relative min-h-screen pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center z-10">
+        <!-- Feixes de Luz Óptica da Direção de Arte -->
+        <div class="optical-beam-hero"></div>
+        <div class="optical-beam-streak"></div>
+
+        <!-- Glows de Atmosfera -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[680px] h-[340px] bg-blue-600/15 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/4 w-[480px] h-[280px] bg-purple-600/10 rounded-full blur-[110px] pointer-events-none"></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <!-- Etiqueta superior -->
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-6 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.2)] tracking-wide uppercase">
-            <span>✨ CRIAÇÃO DE SITES PROFISSIONAIS SOB MEDIDA</span>
+          
+          <!-- Etiqueta Superior com Código de Precisão -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-space-850/80 border border-blue-500/30 text-xs font-mono text-cyan-300 mb-8 shadow-[0_0_18px_rgba(56,189,248,0.2)] tracking-wider">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>CRIAÇÃO DE SITES PROFISSIONAIS SOB MEDIDA</span>
+            <span class="text-slate-500">//</span>
+            <span class="text-slate-400 text-[10px]">DIGITAL CRAFT</span>
           </div>
 
-          <!-- Título principal -->
+          <!-- Título Principal com Quebras Editoriais Deliberadas -->
           <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-[1.12] mb-6">
-            Seu próximo cliente pode estar procurando sua empresa agora.{' '}
-            <span class="text-gradient-neon block sm:inline">O que ele vai encontrar?</span>
+            Seu próximo cliente pode estar procurando sua empresa agora.
+            <span class="text-title-gradient block sm:inline">O que ele vai encontrar?</span>
           </h1>
 
-          <!-- Subtítulo -->
-          <p className="text-base sm:text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-4 font-normal">
+          <!-- Subtítulo Aprovado -->
+          <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4 font-normal">
             Tenha um site profissional, feito sob medida para o seu negócio, que apresente seus serviços com clareza, transmita confiança e facilite o primeiro contato com seus potenciais clientes.
           </p>
 
-          <!-- Parágrafo complementar -->
-          <p class="text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-4 font-normal">
+          <!-- Parágrafo Complementar Aprovado -->
+          <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed mb-6 font-normal">
             Chega de depender de informações espalhadas, perfis que não explicam tudo o que você oferece ou apresentações que não fazem justiça à qualidade do seu trabalho.
           </p>
 
-          <!-- Frase de reforço -->
-          <div class="inline-block px-4 py-1.5 rounded-xl bg-blue-500/10 border border-blue-400/20 text-xs sm:text-sm font-medium text-cyan-300 mb-8">
-            Seu negócio merece ser visto com o mesmo profissionalismo com que você trabalha.
+          <!-- Frase de Reforço com Estilo Technical Badge -->
+          <div class="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-blue-950/40 border border-cyan-500/25 text-xs sm:text-sm font-medium text-cyan-300 mb-10 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+            <span class="text-cyan-400">✦</span>
+            <span>Seu negócio merece ser visto com o mesmo profissionalismo com que você trabalha.</span>
           </div>
 
-          <!-- CTAs e Microtexto -->
+          <!-- CTAs Principais e Microtexto -->
           <div class="flex flex-col items-center gap-3 mb-16 w-full sm:w-auto">
             <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+              <!-- CTA Principal (WhatsApp) -->
               <a 
                 id="heroWhatsAppLink"
                 href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_35px_rgba(59,130,246,0.6)] transition border border-blue-300/40"
+                class="btn-shimmer w-full sm:w-auto px-9 py-4 rounded-full text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_35px_rgba(59,130,246,0.65)] hover:shadow-[0_0_50px_rgba(59,130,246,0.9)] transition-all duration-300 border border-blue-300/40 flex items-center justify-center gap-2 group"
               >
-                Quero criar meu site →
+                <span>Quero criar meu site</span>
+                <span class="text-cyan-200 group-hover:translate-x-1 transition-transform">→</span>
               </a>
+
+              <!-- CTA Secundário -->
               <a 
                 href="#projetos" 
-                class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-zinc-200 glass-pill hover:bg-white/10 transition border border-white/15"
+                class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-semibold text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white transition-all duration-300 border border-white/15 flex items-center justify-center gap-2"
               >
-                Ver projetos
+                <span>Ver projetos</span>
               </a>
             </div>
-            <span class="text-xs text-zinc-400 flex items-center gap-1.5 pt-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+
+            <!-- Microtexto -->
+            <span class="text-xs text-slate-400 flex items-center gap-2 pt-1 font-mono">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
               Converse diretamente com a CodeLabx pelo WhatsApp, sem compromisso.
             </span>
           </div>
 
-          <!-- Dashboard Mockup Ilustrativo -->
-          <div class="w-full max-w-5xl relative">
-            <div class="relative rounded-2xl md:rounded-3xl glass-panel-elevated p-4 sm:p-6 md:p-8 border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.8)] text-left">
-              <!-- Top window header -->
+          <!-- SHOWCASE DE ENGENHARIA DIGITAL EM CAMADAS 3D (Substituindo o Mockup Genérico) -->
+          <div class="w-full max-w-5xl relative group perspective-1000">
+            <!-- Glow Tridimensional Traseiro -->
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-600/30 via-cyan-500/20 to-purple-600/30 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition duration-700 pointer-events-none"></div>
+
+            <div class="relative rounded-2xl md:rounded-3xl chassis-panel p-4 sm:p-6 md:p-8 crosshair-corner text-left">
+              
+              <!-- Barra Superior do Showcase com Controles de Engenharia -->
               <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10">
                 <div class="flex items-center gap-3">
                   <div class="flex items-center gap-1.5">
-                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                    <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                    <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
                   </div>
-                  <span class="text-xs font-mono text-zinc-400">codelabx.preview // demonstracao-conceitual</span>
+                  <div class="h-4 w-[1px] bg-white/10 mx-1"></div>
+                  <span class="text-xs font-mono text-slate-400">system.codelabx // interactive-preview</span>
                 </div>
 
-                <div class="flex items-center p-1 rounded-full bg-black/40 border border-white/10 text-xs">
-                  <button id="btnRealtime" onclick="setMockupTab('estrutura')" class="px-3 py-1 rounded-full bg-blue-600 text-white font-medium shadow">Estrutura Visual</button>
-                  <button id="btnInsights" onclick="setMockupTab('recursos')" class="px-3 py-1 rounded-full text-zinc-400 hover:text-white">Recursos do Site</button>
+                <!-- Seletor Interativo Real de Viewport (Desktop / Mobile / Blueprint) -->
+                <div class="flex items-center p-1 rounded-full bg-black/50 border border-white/10 text-xs font-mono">
+                  <button id="tabDesktop" onclick="setHeroMode('desktop')" class="px-3.5 py-1 rounded-full bg-blue-600 text-white font-medium shadow-[0_0_12px_rgba(59,130,246,0.6)] transition-all">
+                    🖥️ Desktop
+                  </button>
+                  <button id="tabMobile" onclick="setHeroMode('mobile')" class="px-3.5 py-1 rounded-full text-slate-400 hover:text-white transition-all">
+                    📱 Mobile
+                  </button>
+                  <button id="tabBlueprint" onclick="setHeroMode('blueprint')" class="px-3.5 py-1 rounded-full text-slate-400 hover:text-white transition-all">
+                    ⚡ Blueprint
+                  </button>
                 </div>
 
-                <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyan-300 text-xs font-mono">
                   <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                  <span>Demonstração de Interface</span>
+                  <span>PREVIEW ATIVO</span>
                 </div>
               </div>
 
-              <!-- Content grid -->
-              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
-                <div class="lg:col-span-8 space-y-5">
-                  <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Apresentação Visual & Navegação Integrada</h2>
-                    <p class="text-xs text-zinc-400">Organização visual planejada para conduzir o visitante com clareza até o contato comercial.</p>
+              <!-- Conteúdo Dinâmico do Showcase baseado no seletor -->
+              <div id="heroShowcaseContent" class="mt-6">
+                
+                <!-- MODO DESKTOP (Default) -->
+                <div id="modeDesktop" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  <div class="lg:col-span-8 space-y-5">
+                    <div>
+                      <div class="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
+                        <span>ARCHITECTURE // FLUID VIEWPORT</span>
+                      </div>
+                      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        Apresentação Visual & Navegação Integrada
+                      </h2>
+                      <p class="text-xs text-slate-400">
+                        Organização visual planejada para conduzir o visitante com clareza até o contato comercial.
+                      </p>
+                    </div>
+
+                    <!-- 3 Cards Pilares com Estética de Precisão -->
+                    <div class="grid grid-cols-3 gap-3">
+                      <div class="p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-blue-500/40 transition group/card">
+                        <div class="text-slate-400 text-xs font-mono flex items-center justify-between">
+                          <span>DESIGN</span>
+                          <span class="text-blue-400">01</span>
+                        </div>
+                        <div class="text-sm sm:text-base font-bold text-white mt-1">Design Sob Medida</div>
+                        <div class="text-[10px] text-slate-400 font-mono mt-1">Identidade exclusiva</div>
+                      </div>
+
+                      <div class="p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 transition group/card">
+                        <div class="text-slate-400 text-xs font-mono flex items-center justify-between">
+                          <span>ROTA</span>
+                          <span class="text-emerald-400">02</span>
+                        </div>
+                        <div class="text-sm sm:text-base font-bold text-white mt-1">WhatsApp Direto</div>
+                        <div class="text-[10px] text-emerald-400 font-mono mt-1">Contato em 1 clique</div>
+                      </div>
+
+                      <div class="p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/40 transition group/card">
+                        <div class="text-slate-400 text-xs font-mono flex items-center justify-between">
+                          <span>MOBILE</span>
+                          <span class="text-cyan-400">03</span>
+                        </div>
+                        <div class="text-sm sm:text-base font-bold text-white mt-1">Foco no Celular</div>
+                        <div class="text-[10px] text-cyan-400 font-mono mt-1">Navegação sem atrito</div>
+                      </div>
+                    </div>
+
+                    <!-- Diagrama de Pulso Óptico & Fluxo de Conversão -->
+                    <div class="p-4 rounded-xl bg-black/50 border border-white/10 relative overflow-hidden">
+                      <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-mono">
+                        <span class="font-medium text-slate-300">Fluxo da Experiência do Visitante</span>
+                        <span class="text-[11px] text-cyan-400">Da primeira impressão ao WhatsApp</span>
+                      </div>
+                      <div class="h-32 w-full relative">
+                        <svg class="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id="optCyan" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.45" />
+                              <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
+                            </linearGradient>
+                            <linearGradient id="optPurple" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.35" />
+                              <stop offset="100%" stop-color="#A855F7" stop-opacity="0" />
+                            </linearGradient>
+                          </defs>
+                          <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3" />
+                          <line x1="0" y1="70" x2="500" y2="70" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3" />
+                          <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30 L500,120 L0,120 Z" fill="url(#optPurple)" />
+                          <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30" fill="none" stroke="#A855F7" stroke-width="2" />
+                          <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15 L500,120 L0,120 Z" fill="url(#optCyan)" />
+                          <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15" fill="none" stroke="#38BDF8" stroke-width="2.5" />
+                          <circle cx="500" cy="15" r="5" fill="#38BDF8" class="animate-pulse shadow-[0_0_12px_#38bdf8]" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="grid grid-cols-3 gap-3">
-                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
-                      <div class="text-zinc-400 text-xs">Apresentação</div>
-                      <div class="text-sm sm:text-base font-bold text-white mt-0.5">Design Sob Medida</div>
-                      <div class="text-[10px] text-zinc-400 mt-1">Identidade exclusiva</div>
-                    </div>
-                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
-                      <div class="text-zinc-400 text-xs">Conversão</div>
-                      <div class="text-sm sm:text-base font-bold text-white mt-0.5">WhatsApp Direto</div>
-                      <div class="text-[10px] text-emerald-400 mt-1">Contato em 1 clique</div>
-                    </div>
-                    <div class="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
-                      <div class="text-zinc-400 text-xs">Acessibilidade</div>
-                      <div class="text-sm sm:text-base font-bold text-white mt-0.5">Foco no Celular</div>
-                      <div class="text-[10px] text-blue-400 mt-1">Navegação sem atrito</div>
-                    </div>
-                  </div>
+                  <!-- Coluna Lateral de Telemetria e Padrão de Construção -->
+                  <div class="lg:col-span-4 space-y-4">
+                    <div class="p-5 rounded-2xl bg-gradient-to-b from-blue-950/80 via-space-850 to-space-900 border border-blue-500/35 relative overflow-hidden">
+                      <div class="flex items-center justify-between text-xs font-mono text-cyan-300 mb-2">
+                        <span>PADRÃO CODELABX</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                      </div>
+                      <h3 class="text-sm font-bold text-white mb-1">Clareza & Facilidade de Contato</h3>
+                      <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                        Páginas desenhadas para explicar o que você faz e permitir que o cliente envie uma mensagem sem etapas desnecessárias.
+                      </p>
 
-                  <!-- Visual Flow Diagram -->
-                  <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-                    <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
-                      <span class="font-medium text-zinc-300">Fluxo da Experiência do Visitante</span>
-                      <span class="text-[11px] text-zinc-500 font-mono">Da primeira impressão ao WhatsApp</span>
+                      <div class="space-y-3 text-xs font-mono">
+                        <div class="flex justify-between text-slate-300">
+                          <span>Adaptação Móvel</span>
+                          <span class="text-emerald-400">Celular & Tablet</span>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+                          <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full rounded-full w-full"></div>
+                        </div>
+
+                        <div class="flex justify-between text-slate-300">
+                          <span>Organização Visual</span>
+                          <span class="text-cyan-400">Navegação Fluida</span>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+                          <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded-full w-full"></div>
+                        </div>
+                      </div>
+
+                      <a 
+                        href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="btn-shimmer mt-5 w-full py-2.5 px-3 rounded-xl bg-blue-600/35 hover:bg-blue-600/55 text-blue-200 text-xs font-semibold flex items-center justify-center gap-2 border border-blue-400/40 transition"
+                      >
+                        <span>Conversar no WhatsApp</span>
+                        <span>→</span>
+                      </a>
                     </div>
-                    <div class="h-32 w-full relative">
-                      <svg class="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
-                        <defs>
-                          <linearGradient id="chartCyan" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4" />
-                            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.4" />
-                          </linearGradient>
-                          <linearGradient id="chartPurple" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#A855F7" stop-opacity="0.3" />
-                            <stop offset="100%" stop-color="#A855F7" stop-opacity="0" />
-                          </linearGradient>
-                        </defs>
-                        <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30 L500,120 L0,120 Z" fill="url(#chartPurple)" />
-                        <path d="M0,100 C80,80 140,95 200,60 C260,25 320,65 380,40 C440,20 480,50 500,30" fill="none" stroke="#A855F7" stroke-width="2.5" />
-                        <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15 L500,120 L0,120 Z" fill="url(#chartCyan)" />
-                        <path d="M0,110 C70,105 130,70 190,80 C250,90 310,35 370,55 C430,70 470,25 500,15" fill="none" stroke="#38BDF8" stroke-width="3" />
-                        <circle cx="500" cy="15" r="5" fill="#38BDF8" />
-                      </svg>
+
+                    <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex items-center gap-3">
+                      <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></div>
+                      <div class="text-xs font-mono">
+                        <span class="text-white font-medium">Canal de Atendimento: </span>
+                        <span class="text-slate-400">WhatsApp Comercial</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Right widget card -->
-                <div class="lg:col-span-4 space-y-4">
-                  <div class="p-5 rounded-2xl bg-gradient-to-b from-blue-950/70 via-indigo-950/50 to-space-900 border border-blue-500/30">
-                    <span class="text-xs font-semibold text-blue-300">🛡️ Padrão CodeLabx</span>
-                    <h3 class="text-sm font-bold text-white mt-2 mb-1">Clareza & Facilidade de Contato</h3>
-                    <p class="text-xs text-zinc-400 mb-4">Páginas desenhadas para explicar o que você faz e permitir que o cliente envie uma mensagem sem etapas desnecessárias.</p>
-
-                    <div class="space-y-3 text-xs">
-                      <div class="flex justify-between text-zinc-300">
-                        <span>Adaptação Móvel</span>
-                        <span class="text-emerald-400 font-medium">Celular & Tablet</span>
-                      </div>
-                      <div class="w-full bg-white/10 rounded-full h-1.5">
-                        <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-1.5 rounded-full w-full"></div>
-                      </div>
-
-                      <div class="flex justify-between text-zinc-300">
-                        <span>Organização Visual</span>
-                        <span class="text-cyan-400 font-medium">Navegação Fluida</span>
-                      </div>
-                      <div class="w-full bg-white/10 rounded-full h-1.5">
-                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-1.5 rounded-full w-full"></div>
-                      </div>
+                <!-- MODO MOBILE (Alternável) -->
+                <div id="modeMobile" class="hidden py-6">
+                  <div class="max-w-sm mx-auto p-4 rounded-3xl bg-black/80 border border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.15)] text-center space-y-4">
+                    <div class="w-16 h-1 rounded-full bg-white/20 mx-auto mb-2"></div>
+                    <div class="text-xs font-mono text-cyan-300">SIMULAÇÃO DE TOUCHSCREEN</div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-left space-y-2">
+                      <div class="text-xs font-bold text-white">Interface Adaptada ao Celular</div>
+                      <div class="text-[11px] text-slate-300">Botões com área de toque ergonômica, textos com leitura sem zoom e carregamento ágil em 4G/5G.</div>
                     </div>
-
-                    <a 
-                      href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      class="mt-5 w-full py-2.5 px-3 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 text-xs font-semibold flex items-center justify-center gap-2 border border-blue-400/40 transition"
-                    >
-                      Conversar no WhatsApp →
-                    </a>
-                  </div>
-
-                  <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex items-center gap-3">
-                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></div>
-                    <div class="text-xs">
-                      <span class="text-white font-medium">Canal de Atendimento: </span>
-                      <span class="text-zinc-400">WhatsApp Comercial</span>
+                    <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
+                      ✓ Botão de WhatsApp fixo acessível ao polegar
                     </div>
                   </div>
                 </div>
+
+                <!-- MODO BLUEPRINT (Alternável) -->
+                <div id="modeBlueprint" class="hidden py-6">
+                  <div class="p-5 rounded-2xl bg-space-950/90 border border-indigo-500/30 font-mono text-xs text-slate-300 space-y-3">
+                    <div class="flex justify-between border-b border-white/10 pb-2 text-cyan-400">
+                      <span>// ENGENHARIA SEMÂNTICA & BOAS PRÁTICAS</span>
+                      <span>STATUS: 100% AUDITADO</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                      Estrutura HTML5 limpa com cabeçalhos H1/H2 estruturados, OpenGraph configurado, meta tags para indexação e código leve sem dependências pesadas.
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] pt-2">
+                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">SSL SHA-256</div>
+                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">Mobile-First</div>
+                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">Fast Hydration</div>
+                      <div class="p-2 rounded bg-white/5 border border-white/5 text-center">WhatsApp Route</div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- TECH LOGO CLOUD -->
-      <section class="py-10 border-y border-white/[0.06] bg-black/40 text-center">
-        <p class="text-xs uppercase tracking-widest text-zinc-500 font-semibold mb-6">Tecnologias modernas que sustentam cada projeto</p>
-        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-70 font-mono text-xs sm:text-sm text-zinc-400">
-          <span>⚡ Next.js</span>
-          <span>⚛️ React 18</span>
-          <span>🎨 Tailwind CSS</span>
-          <span>🛡️ TypeScript</span>
-          <span>🌐 Cloudflare CDN</span>
-          <span>🚀 Vercel Edge</span>
-          <span>💬 WhatsApp API</span>
+      <!-- BARRA DE TECNOLOGIAS E AUTORIDADE TÉCNICA -->
+      <section class="py-12 border-y border-white/[0.08] bg-space-900/60 text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p class="text-[11px] font-mono uppercase tracking-[0.2em] text-slate-400 font-semibold mb-7">
+            Tecnologias modernas que sustentam cada projeto
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-80 hover:opacity-100 transition-opacity font-mono text-xs sm:text-sm text-slate-300">
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">⚡ Next.js</span>
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">⚛️ React 18</span>
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">🎨 Tailwind CSS</span>
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">🛡️ TypeScript</span>
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">🌐 Cloudflare CDN</span>
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">🚀 Vercel Edge</span>
+            <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5">💬 WhatsApp API</span>
+          </div>
         </div>
       </section>
 
-      <!-- SEÇÃO 2 — IDENTIFICAÇÃO DAS DORES -->
-      <section id="dores" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-5 text-left">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-semibold mb-6">
-              ℹ️ Identificação de Gargalos Digitais
+      <!-- SEÇÃO 2 — IDENTIFICAÇÃO DAS DORES (DIAGNOSTIC SPLIT LAYOUT) -->
+      <section id="dores" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          <!-- Lado Esquerdo Editorial com Carimbo de Auditoria -->
+          <div class="lg:col-span-5 text-left lg:sticky lg:top-28">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-cyan-300 text-xs font-mono mb-6">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+              <span>AUDIT // DIAGNÓSTICO DIGITAL</span>
             </div>
             
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
               Você faz um bom trabalho. Sua presença na internet mostra isso?
             </h2>
             
-            <div class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal space-y-3">
+            <div class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal space-y-3">
               <p>
                 Um potencial cliente pode conhecer sua empresa por uma indicação, encontrar seu perfil nas redes sociais ou pesquisar pelo serviço que você oferece.
               </p>
-              <p class="text-white font-medium">
+              <p class="text-white font-medium text-base">
                 Mas, quando ele procura mais informações, o que encontra?
               </p>
             </div>
 
-            <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 mb-8 space-y-3">
-              <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+            <!-- Caixa de Destaque com Borda de Precisão -->
+            <div class="p-5 rounded-2xl chassis-panel mb-8 space-y-3 border-l-2 border-l-cyan-400">
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Você não precisa esperar que esses problemas prejudiquem uma oportunidade para melhorar a forma como sua empresa se apresenta.
               </p>
-              <p class="text-xs sm:text-sm text-cyan-300 font-medium leading-relaxed">
+              <p class="text-xs sm:text-sm text-cyan-300 font-semibold leading-relaxed">
                 Um site profissional é um passo para tornar essa apresentação mais clara, organizada e acessível.
               </p>
             </div>
@@ -474,120 +710,201 @@
               href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20melhorar%20a%20presen%C3%A7a%20digital%20da%20minha%20empresa%20com%20a%20CodeLabx."
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] transition"
+              class="btn-shimmer inline-flex items-center gap-2 px-7 py-4 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_25px_rgba(59,130,246,0.5)] transition"
             >
               <span>Quero melhorar minha presença digital</span>
-              <span>→</span>
+              <span class="text-cyan-200">→</span>
             </a>
           </div>
 
-          <div class="lg:col-span-7 space-y-4">
-            <!-- Bloco 1 -->
-            <div class="p-5 sm:p-6 rounded-2xl glass-panel border border-white/10 hover:border-blue-500/40 transition">
-              <span class="text-xs font-mono text-zinc-500 uppercase mb-1 block">Ponto 1</span>
-              <h3 class="text-base font-bold text-white mb-1.5">Seu negócio não transmite todo o valor que entrega</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Você investe tempo, conhecimento e esforço para oferecer um bom serviço. Uma apresentação digital improvisada pode não comunicar toda essa qualidade.</p>
+          <!-- Lado Direito: Os 4 Pontos de Atrito com Tratamento de Auditoria Técnica -->
+          <div class="lg:col-span-7 space-y-5">
+            
+            <!-- Ponto 1 -->
+            <div class="interactive-card p-6 rounded-2xl chassis-panel hover:border-blue-400/50 transition-all duration-300 group">
+              <div class="flex items-center justify-between gap-3 mb-2 font-mono text-xs">
+                <span class="text-blue-400 font-bold">[ATRITO // 01]</span>
+                <span class="text-slate-500">VALOR PERCEBIDO</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Seu negócio não transmite todo o valor que entrega
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Você investe tempo, conhecimento e esforço para oferecer um bom serviço. Uma apresentação digital improvisada pode não comunicar toda essa qualidade.
+              </p>
             </div>
 
-            <!-- Bloco 2 -->
-            <div class="p-5 sm:p-6 rounded-2xl glass-panel border border-white/10 hover:border-blue-500/40 transition">
-              <span class="text-xs font-mono text-zinc-500 uppercase mb-1 block">Ponto 2</span>
-              <h3 class="text-base font-bold text-white mb-1.5">Seus serviços não estão organizados em um só lugar</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Informações espalhadas entre publicações, destaques e mensagens dificultam a compreensão do que você oferece, para quem trabalha e como contratar.</p>
+            <!-- Ponto 2 -->
+            <div class="interactive-card p-6 rounded-2xl chassis-panel hover:border-indigo-400/50 transition-all duration-300 group">
+              <div class="flex items-center justify-between gap-3 mb-2 font-mono text-xs">
+                <span class="text-indigo-400 font-bold">[ATRITO // 02]</span>
+                <span class="text-slate-500">ORGANIZAÇÃO</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+                Seus serviços não estão organizados em um só lugar
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Informações espalhadas entre publicações, destaques e mensagens dificultam a compreensão do que você oferece, para quem trabalha e como contratar.
+              </p>
             </div>
 
-            <!-- Bloco 3 -->
-            <div class="p-5 sm:p-6 rounded-2xl glass-panel border border-white/10 hover:border-blue-500/40 transition">
-              <span class="text-xs font-mono text-zinc-500 uppercase mb-1 block">Ponto 3</span>
-              <h3 class="text-base font-bold text-white mb-1.5">O cliente precisa fazer esforço para falar com você</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Quando o interessado não encontra rapidamente os serviços, as informações importantes ou o botão de contato, o caminho até uma conversa comercial fica mais complicado.</p>
+            <!-- Ponto 3 -->
+            <div class="interactive-card p-6 rounded-2xl chassis-panel hover:border-purple-400/50 transition-all duration-300 group">
+              <div class="flex items-center justify-between gap-3 mb-2 font-mono text-xs">
+                <span class="text-purple-400 font-bold">[ATRITO // 03]</span>
+                <span class="text-slate-500">BARREIRA DE CONTATO</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                O cliente precisa fazer esforço para falar com você
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Quando o interessado não encontra rapidamente os serviços, as informações importantes ou o botão de contato, o caminho até uma conversa comercial fica mais complicado.
+              </p>
             </div>
 
-            <!-- Bloco 4 -->
-            <div class="p-5 sm:p-6 rounded-2xl glass-panel border border-white/10 hover:border-blue-500/40 transition">
-              <span class="text-xs font-mono text-zinc-500 uppercase mb-1 block">Ponto 4</span>
-              <h3 class="text-base font-bold text-white mb-1.5">Sua empresa depende demais das redes sociais</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">As redes sociais são importantes, mas nem sempre são suficientes para apresentar todos os detalhes do negócio de forma organizada. Um site próprio acrescenta um espaço digital que você pode estruturar de acordo com seus objetivos.</p>
+            <!-- Ponto 4 -->
+            <div class="interactive-card p-6 rounded-2xl chassis-panel hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="flex items-center justify-between gap-3 mb-2 font-mono text-xs">
+                <span class="text-cyan-400 font-bold">[ATRITO // 04]</span>
+                <span class="text-slate-500">DEPENDÊNCIA DE CANAL</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                Sua empresa depende demais das redes sociais
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                As redes sociais são importantes, mas nem sempre são suficientes para apresentar todos os detalhes do negócio de forma organizada. Um site próprio acrescenta um espaço digital que você pode estruturar de acordo com seus objetivos.
+              </p>
             </div>
+
           </div>
         </div>
       </section>
 
-      <!-- SEÇÃO 3 — APRESENTAÇÃO DA SOLUÇÃO -->
-      <section id="solucoes" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center bg-space-950/60">
+      <!-- SEÇÃO 3 — APRESENTAÇÃO DA SOLUÇÃO (ARCHITECTURAL ASYMMETRY) -->
+      <section id="solucoes" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10 bg-space-900/60 border-t border-white/[0.06]">
         <div class="max-w-3xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
-            ✨ Apresentação da Solução
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-xs font-mono text-cyan-300 mb-4">
+            <span>✨ ARQUITETURA DE VALOR</span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6">
             Transforme a maneira como seus clientes conhecem sua empresa
           </h2>
-          <div class="text-zinc-300 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
+          <div class="text-slate-300 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
             <p>
               A CodeLabx desenvolve sites personalizados para apresentar seu negócio de forma profissional, destacar seus serviços e facilitar o contato com quem tem interesse no que você oferece.
             </p>
-            <p class="text-zinc-400">
+            <p class="text-slate-400">
               Não se trata apenas de colocar informações na internet. Trata-se de organizar sua apresentação para que o visitante entenda o seu trabalho, reconheça o valor da sua oferta e saiba qual é o próximo passo.
             </p>
           </div>
         </div>
 
+        <!-- Grade Assimétrica dos 5 Benefícios -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto mb-16">
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-blue-500/40 transition flex flex-col justify-between">
+          
+          <!-- Benefício 1 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-4">🛡️</div>
-              <h3 class="text-base font-bold text-white mb-2">Transmitir mais profissionalismo</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Apresente sua marca com um visual coerente com a qualidade do seu trabalho.</p>
+              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                🛡️
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Transmitir mais profissionalismo
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Apresente sua marca com um visual coerente com a qualidade do seu trabalho.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Benefício 01</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              BENEFÍCIO // 01
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-indigo-500/40 transition flex flex-col justify-between">
+          <!-- Benefício 2 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-indigo-400 mb-4">🧭</div>
-              <h3 class="text-base font-bold text-white mb-2">Explicar seus serviços com clareza</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Reúna informações importantes em uma estrutura fácil de navegar.</p>
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-5 group-hover:scale-110 transition-transform">
+                🧭
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+                Explicar seus serviços com clareza
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Reúna informações importantes em uma estrutura fácil de navegar.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Benefício 02</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              BENEFÍCIO // 02
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-purple-500/40 transition flex flex-col justify-between">
+          <!-- Benefício 3 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-400 mb-4">💬</div>
-              <h3 class="text-base font-bold text-white mb-2">Facilitar o contato comercial</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Permita que o visitante inicie uma conversa pelo WhatsApp sem precisar procurar seus dados.</p>
+              <div class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+                💬
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                Facilitar o contato comercial
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Permita que o visitante inicie uma conversa pelo WhatsApp sem precisar procurar seus dados.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Benefício 03</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              BENEFÍCIO // 03
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-cyan-500/40 transition flex flex-col justify-between">
+          <!-- Benefício 4 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 mb-4">⏰</div>
-              <h3 class="text-base font-bold text-white mb-2">Apresentar seu negócio a qualquer hora</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Deixe suas principais informações disponíveis mesmo quando você não estiver respondendo mensagens.</p>
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5 group-hover:scale-110 transition-transform">
+                ⏰
+              </div>
+              <h3 class="text-base font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                Apresentar seu negócio a qualquer hora
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Deixe suas principais informações disponíveis mesmo quando você não estiver respondendo mensagens.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Benefício 04</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              BENEFÍCIO // 04
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-emerald-500/40 transition flex flex-col justify-between md:col-span-2 lg:col-span-1">
+          <!-- Benefício 5 (Card de Largura Estendida) -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group md:col-span-2 lg:col-span-2 border-emerald-500/20">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 mb-4">🌐</div>
-              <h3 class="text-base font-bold text-white mb-2">Fortalecer sua presença digital</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Tenha um espaço próprio para compartilhar em anúncios, redes sociais, cartões digitais e contatos comerciais.</p>
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+                🌐
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                Fortalecer sua presença digital
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Tenha um espaço próprio para compartilhar em anúncios, redes sociais, cartões digitais e contatos comerciais.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Benefício 05</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              BENEFÍCIO // 05 (CANAL CONSOLIDADO)
+            </div>
           </div>
+
         </div>
 
-        <div class="max-w-3xl mx-auto p-8 rounded-3xl glass-panel-elevated border border-blue-500/30">
-          <p class="text-base sm:text-lg font-medium text-white mb-6">
+        <!-- Fechamento e CTA -->
+        <div class="max-w-3xl mx-auto p-8 rounded-3xl chassis-panel border border-blue-500/35 relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-blue-600/15 rounded-full blur-2xl"></div>
+          <p class="text-base sm:text-lg font-medium text-white mb-6 relative z-10">
             O objetivo é simples: fazer com que conhecer sua empresa e entrar em contato com você seja uma experiência mais fácil e profissional.
           </p>
           <a
             href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20um%20site%20para%20minha%20empresa%20e%20gostaria%20de%20entender%20como%20a%20CodeLabx%20pode%20me%20ajudar."
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
+            class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition relative z-10"
           >
             <span>Quero um site para minha empresa</span>
             <span>→</span>
@@ -595,90 +912,142 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 4 — SERVIÇOS -->
-      <section id="servicos" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
-          ✨ Formatos & Soluções
+      <!-- SEÇÃO 4 — SERVIÇOS (BLUEPRINT MATRIX) -->
+      <section id="servicos" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-xs font-mono text-cyan-300 mb-4">
+          <span>⚙️ BLUEPRINT DE ENTREGAS</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Um site pensado para o momento e os objetivos da sua empresa</h2>
-        <p class="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto mb-16 font-normal">Cada negócio tem uma necessidade diferente. Por isso, a solução deve fazer sentido para o que você oferece e para o tipo de cliente que deseja alcançar.</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Um site pensado para o momento e os objetivos da sua empresa
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-16 font-normal">
+          Cada negócio tem uma necessidade diferente. Por isso, a solução deve fazer sentido para o que você oferece e para o tipo de cliente que deseja alcançar.
+        </p>
 
+        <!-- Matriz de Serviços Diferenciada (Layout Não-Repetitivo) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-6xl mx-auto mb-16">
-          <!-- Serviço 1 -->
-          <div class="p-6 rounded-3xl glass-panel border border-blue-500/30 hover:border-white/40 transition flex flex-col justify-between">
+          
+          <!-- Serviço 1: Institucionais -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group border-l-2 border-l-blue-400">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-4">🌐</div>
-              <h3 class="text-base font-bold text-white mb-2">Sites institucionais</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">Apresente sua empresa, sua história, seus serviços e seus diferenciais em um espaço profissional que reúna as informações essenciais do seu negócio.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>FORMATO // 01</span>
+                <span class="text-blue-400 font-bold">INSTITUCIONAL</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2.5 group-hover:text-blue-300 transition-colors">
+                Sites institucionais
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                Apresente sua empresa, sua história, seus serviços e seus diferenciais em um espaço profissional que reúna as informações essenciais do seu negócio.
+              </p>
             </div>
-            <div class="pt-4 border-t border-white/5">
-              <span class="text-[10px] uppercase font-mono text-zinc-500 block mb-1">Aplicação:</span>
-              <p class="text-xs font-medium text-cyan-300">Ideal para empresas que precisam fortalecer sua apresentação e centralizar suas informações.</p>
+            <div class="pt-4 border-t border-white/5 space-y-1">
+              <span class="text-[10px] uppercase font-mono text-slate-500 block">Aplicação estratégica</span>
+              <p class="text-xs font-medium text-cyan-300 leading-snug">
+                Ideal para empresas que precisam fortalecer sua apresentação e centralizar suas informações.
+              </p>
             </div>
           </div>
 
-          <!-- Serviço 2 -->
-          <div class="p-6 rounded-3xl glass-panel border border-indigo-500/30 hover:border-white/40 transition flex flex-col justify-between">
+          <!-- Serviço 2: Landing Pages -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group border-l-2 border-l-indigo-400">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-indigo-400 mb-4">📄</div>
-              <h3 class="text-base font-bold text-white mb-2">Landing pages</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">Uma página objetiva, construída em torno de uma oferta, serviço ou campanha específica, com conteúdo direcionado para uma ação principal.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>FORMATO // 02</span>
+                <span class="text-indigo-400 font-bold">CONVERSÃO</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2.5 group-hover:text-indigo-300 transition-colors">
+                Landing pages
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                Uma página objetiva, construída em torno de uma oferta, serviço ou campanha específica, com conteúdo direcionado para uma ação principal.
+              </p>
             </div>
-            <div class="pt-4 border-t border-white/5">
-              <span class="text-[10px] uppercase font-mono text-zinc-500 block mb-1">Aplicação:</span>
-              <p class="text-xs font-medium text-cyan-300">Ideal para empresas que divulgam serviços, fazem campanhas ou desejam apresentar uma oferta específica.</p>
+            <div class="pt-4 border-t border-white/5 space-y-1">
+              <span class="text-[10px] uppercase font-mono text-slate-500 block">Aplicação estratégica</span>
+              <p class="text-xs font-medium text-cyan-300 leading-snug">
+                Ideal para empresas que divulgam serviços, fazem campanhas ou desejam apresentar uma oferta específica.
+              </p>
             </div>
           </div>
 
-          <!-- Serviço 3 -->
-          <div class="p-6 rounded-3xl glass-panel border border-purple-500/30 hover:border-white/40 transition flex flex-col justify-between">
+          <!-- Serviço 3: Prestadores de Serviços -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group border-l-2 border-l-purple-400">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-400 mb-4">💼</div>
-              <h3 class="text-base font-bold text-white mb-2">Sites para prestadores de serviços</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">Explique como você trabalha, quais serviços oferece e como o cliente pode solicitar informações ou um orçamento.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>FORMATO // 03</span>
+                <span class="text-purple-400 font-bold">SERVIÇOS</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2.5 group-hover:text-purple-300 transition-colors">
+                Sites para prestadores de serviços
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                Explique como você trabalha, quais serviços oferece e como o cliente pode solicitar informações ou um orçamento.
+              </p>
             </div>
-            <div class="pt-4 border-t border-white/5">
-              <span class="text-[10px] uppercase font-mono text-zinc-500 block mb-1">Aplicação:</span>
-              <p class="text-xs font-medium text-cyan-300">Ideal para consultores, profissionais independentes, empresas locais e prestadores de serviços especializados.</p>
+            <div class="pt-4 border-t border-white/5 space-y-1">
+              <span class="text-[10px] uppercase font-mono text-slate-500 block">Aplicação estratégica</span>
+              <p class="text-xs font-medium text-cyan-300 leading-snug">
+                Ideal para consultores, profissionais independentes, empresas locais e prestadores de serviços especializados.
+              </p>
             </div>
           </div>
 
-          <!-- Serviço 4 -->
-          <div class="p-6 rounded-3xl glass-panel border border-cyan-500/30 hover:border-white/40 transition flex flex-col justify-between">
+          <!-- Serviço 4: Portfólios e Projetos Visuais -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group border-l-2 border-l-cyan-400">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 mb-4">🖼️</div>
-              <h3 class="text-base font-bold text-white mb-2">Portfólios e apresentação de projetos</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">Mostre trabalhos, produtos, projetos e exemplos visuais de maneira organizada para que o visitante compreenda melhor o que sua empresa entrega.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>FORMATO // 04</span>
+                <span class="text-cyan-400 font-bold">PORTFÓLIO</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">
+                Portfólios e apresentação de projetos
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                Mostre trabalhos, produtos, projetos e exemplos visuais de maneira organizada para que o visitante compreenda melhor o que sua empresa entrega.
+              </p>
             </div>
-            <div class="pt-4 border-t border-white/5">
-              <span class="text-[10px] uppercase font-mono text-zinc-500 block mb-1">Aplicação:</span>
-              <p class="text-xs font-medium text-cyan-300">Ideal para arquitetos, designers, empresas de engenharia, profissionais criativos e negócios que dependem de apresentação visual.</p>
+            <div class="pt-4 border-t border-white/5 space-y-1">
+              <span class="text-[10px] uppercase font-mono text-slate-500 block">Aplicação estratégica</span>
+              <p class="text-xs font-medium text-cyan-300 leading-snug">
+                Ideal para arquitetos, designers, empresas de engenharia, profissionais criativos e negócios que dependem de apresentação visual.
+              </p>
             </div>
           </div>
 
-          <!-- Serviço 5 -->
-          <div class="p-6 rounded-3xl glass-panel border border-emerald-500/30 hover:border-white/40 transition flex flex-col justify-between md:col-span-2 lg:col-span-1">
+          <!-- Serviço 5: Integração WhatsApp (Destaque em Largura com Glow) -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group border-l-2 border-l-emerald-400 md:col-span-2 lg:col-span-2 bg-gradient-to-r from-space-850 via-space-900 to-space-850">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 mb-4">💬</div>
-              <h3 class="text-base font-bold text-white mb-2">Integração com WhatsApp</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">Inclua pontos de contato visíveis e links que direcionem o visitante para uma conversa comercial, com mensagens iniciais que podem ser adaptadas ao contexto.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>FORMATO // 05</span>
+                <span class="text-emerald-400 font-bold">CONEXÃO DIRETA</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2.5 group-hover:text-emerald-300 transition-colors">
+                Integração com WhatsApp
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                Inclua pontos de contato visíveis e links que direcionem o visitante para uma conversa comercial, com mensagens iniciais que podem ser adaptadas ao contexto.
+              </p>
             </div>
-            <div class="pt-4 border-t border-white/5">
-              <span class="text-[10px] uppercase font-mono text-zinc-500 block mb-1">Aplicação:</span>
-              <p class="text-xs font-medium text-cyan-300">Ideal para empresas que preferem atender, esclarecer dúvidas e negociar diretamente pelo WhatsApp.</p>
+            <div class="pt-4 border-t border-white/5 space-y-1">
+              <span class="text-[10px] uppercase font-mono text-slate-500 block">Aplicação estratégica</span>
+              <p class="text-xs font-medium text-emerald-300 leading-snug">
+                Ideal para empresas que preferem atender, esclarecer dúvidas e negociar diretamente pelo WhatsApp.
+              </p>
             </div>
           </div>
+
         </div>
 
-        <div class="max-w-3xl mx-auto p-8 rounded-3xl glass-panel-elevated border border-white/10">
-          <p class="text-sm sm:text-base text-zinc-300 mb-6 leading-relaxed">
+        <div class="max-w-3xl mx-auto p-8 rounded-3xl chassis-panel">
+          <p class="text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
             Não sabe qual modelo é melhor para seu negócio? Converse conosco. Vamos entender sua necessidade antes de definir a solução.
           </p>
           <a
             href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20CodeLabx%20para%20encontrar%20a%20melhor%20solu%C3%A7%C3%A3o%20de%20site%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
+            class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
           >
             <span>Encontrar a melhor solução para minha empresa</span>
             <span>→</span>
@@ -686,191 +1055,333 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 5 — BENEFÍCIOS E EXPERIÊNCIA -->
-      <section id="experiencia" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-space-950/60">
+      <!-- SEÇÃO 5 — BENEFÍCIOS E EXPERIÊNCIA (ENGINE DE EXPERIÊNCIA TÉCNICA) -->
+      <section id="experiencia" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-space-900/60 border-t border-white/[0.06] relative z-10">
         <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-cyan-400 mb-4 border border-cyan-500/30">
-            ✨ Benefícios & Experiência
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-xs font-mono text-cyan-300 mb-4">
+            <span>⚙️ PADRÃO DE EXPERIÊNCIA</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Muito além de um layout bonito</h2>
-          <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">Um site precisa fazer mais do que impressionar nos primeiros segundos. Ele precisa funcionar para quem acessa, apresentar as informações certas e deixar claro como avançar.</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+            Muito além de um layout bonito
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">
+            Um site precisa fazer mais do que impressionar nos primeiros segundos. Ele precisa funcionar para quem acessa, apresentar as informações certas e deixar claro como avançar.
+          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+          
           <!-- Bloco 1 -->
-          <div class="p-6 sm:p-7 rounded-3xl glass-panel-elevated border border-white/10 hover:border-blue-400/40 transition flex flex-col justify-between">
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-5">🎨</div>
-              <h3 class="text-base sm:text-lg font-bold text-white mb-2">Uma apresentação alinhada à sua marca</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Visual personalizado, hierarquia de informações e identidade coerente com a proposta da sua empresa. Seu site deve representar o seu negócio, e não parecer apenas mais um modelo genérico.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>PILAR 01</span>
+                <span class="text-blue-400">IDENTIDADE</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-blue-300 transition-colors">
+                Uma apresentação alinhada à sua marca
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Visual personalizado, hierarquia de informações e identidade coerente com a proposta da sua empresa. Seu site deve representar o seu negócio, e não parecer apenas mais um modelo genérico.
+              </p>
             </div>
-            <div class="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-zinc-500">Pilar 01</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              CUSTOM DESIGN
+            </div>
           </div>
 
           <!-- Bloco 2 -->
-          <div class="p-6 sm:p-7 rounded-3xl glass-panel-elevated border border-white/10 hover:border-blue-400/40 transition flex flex-col justify-between">
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-5">📱</div>
-              <h3 class="text-base sm:text-lg font-bold text-white mb-2">Experiência pensada para o celular</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Seu visitante deve conseguir ler, navegar e encontrar os botões com facilidade em diferentes tamanhos de tela.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>PILAR 02</span>
+                <span class="text-cyan-400">ERGONOMIA</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">
+                Experiência pensada para o celular
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Seu visitante deve conseguir ler, navegar e encontrar os botões com facilidade em diferentes tamanhos de tela.
+              </p>
             </div>
-            <div class="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-zinc-500">Pilar 02</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              RESPONSIVE CORE
+            </div>
           </div>
 
           <!-- Bloco 3 -->
-          <div class="p-6 sm:p-7 rounded-3xl glass-panel-elevated border border-white/10 hover:border-blue-400/40 transition flex flex-col justify-between">
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-5">📋</div>
-              <h3 class="text-base sm:text-lg font-bold text-white mb-2">Serviços apresentados sem confusão</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Organizamos o conteúdo para que o cliente compreenda o que sua empresa faz, conheça suas soluções e encontre as informações de que precisa.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>PILAR 03</span>
+                <span class="text-purple-400">CLAREZA</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-purple-300 transition-colors">
+                Serviços apresentados sem confusão
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Organizamos o conteúdo para que o cliente compreenda o que sua empresa faz, conheça suas soluções e encontre as informações de que precisa.
+              </p>
             </div>
-            <div class="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-zinc-500">Pilar 03</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              CLEAR CATALOG
+            </div>
           </div>
 
           <!-- Bloco 4 -->
-          <div class="p-6 sm:p-7 rounded-3xl glass-panel-elevated border border-white/10 hover:border-blue-400/40 transition flex flex-col justify-between">
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-5">💬</div>
-              <h3 class="text-base sm:text-lg font-bold text-white mb-2">Caminho direto até o WhatsApp</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Posicionamos chamadas para ação nos pontos adequados da página para facilitar o início de uma conversa comercial.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>PILAR 04</span>
+                <span class="text-emerald-400">CONVERSÃO</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-emerald-300 transition-colors">
+                Caminho direto até o WhatsApp
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Posicionamos chamadas para ação nos pontos adequados da página para facilitar o início de uma conversa comercial.
+              </p>
             </div>
-            <div class="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-zinc-500">Pilar 04</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              DIRECT ROUTE
+            </div>
           </div>
 
           <!-- Bloco 5 -->
-          <div class="p-6 sm:p-7 rounded-3xl glass-panel-elevated border border-white/10 hover:border-blue-400/40 transition flex flex-col justify-between">
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-5">⚡</div>
-              <h3 class="text-base sm:text-lg font-bold text-white mb-2">Atenção ao desempenho e à estrutura técnica</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Boas práticas de desenvolvimento, otimização de imagens e organização do código ajudam a proporcionar uma experiência mais fluida. O desempenho final depende também da hospedagem, do conteúdo e de outros fatores técnicos.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>PILAR 05</span>
+                <span class="text-blue-400">ENGENHARIA</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-blue-300 transition-colors">
+                Atenção ao desempenho e à estrutura técnica
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Boas práticas de desenvolvimento, otimização de imagens e organização do código ajudam a proporcionar uma experiência mais fluida. O desempenho final depende também da hospedagem, do conteúdo e de outros fatores técnicos.
+              </p>
             </div>
-            <div class="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-zinc-500">Pilar 05</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              PERFORMANCE
+            </div>
           </div>
 
           <!-- Bloco 6 -->
-          <div class="p-6 sm:p-7 rounded-3xl glass-panel-elevated border border-white/10 hover:border-blue-400/40 transition flex flex-col justify-between">
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 mb-5">🔍</div>
-              <h3 class="text-base sm:text-lg font-bold text-white mb-2">Estrutura preparada para mecanismos de busca</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Configuramos elementos básicos de SEO para ajudar os mecanismos de busca a compreender o conteúdo. A indexação e as posições alcançadas dependem de diversos fatores e não podem ser garantidas.</p>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-4">
+                <span>PILAR 06</span>
+                <span class="text-cyan-400">VISIBILIDADE</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">
+                Estrutura preparada para mecanismos de busca
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Configuramos elementos básicos de SEO para ajudar os mecanismos de busca a compreender o conteúdo. A indexação e as posições alcançadas dependem de diversos fatores e não podem ser garantidas.
+              </p>
             </div>
-            <div class="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-zinc-500">Pilar 06</div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              SEO ARCHITECTURE
+            </div>
           </div>
+
         </div>
 
-        <div class="max-w-2xl mx-auto text-center p-6 rounded-2xl glass-panel border border-white/10 text-sm sm:text-base text-zinc-300 font-medium">
+        <div class="max-w-2xl mx-auto text-center p-6 rounded-2xl bg-space-850/80 border border-white/10 text-sm sm:text-base text-slate-300 font-medium">
           ✨ Cada detalhe deve ter uma função: apresentar melhor sua empresa, esclarecer dúvidas ou facilitar o contato.
         </div>
       </section>
 
-      <!-- SEÇÃO 6 — PORTFÓLIO -->
-      <section id="projetos" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-purple-300 mb-4 border border-purple-500/30">
-          ✨ Portfólio Conceitual
+      <!-- SEÇÃO 6 — PORTFÓLIO CONCEITUAL (O PONTO ALTO DA EXPERIÊNCIA CINEMATOGRÁFICA) -->
+      <section id="projetos" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-purple-500/30 text-xs font-mono text-purple-300 mb-4">
+          <span>💎 SHOWCASE CONCEITUAL</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Veja como sua empresa também pode se apresentar</h2>
-        <p class="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto mb-6 font-normal">Cada projeto tem sua própria identidade. Explore nossas demonstrações conceituais e visualize possibilidades de apresentação para diferentes tipos de negócio.</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Veja como sua empresa também pode se apresentar
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-6 font-normal">
+          Cada projeto tem sua própria identidade. Explore nossas demonstrações conceituais e visualize possibilidades de apresentação para diferentes tipos de negócio.
+        </p>
         
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-zinc-400 max-w-2xl mx-auto mb-12 text-left sm:text-center">
-          <span>🛡️ <strong>Aviso de transparência:</strong> As demonstrações são projetos conceituais desenvolvidos pela CodeLabx para mostrar possibilidades de design e estrutura. Não representam, necessariamente, sites de clientes contratantes nem resultados comerciais comprovados.</span>
+        <!-- Aviso de Transparência Obrigatório -->
+        <div class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-space-850/90 border border-white/10 text-xs text-slate-400 max-w-3xl mx-auto mb-16 text-left sm:text-center">
+          <span class="text-cyan-400 shrink-0">🛡️</span>
+          <span><strong>Aviso de transparência:</strong> As demonstrações são projetos conceituais desenvolvidos pela CodeLabx para mostrar possibilidades de design e estrutura. Não representam, necessariamente, sites de clientes contratantes nem resultados comerciais comprovados.</span>
         </div>
 
+        <!-- 3 Demonstrações com Personalidade Própria e Composição Heterogênea -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto mb-16">
-          <!-- Projeto 1: Lumière -->
-          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+          
+          <!-- Projeto 1: Lumière (Estética Dark-Gold / Serviços e Atendimento) -->
+          <div class="interactive-card rounded-3xl chassis-panel flex flex-col justify-between overflow-hidden group hover:border-amber-400/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-amber-400 bg-amber-400/10">Demonstração para serviços e atendimento</span>
-                <span class="text-[11px] font-mono text-zinc-500">Demo 01</span>
+              <div class="p-7 relative overflow-hidden bg-gradient-to-b from-amber-500/10 to-transparent border-b border-white/5">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 bg-amber-400/15 border border-amber-400/30">
+                    Demonstração para serviços e atendimento
+                  </span>
+                  <span class="text-[11px] font-mono text-slate-500">DEMO // 01</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-amber-200 transition-colors">
+                  Lumière Estética & Bem-Estar
+                </h3>
+                <p class="text-xs font-mono text-amber-400/90 mb-3">Serviços e atendimento</p>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Uma apresentação organizada para explicar soluções, destacar benefícios e facilitar o contato comercial.
+                </p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-1">Lumière Estética & Bem-Estar</h3>
-              <p class="text-xs font-semibold text-zinc-400 mb-2">Serviços e atendimento</p>
-              <p class="text-xs text-zinc-400 mb-4">Uma apresentação organizada para explicar soluções, destacar benefícios e facilitar o contato comercial.</p>
-              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
-                <div>✓ Protocolos faciais e corporais</div>
-                <div>✓ Catálogo organizado por categorias</div>
-                <div>✓ Estrutura adaptada para agendamento no WhatsApp</div>
+
+              <!-- Destaques Visuais -->
+              <div class="p-7 space-y-3 font-mono text-xs">
+                <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-2 text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-400">✓</span>
+                    <span>Protocolos faciais e corporais</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-400">✓</span>
+                    <span>Catálogo organizado por categorias</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-400">✓</span>
+                    <span>Estrutura adaptada para agendamento no WhatsApp</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="space-y-2">
-              <button onclick="openDemoModal('lumiere')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-                Visualizar Demonstração Completa 👁️
+
+            <!-- Botões de Ação da Demo -->
+            <div class="p-7 pt-0 space-y-2.5">
+              <button onclick="openDemoModal('lumiere')" class="btn-shimmer w-full py-3.5 px-4 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)] flex items-center justify-center gap-2">
+                <span>Visualizar Demonstração Completa</span>
+                <span>👁️</span>
               </button>
               <a 
                 href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Lumi%C3%A8re%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition"
+                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition border border-white/10 font-mono"
               >
                 Conversar sobre este formato no WhatsApp ↗
               </a>
             </div>
           </div>
 
-          <!-- Projeto 2: Nexus -->
-          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+          <!-- Projeto 2: Nexus (Estética Cyber-Cyan / Empresas e B2B) -->
+          <div class="interactive-card rounded-3xl chassis-panel flex flex-col justify-between overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-cyan-400 bg-cyan-400/10">Demonstração para empresas e B2B</span>
-                <span class="text-[11px] font-mono text-zinc-500">Demo 02</span>
+              <div class="p-7 relative overflow-hidden bg-gradient-to-b from-cyan-500/10 to-transparent border-b border-white/5">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 bg-cyan-400/15 border border-cyan-400/30">
+                    Demonstração para empresas e B2B
+                  </span>
+                  <span class="text-[11px] font-mono text-slate-500">DEMO // 02</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-cyan-200 transition-colors">
+                  Nexus Engenharia & Consultoria
+                </h3>
+                <p class="text-xs font-mono text-cyan-400/90 mb-3">Empresas e B2B</p>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Uma estrutura voltada à apresentação institucional, às áreas de atuação e aos serviços oferecidos a outras empresas.
+                </p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-1">Nexus Engenharia & Consultoria</h3>
-              <p class="text-xs font-semibold text-zinc-400 mb-2">Empresas e B2B</p>
-              <p class="text-xs text-zinc-400 mb-4">Uma estrutura voltada à apresentação institucional, às áreas de atuação e aos serviços oferecidos a outras empresas.</p>
-              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
-                <div>✓ Gestão e coordenação de obras</div>
-                <div>✓ Laudos técnicos e perícias</div>
-                <div>✓ Contato ágil com diretores e consultores</div>
+
+              <!-- Destaques Visuais -->
+              <div class="p-7 space-y-3 font-mono text-xs">
+                <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-2 text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="text-cyan-400">✓</span>
+                    <span>Gestão e coordenação de obras</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-cyan-400">✓</span>
+                    <span>Laudos técnicos e perícias</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-cyan-400">✓</span>
+                    <span>Contato ágil com diretores e consultores</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="space-y-2">
-              <button onclick="openDemoModal('nexus')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-                Visualizar Demonstração Completa 👁️
+
+            <!-- Botões de Ação da Demo -->
+            <div class="p-7 pt-0 space-y-2.5">
+              <button onclick="openDemoModal('nexus')" class="btn-shimmer w-full py-3.5 px-4 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)] flex items-center justify-center gap-2">
+                <span>Visualizar Demonstração Completa</span>
+                <span>👁️</span>
               </button>
               <a 
                 href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Nexus%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition"
+                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition border border-white/10 font-mono"
               >
                 Conversar sobre este formato no WhatsApp ↗
               </a>
             </div>
           </div>
 
-          <!-- Projeto 3: Vertex -->
-          <div class="rounded-3xl glass-panel-elevated p-6 border border-white/10 flex flex-col justify-between">
+          <!-- Projeto 3: Vertex (Estética Deep-Violet / Portfólios e Negócios Visuais) -->
+          <div class="interactive-card rounded-3xl chassis-panel flex flex-col justify-between overflow-hidden group hover:border-purple-400/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase text-purple-400 bg-purple-400/10">Demonstração para portfólios e negócios visuais</span>
-                <span class="text-[11px] font-mono text-zinc-500">Demo 03</span>
+              <div class="p-7 relative overflow-hidden bg-gradient-to-b from-purple-500/10 to-transparent border-b border-white/5">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider text-purple-400 bg-purple-400/15 border border-purple-400/30">
+                    Demonstração para portfólios e negócios visuais
+                  </span>
+                  <span class="text-[11px] font-mono text-slate-500">DEMO // 03</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-purple-200 transition-colors">
+                  Studio Vertex Arquitetura
+                </h3>
+                <p class="text-xs font-mono text-purple-400/90 mb-3">Portfólios e negócios visuais</p>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Uma experiência que valoriza imagens, projetos e exemplos do trabalho realizado.
+                </p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-1">Studio Vertex Arquitetura</h3>
-              <p class="text-xs font-semibold text-zinc-400 mb-2">Portfólios e negócios visuais</p>
-              <p class="text-xs text-zinc-400 mb-4">Uma experiência que valoriza imagens, projetos e exemplos do trabalho realizado.</p>
-              <div class="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-zinc-300 mb-6">
-                <div>✓ Galeria de projetos executados</div>
-                <div>✓ Explicação clara das etapas de projeto</div>
-                <div>✓ Solicitação imediata de briefing no WhatsApp</div>
+
+              <!-- Destaques Visuais -->
+              <div class="p-7 space-y-3 font-mono text-xs">
+                <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-2 text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="text-purple-400">✓</span>
+                    <span>Galeria de projetos executados</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-purple-400">✓</span>
+                    <span>Explicação clara das etapas de projeto</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-purple-400">✓</span>
+                    <span>Solicitação imediata de briefing no WhatsApp</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="space-y-2">
-              <button onclick="openDemoModal('vertex')" class="w-full py-3 px-4 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-                Visualizar Demonstração Completa 👁️
+
+            <!-- Botões de Ação da Demo -->
+            <div class="p-7 pt-0 space-y-2.5">
+              <button onclick="openDemoModal('vertex')" class="btn-shimmer w-full py-3.5 px-4 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.5)] flex items-center justify-center gap-2">
+                <span>Visualizar Demonstração Completa</span>
+                <span>👁️</span>
               </button>
               <a 
                 href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20Studio%20Vertex%20na%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-zinc-300 hover:text-white glass-pill hover:bg-white/10 transition"
+                class="block w-full py-2.5 px-4 rounded-xl text-xs text-center text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition border border-white/10 font-mono"
               >
                 Conversar sobre este formato no WhatsApp ↗
               </a>
             </div>
           </div>
+
         </div>
 
-        <div class="max-w-3xl mx-auto p-8 rounded-3xl glass-panel-elevated border border-purple-500/30">
+        <!-- Fechamento e CTA do Portfólio -->
+        <div class="max-w-3xl mx-auto p-8 rounded-3xl chassis-panel border border-purple-500/30">
           <p class="text-base sm:text-lg font-medium text-white mb-6">
             Gostou de algum estilo? Podemos conversar sobre como adaptá-lo à identidade e às necessidades da sua empresa.
           </p>
@@ -878,7 +1389,7 @@
             href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vi%20uma%20das%20demonstra%C3%A7%C3%B5es%20da%20CodeLabx%20e%20gostaria%20de%20saber%20como%20criar%20um%20projeto%20personalizado%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(168,85,247,0.5)] transition"
+            class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(168,85,247,0.5)] transition"
           >
             <span>Quero um projeto personalizado</span>
             <span>→</span>
@@ -886,55 +1397,122 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 7 — DIFERENCIAIS -->
-      <section id="diferenciais" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-space-950/50 text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
-          🛡️ Nossos Diferenciais
+      <!-- SEÇÃO 7 — DIFERENCIAIS (MATRIZ DE ENGENHARIA E CONFIANÇA) -->
+      <section id="diferenciais" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-space-900/50 text-center border-t border-white/[0.06] relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-xs font-mono text-cyan-300 mb-4">
+          <span>🛡️ DIRETRIZES DE ENTREGA</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Seu negócio não precisa de qualquer site. Precisa de um site que faça sentido para ele.</h2>
-        <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">Na CodeLabx, cada projeto começa pela compreensão do que sua empresa oferece e de como deseja se apresentar ao mercado.</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Seu negócio não precisa de qualquer site. Precisa de um site que faça sentido para ele.
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">
+          Na CodeLabx, cada projeto começa pela compreensão do que sua empresa oferece e de como deseja se apresentar ao mercado.
+        </p>
 
+        <!-- Grade 2 Topo + 3 Base (Assimetria Intencional) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto mb-16">
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">🎨</div>
-            <h3 class="text-base font-bold text-white mb-2">Personalização de verdade</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">A estrutura e o visual são definidos de acordo com o seu negócio, seus serviços e a experiência que deseja proporcionar aos visitantes.</p>
+          
+          <!-- Diferencial 1 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
+            <div>
+              <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                🎨
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Personalização de verdade
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                A estrutura e o visual são definidos de acordo com o seu negócio, seus serviços e a experiência que deseja proporcionar aos visitantes.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              DIFERENCIAL // 01
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">👁️</div>
-            <h3 class="text-base font-bold text-white mb-2">Clareza em cada etapa</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Você entende o que está sendo desenvolvido, pode avaliar a apresentação e solicitar os ajustes previstos no projeto.</p>
+          <!-- Diferencial 2 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
+            <div>
+              <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                👁️
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Clareza em cada etapa
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Você entende o que está sendo desenvolvido, pode avaliar a apresentação e solicitar os ajustes previstos no projeto.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              DIFERENCIAL // 02
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">🤝</div>
-            <h3 class="text-base font-bold text-white mb-2">Foco na experiência do cliente</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Pensamos na jornada de quem acessa o site: entender a oferta, encontrar informações e saber como entrar em contato.</p>
+          <!-- Diferencial 3 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
+            <div>
+              <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                🤝
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Foco na experiência do cliente
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Pensamos na jornada de quem acessa o site: entender a oferta, encontrar informações e saber como entrar em contato.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              DIFERENCIAL // 03
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">💬</div>
-            <h3 class="text-base font-bold text-white mb-2">Comunicação direta</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Você pode conversar conosco pelo WhatsApp para explicar sua necessidade, esclarecer dúvidas e discutir a proposta.</p>
+          <!-- Diferencial 4 -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group">
+            <div>
+              <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                💬
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Comunicação direta
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Você pode conversar conosco pelo WhatsApp para explicar sua necessidade, esclarecer dúvidas e discutir a proposta.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              DIFERENCIAL // 04
+            </div>
           </div>
 
-          <div class="p-6 rounded-3xl glass-panel border border-white/10 hover:border-white/25 transition md:col-span-2 lg:col-span-1">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5">⚙️</div>
-            <h3 class="text-base font-bold text-white mb-2">Desenvolvimento com propósito</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">As escolhas de design e tecnologia devem atender às necessidades do projeto, em vez de acrescentar recursos desnecessários só para parecer mais sofisticado.</p>
+          <!-- Diferencial 5 (Card de Destaque Técnico) -->
+          <div class="interactive-card p-7 rounded-3xl chassis-panel flex flex-col justify-between group md:col-span-2 lg:col-span-2">
+            <div>
+              <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                ⚙️
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                Desenvolvimento com propósito
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                As escolhas de design e tecnologia devem atender às necessidades do projeto, em vez de acrescentar recursos desnecessários só para parecer mais sofisticado.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              DIFERENCIAL // 05 (EFICIÊNCIA)
+            </div>
           </div>
+
         </div>
 
-        <div class="max-w-3xl mx-auto p-8 rounded-3xl glass-panel-elevated border border-blue-500/30">
-          <p class="text-sm sm:text-base text-zinc-300 mb-6 leading-relaxed">
+        <div class="max-w-3xl mx-auto p-8 rounded-3xl chassis-panel border border-blue-500/30">
+          <p class="text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
             Nosso compromisso é desenvolver uma apresentação digital profissional, personalizada e alinhada aos objetivos que definirmos para o seu projeto.
           </p>
           <a
             href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20CodeLabx%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
+            class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
           >
             <span>Conversar com a CodeLabx</span>
             <span>→</span>
@@ -942,63 +1520,130 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 8 — PROCESSO DE CRIAÇÃO -->
-      <section id="processo" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-cyan-400 mb-4 border border-cyan-500/30">
-          🔄 Etapas Claras
+      <!-- SEÇÃO 8 — PROCESSO DE CRIAÇÃO (INTERACTIVE PIPELINE TRACKER) -->
+      <section id="processo" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative z-10 border-t border-white/[0.06]">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-xs font-mono text-cyan-300 mb-4">
+          <span>🔄 PIPELINE DE 5 ETAPAS</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Da primeira conversa ao seu site publicado</h2>
-        <p class="text-zinc-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">Você não precisa saber de programação, design ou tecnologia para começar. Nosso processo é conduzido por etapas claras.</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Da primeira conversa ao seu site publicado
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-16 font-normal">
+          Você não precisa saber de programação, design ou tecnologia para começar. Nosso processo é conduzido por etapas claras.
+        </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6 text-left max-w-6xl mx-auto mb-16">
-          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+        <!-- Pipeline Conectado com Nós de Circuito -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6 text-left max-w-6xl mx-auto mb-16 relative">
+          
+          <!-- Etapa 1 -->
+          <div class="interactive-card p-6 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">01</span>
-              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Entendemos seu negócio</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed">Você nos conta o que sua empresa faz, quais serviços oferece e o que deseja alcançar com o site.</p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 group-hover:text-cyan-300 transition-colors">
+                  01
+                </span>
+                <span class="w-2 h-2 rounded-full bg-blue-500/50 group-hover:bg-cyan-400 transition-colors"></span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+                Entendemos seu negócio
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Você nos conta o que sua empresa faz, quais serviços oferece e o que deseja alcançar com o site.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 1</div>
+            <div class="pt-4 mt-4 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              ETAPA 01
+            </div>
           </div>
 
-          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+          <!-- Etapa 2 -->
+          <div class="interactive-card p-6 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">02</span>
-              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Definimos a estrutura</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed">Planejamos as seções, as informações essenciais e os caminhos que o visitante poderá seguir até o contato.</p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 group-hover:text-cyan-300 transition-colors">
+                  02
+                </span>
+                <span class="w-2 h-2 rounded-full bg-blue-500/50 group-hover:bg-cyan-400 transition-colors"></span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+                Definimos a estrutura
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Planejamos as seções, as informações essenciais e os caminhos que o visitante poderá seguir até o contato.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 2</div>
+            <div class="pt-4 mt-4 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              ETAPA 02
+            </div>
           </div>
 
-          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+          <!-- Etapa 3 -->
+          <div class="interactive-card p-6 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">03</span>
-              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Desenvolvemos seu projeto</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed">Criamos a apresentação visual e a estrutura do site de acordo com o escopo combinado.</p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 group-hover:text-cyan-300 transition-colors">
+                  03
+                </span>
+                <span class="w-2 h-2 rounded-full bg-blue-500/50 group-hover:bg-cyan-400 transition-colors"></span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+                Desenvolvemos seu projeto
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Criamos a apresentação visual e a estrutura do site de acordo com o escopo combinado.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 3</div>
+            <div class="pt-4 mt-4 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              ETAPA 03
+            </div>
           </div>
 
-          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+          <!-- Etapa 4 -->
+          <div class="interactive-card p-6 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">04</span>
-              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Você avalia e solicita ajustes</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed">Apresentamos o projeto para sua revisão e realizamos os ajustes previstos no acordo, antes da publicação.</p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 group-hover:text-cyan-300 transition-colors">
+                  04
+                </span>
+                <span class="w-2 h-2 rounded-full bg-blue-500/50 group-hover:bg-cyan-400 transition-colors"></span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+                Você avalia e solicita ajustes
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Apresentamos o projeto para sua revisão e realizamos os ajustes previstos no acordo, antes da publicação.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 4</div>
+            <div class="pt-4 mt-4 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              ETAPA 04
+            </div>
           </div>
 
-          <div class="p-5 sm:p-6 rounded-3xl glass-panel border border-white/10 flex flex-col justify-between">
+          <!-- Etapa 5 -->
+          <div class="interactive-card p-6 rounded-3xl chassis-panel flex flex-col justify-between group">
             <div>
-              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 block mb-3">05</span>
-              <h3 class="text-sm sm:text-base font-bold text-white mb-2">Publicamos o site</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed">Após a aprovação, concluímos as configurações previstas, como domínio e certificado de segurança, conforme o escopo contratado.</p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-blue-400 group-hover:text-cyan-300 transition-colors">
+                  05
+                </span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+                Publicamos o site
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Após a aprovação, concluímos as configurações previstas, como domínio e certificado de segurança, conforme o escopo contratado.
+              </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-zinc-500">Etapa 5</div>
+            <div class="pt-4 mt-4 border-t border-white/5 font-mono text-[11px] text-slate-500">
+              ETAPA 05
+            </div>
           </div>
+
         </div>
 
-        <div class="max-w-3xl mx-auto p-8 rounded-3xl glass-panel-elevated border border-white/10 space-y-4">
-          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+        <div class="max-w-3xl mx-auto p-8 rounded-3xl chassis-panel space-y-4">
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
             Cada projeto tem suas próprias necessidades. O prazo, os custos, os recursos incluídos e as condições de revisão devem ser definidos na proposta.
           </p>
           <p class="text-sm sm:text-base font-semibold text-white">
@@ -1009,7 +1654,7 @@
               href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto%20de%20site%20com%20a%20CodeLabx%20pelo%20WhatsApp."
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
+              class="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_30px_rgba(59,130,246,0.6)] transition"
             >
               <span>Começar meu projeto pelo WhatsApp</span>
               <span>→</span>
@@ -1018,197 +1663,252 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 9 — PERGUNTAS FREQUENTES (FAQ) -->
-      <section id="duvidas" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center bg-space-950/70">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-blue-300 mb-4 border border-blue-500/30">
-          ❓ Tire Suas Dúvidas
+      <!-- SEÇÃO 9 — PERGUNTAS FREQUENTES (TECHNICAL INDEX ACCORDION) -->
+      <section id="duvidas" class="py-28 md:py-36 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center relative z-10 border-t border-white/[0.06] bg-space-900/50">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-space-850 border border-blue-500/25 text-xs font-mono text-cyan-300 mb-4">
+          <span>❓ FAQ & RESPOSTAS DIRETAS</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Ainda tem dúvidas? Vamos esclarecer.</h2>
-        <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto mb-14 font-normal">Respostas diretas e transparentes sobre como funciona a contratação e o desenvolvimento do seu site.</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Ainda tem dúvidas? Vamos esclarecer.
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-14 font-normal">
+          Respostas diretas e transparentes sobre como funciona a contratação e o desenvolvimento do seu site.
+        </p>
 
-        <!-- Acordeão FAQ -->
+        <!-- Acordeão Técnico com Numeração [01] a [08] -->
         <div class="space-y-3.5 text-left mb-14">
+          
           <!-- FAQ 1 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(1)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Minha empresa já tem Instagram. Preciso de um site?</span>
-              <span id="faqIcon-1" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(1)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[01]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Minha empresa já tem Instagram. Preciso de um site?
+                </span>
+              </div>
+              <span id="faqIcon-1" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-1" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-1" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               As redes sociais ajudam a divulgar seu trabalho e manter contato com o público. O site complementa essa presença, reunindo serviços, informações e canais de contato em um espaço próprio e organizado.
             </div>
           </div>
 
           <!-- FAQ 2 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(2)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Um site vai garantir novos clientes?</span>
-              <span id="faqIcon-2" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(2)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[02]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Um site vai garantir novos clientes?
+                </span>
+              </div>
+              <span id="faqIcon-2" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-2" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-2" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               Nenhum site pode garantir vendas ou uma quantidade específica de clientes. Ele pode ajudar sua empresa a apresentar melhor seus serviços, transmitir profissionalismo e facilitar o contato. Os resultados também dependem da oferta, da divulgação, da concorrência e do atendimento.
             </div>
           </div>
 
           <!-- FAQ 3 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(3)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Não entendo nada de tecnologia. Isso é um problema?</span>
-              <span id="faqIcon-3" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(3)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[03]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Não entendo nada de tecnologia. Isso é um problema?
+                </span>
+              </div>
+              <span id="faqIcon-3" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-3" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-3" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               Não. Você pode explicar sua necessidade em linguagem simples. A estrutura e as decisões técnicas são tratadas durante o desenvolvimento, conforme o que for combinado no projeto.
             </div>
           </div>
 
           <!-- FAQ 4 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(4)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">O site será personalizado para minha empresa?</span>
-              <span id="faqIcon-4" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(4)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[04]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  O site será personalizado para minha empresa?
+                </span>
+              </div>
+              <span id="faqIcon-4" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-4" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-4" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               A proposta é desenvolver um projeto alinhado à sua marca e às suas necessidades. O nível de personalização e os recursos incluídos serão definidos no escopo antes do início do trabalho.
             </div>
           </div>
 
           <!-- FAQ 5 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(5)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Quanto custa criar um site?</span>
-              <span id="faqIcon-5" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(5)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[05]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Quanto custa criar um site?
+                </span>
+              </div>
+              <span id="faqIcon-5" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-5" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-5" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               O investimento depende do tipo de site, da quantidade de páginas, dos recursos e do conteúdo necessário. Entre em contato para explicar o que precisa e receber uma proposta adequada ao seu projeto.
             </div>
           </div>
 
           <!-- FAQ 6 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(6)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Quanto tempo leva para ficar pronto?</span>
-              <span id="faqIcon-6" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(6)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[06]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Quanto tempo leva para ficar pronto?
+                </span>
+              </div>
+              <span id="faqIcon-6" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-6" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-6" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               O prazo depende da complexidade do projeto, do escopo e do envio dos materiais necessários. O cronograma será alinhado antes do início do desenvolvimento.
             </div>
           </div>
 
           <!-- FAQ 7 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(7)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Posso pedir alterações?</span>
-              <span id="faqIcon-7" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(7)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[07]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Posso pedir alterações?
+                </span>
+              </div>
+              <span id="faqIcon-7" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-7" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-7" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               Sim, de acordo com as condições e a quantidade de revisões definidas na proposta. Assim, você sabe previamente como funciona a etapa de ajustes.
             </div>
           </div>
 
           <!-- FAQ 8 -->
-          <div class="rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition overflow-hidden">
-            <button onclick="toggleFaq(8)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
-              <span class="text-sm sm:text-base font-bold text-white">Como começo?</span>
-              <span id="faqIcon-8" class="text-zinc-400 text-lg transition-transform">▼</span>
+          <div class="rounded-2xl chassis-panel overflow-hidden">
+            <button onclick="toggleFaq(8)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-3.5">
+                <span class="font-mono text-xs text-cyan-400 font-bold">[08]</span>
+                <span class="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  Como começo?
+                </span>
+              </div>
+              <span id="faqIcon-8" class="text-slate-400 text-sm font-mono transition-transform duration-300">▼</span>
             </button>
-            <div id="faqAnswer-8" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-3">
+            <div id="faqAnswer-8" class="hidden px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
               É simples: clique no botão do WhatsApp, conte um pouco sobre sua empresa e explique o que gostaria de melhorar. A conversa inicial serve para entender sua necessidade e avaliar a melhor solução.
             </div>
           </div>
+
         </div>
 
-        <div class="max-w-2xl mx-auto text-center p-8 rounded-3xl glass-panel-elevated border border-blue-500/20 space-y-4">
-          <p class="text-sm sm:text-base text-zinc-300 font-medium">
+        <div class="max-w-2xl mx-auto text-center p-8 rounded-3xl chassis-panel border border-blue-500/25 space-y-4">
+          <p class="text-sm sm:text-base text-slate-300 font-medium">
             Você não precisa decidir tudo agora. Comece entendendo o que faz sentido para o seu negócio.
           </p>
           <a
             href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa."
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-blue-300 hover:text-white glass-pill hover:bg-white/10 border border-blue-400/30 transition"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-cyan-300 hover:text-white bg-white/5 hover:bg-white/10 border border-cyan-400/30 transition"
           >
             <span>💬 Tirar dúvidas pelo WhatsApp</span>
           </a>
         </div>
       </section>
 
-      <!-- SEÇÃO 10 — CTA FINAL -->
-      <section class="relative py-28 md:py-40 text-center flex flex-col items-center justify-center overflow-hidden">
-        <!-- Spotlight Cone Beam from below -->
-        <div class="final-cta-spotlight"></div>
-        <div class="final-cta-cone-lines"></div>
+      <!-- SEÇÃO 10 — CTA FINAL (THE CONVERGENCE SPOTLIGHT) -->
+      <section class="relative py-32 md:py-44 text-center flex flex-col items-center justify-center overflow-hidden z-10 border-t border-white/[0.08]">
+        <!-- Holofote Cônico Escultural -->
+        <div class="final-spotlight-beam"></div>
+        <div class="final-spotlight-conic"></div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
-          <div class="flex items-center justify-center gap-2 mb-6">
-            <div class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white shadow-[0_0_12px_rgba(59,130,246,0.5)]">
+          <div class="flex items-center justify-center gap-2.5 mb-7">
+            <div class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-mono font-bold text-white shadow-[0_0_12px_rgba(59,130,246,0.6)]">
               CX
             </div>
-            <span class="text-sm font-semibold tracking-wider uppercase text-blue-300 font-mono">CodeLabx Studio</span>
+            <span class="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-cyan-300">
+              CODELABX DIGITAL CRAFT
+            </span>
           </div>
 
-          <!-- Título principal -->
-          <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+          <!-- Título Dramático de Encerramento -->
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight mb-7">
             Sua empresa está pronta para dar o próximo passo?
           </h2>
 
-          <!-- Texto completo de 3 parágrafos -->
-          <div class="text-base sm:text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-6 font-normal space-y-4">
+          <!-- Texto Aprovado de 3 Parágrafos -->
+          <div class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-7 font-normal space-y-4">
             <p>
               Seu trabalho tem valor. Sua apresentação digital deve ajudar as pessoas a perceberem isso.
             </p>
             <p>
               Vamos conversar sobre o seu negócio, entender o que você precisa e avaliar como um site profissional pode ajudar a apresentar seus serviços com mais clareza e facilitar o contato com seus potenciais clientes.
             </p>
-            <p class="text-zinc-400 text-sm sm:text-base">
+            <p class="text-slate-400 text-sm sm:text-base">
               Você não precisa ter tudo planejado. Basta nos contar o que sua empresa faz e o que gostaria de melhorar.
             </p>
           </div>
 
-          <!-- Microtexto -->
-          <p class="text-xs sm:text-sm text-cyan-300 mb-6 font-medium">
+          <!-- Microtexto Pré-Botão -->
+          <p class="text-xs sm:text-sm text-cyan-300 mb-7 font-mono font-medium">
             Clique abaixo e fale diretamente com a CodeLabx pelo WhatsApp.
           </p>
 
-          <!-- Botão principal -->
-          <div class="relative group inline-block mb-6">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
+          <!-- Botão Principal com Pulso Luminoso Magnético -->
+          <div class="relative group inline-block mb-7">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
             <a 
               id="finalWhatsAppBtn"
               href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20profissional%20para%20minha%20empresa." 
               target="_blank" 
               rel="noopener noreferrer"
-              class="relative inline-flex items-center gap-3 px-10 py-5 rounded-full text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_50px_rgba(59,130,246,0.9)] transition border border-blue-200/50 hover:scale-105"
+              class="btn-shimmer relative inline-flex items-center gap-3 px-11 py-5 rounded-full text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_55px_rgba(59,130,246,0.95)] transition border border-blue-200/50 hover:scale-105"
             >
               <span>💬 Quero conversar sobre meu site</span>
-              <span>→</span>
+              <span class="text-cyan-200">→</span>
             </a>
           </div>
 
-          <!-- Texto complementar -->
-          <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed">
+          <!-- Texto Complementar -->
+          <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto mb-11 leading-relaxed">
             Sem formulários longos. Sem precisar entender de tecnologia. Apenas uma conversa para descobrir a melhor solução para sua empresa.
           </p>
 
-          <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400">
-            <div>✓ Atendimento direto pelo WhatsApp</div>
-            <div>✓ Design sob medida para sua empresa</div>
+          <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-slate-400">
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Atendimento direto pelo WhatsApp</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span>
+              <span>Design sob medida para sua empresa</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SEÇÃO 11 — RODAPÉ -->
-      <footer class="py-14 border-t border-white/10 bg-[#06070E] px-4 sm:px-6 lg:px-8 text-left">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.08]">
+      <!-- SEÇÃO 11 — RODAPÉ (MONOLITHIC PRECISION FOOTER) -->
+      <footer class="py-16 border-t border-white/10 bg-space-950 px-4 sm:px-6 lg:px-8 text-left relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-14 border-b border-white/[0.08]">
+          
           <div class="md:col-span-5 space-y-4">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3">
               <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                <span class="text-white font-bold text-sm">CX</span>
+                <span class="text-white font-mono font-bold text-xs">CX</span>
               </div>
-              <span class="text-xl font-bold tracking-tight text-white">CodeLab<span class="text-blue-400">x</span></span>
+              <span class="text-xl font-bold tracking-tight text-white">CodeLab<span class="text-cyan-400">x</span></span>
             </div>
             
-            <div class="space-y-2 text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
-              <p class="font-medium text-zinc-300">
+            <div class="space-y-2 text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
+              <p class="font-medium text-slate-200">
                 Sites profissionais e personalizados para empresas, prestadores de serviços e negócios locais.
               </p>
               <p>
@@ -1216,101 +1916,121 @@
               </p>
             </div>
 
-            <div class="pt-2 text-xs text-zinc-500 font-mono">
-              Atendimento online para empresas de todo o Brasil.
+            <div class="pt-2 text-xs text-slate-500 font-mono flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Atendimento online para empresas de todo o Brasil.</span>
             </div>
           </div>
 
           <div class="md:col-span-4 space-y-3">
-            <h4 class="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">Navegação</h4>
-            <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
-              <a href="#inicio" class="text-zinc-400 hover:text-white transition">Início</a>
-              <a href="#solucoes" class="text-zinc-400 hover:text-white transition">Soluções</a>
-              <a href="#projetos" class="text-zinc-400 hover:text-white transition">Projetos</a>
-              <a href="#diferenciais" class="text-zinc-400 hover:text-white transition">Diferenciais</a>
-              <a href="#processo" class="text-zinc-400 hover:text-white transition">Processo</a>
-              <a href="#duvidas" class="text-zinc-400 hover:text-white transition">Dúvidas</a>
+            <h4 class="text-xs font-mono uppercase text-slate-400 tracking-wider font-semibold">
+              Navegação
+            </h4>
+            <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm font-mono">
+              <a href="#inicio" class="text-slate-400 hover:text-white transition">Início</a>
+              <a href="#solucoes" class="text-slate-400 hover:text-white transition">Soluções</a>
+              <a href="#projetos" class="text-slate-400 hover:text-white transition">Projetos</a>
+              <a href="#diferenciais" class="text-slate-400 hover:text-white transition">Diferenciais</a>
+              <a href="#processo" class="text-slate-400 hover:text-white transition">Processo</a>
+              <a href="#duvidas" class="text-slate-400 hover:text-white transition">Dúvidas</a>
             </div>
           </div>
 
           <div class="md:col-span-3 space-y-3">
-            <h4 class="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">Contato</h4>
-            <p class="text-xs text-zinc-400">Inicie uma conversa para tirar dúvidas ou solicitar uma proposta comercial:</p>
+            <h4 class="text-xs font-mono uppercase text-slate-400 tracking-wider font-semibold">
+              Contato
+            </h4>
+            <p class="text-xs text-slate-400">
+              Inicie uma conversa para tirar dúvidas ou solicitar uma proposta comercial:
+            </p>
             <a 
               href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Conheci%20a%20CodeLabx%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20site%20para%20minha%20empresa." 
               target="_blank" 
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-semibold transition"
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-cyan-300 hover:text-white border border-blue-500/35 text-xs font-mono font-semibold transition"
             >
               <span>💬 Fale conosco: WhatsApp comercial</span>
             </a>
           </div>
+
         </div>
 
-        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
           <p>© 2026 CodeLabx. Todos os direitos reservados. As demonstrações apresentadas neste site têm finalidade ilustrativa e não constituem promessa de resultados comerciais.</p>
-          <a href="#inicio" class="text-zinc-400 hover:text-white transition shrink-0">Voltar ao topo ↑</a>
+          <a href="#inicio" class="text-slate-400 hover:text-white transition shrink-0 flex items-center gap-1">
+            <span>Voltar ao topo</span>
+            <span>↑</span>
+          </a>
         </div>
       </footer>
 
     </div>
   </div>
 
-  <!-- Interactive Demo Modal Container -->
-  <div id="demoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-xl">
-    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel-elevated border border-white/20 p-6 sm:p-10 text-left">
+  <!-- MODAL DE DEMONSTRAÇÃO CONCEITUAL CINEMATOGRÁFICO -->
+  <div id="demoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-2xl">
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl chassis-panel p-6 sm:p-10 text-left border border-white/20 shadow-[0_25px_90px_rgba(0,0,0,0.95)]">
+      
+      <!-- Topo do Modal -->
       <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
         <div>
-          <span id="modalBadge" class="text-xs font-bold uppercase text-blue-400">Demonstração Conceitual</span>
-          <h2 id="modalTitle" class="text-2xl font-black text-white mt-1">Nome do Projeto</h2>
-          <p id="modalCategory" class="text-xs text-zinc-400 font-mono mt-0.5"></p>
+          <span id="modalBadge" class="text-xs font-mono font-bold uppercase text-cyan-400 tracking-wider">DEMONSTRAÇÃO CONCEITUAL</span>
+          <h2 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Nome do Projeto</h2>
+          <p id="modalCategory" class="text-xs text-slate-400 font-mono mt-0.5"></p>
         </div>
-        <button onclick="closeDemoModal()" aria-label="Fechar modal" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg">✕</button>
+        <button onclick="closeDemoModal()" aria-label="Fechar modal" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg transition">✕</button>
       </div>
 
-      <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-zinc-300 mb-6 flex items-start gap-2">
-        <span>🛡️</span>
+      <!-- Aviso de Transparência -->
+      <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-slate-300 mb-6 flex items-start gap-2.5 font-mono">
+        <span class="text-cyan-400">🛡️</span>
         <div><strong>Aviso de transparência:</strong> Estrutura conceitual desenvolvida para ilustrar a organização de serviços e a estética que entregamos. Todo o conteúdo final é adaptado à sua empresa.</div>
       </div>
 
-      <p id="modalDesc" class="text-zinc-300 text-sm mb-6 leading-relaxed"></p>
+      <p id="modalDesc" class="text-slate-300 text-sm mb-6 leading-relaxed"></p>
 
+      <!-- Catálogo de Serviços -->
       <div class="mb-8">
-        <h3 class="text-base font-bold text-white mb-3">Catálogo de Serviços da Demonstração:</h3>
+        <h3 class="text-base font-bold text-white mb-3 flex items-center gap-2 font-mono">
+          <span>// CATÁLOGO DE SERVIÇOS DA DEMONSTRAÇÃO</span>
+        </h3>
         <div id="modalTreatments" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
       </div>
 
-      <!-- Professional / Team Section in Modal -->
+      <!-- Apresentação da Equipe / Profissional -->
       <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 mb-8 flex flex-col sm:flex-row items-center gap-4">
-        <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-bold shrink-0">
+        <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 text-xl font-mono font-bold shrink-0">
           CX
         </div>
         <div>
           <h4 id="modalDocName" class="text-sm font-bold text-white">Apresentação da Equipe / Profissional</h4>
-          <span id="modalDocRole" class="text-xs text-blue-300 font-medium block">Espaço para credenciais e diferenciais</span>
-          <p id="modalDocBio" class="text-xs text-zinc-400 mt-1 leading-relaxed"></p>
+          <span id="modalDocRole" class="text-xs text-cyan-300 font-mono block">Espaço para credenciais e diferenciais</span>
+          <p id="modalDocBio" class="text-xs text-slate-400 mt-1 leading-relaxed"></p>
         </div>
       </div>
 
-      <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-950 to-indigo-950 border border-blue-500/30 text-center">
-        <h4 class="text-lg font-bold text-white mb-2">Gostou deste padrão visual para o seu negócio?</h4>
-        <p class="text-xs text-zinc-300 mb-4">Construímos seu site personalizado com este mesmo nível de sofisticação, clareza e facilidade de contato.</p>
+      <!-- Fechamento e CTA do Modal -->
+      <div class="p-7 rounded-2xl bg-gradient-to-r from-blue-950/80 via-space-850 to-indigo-950/80 border border-blue-500/35 text-center">
+        <h4 class="text-lg font-bold text-white mb-2">Gostou de algum estilo?</h4>
+        <p class="text-xs sm:text-sm text-slate-300 mb-5">Podemos conversar sobre como adaptá-lo à identidade e às necessidades da sua empresa.</p>
         <a 
           id="modalWhatsAppBtn"
           href="https://wa.me/5511999999999" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="inline-block px-6 py-3 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+          class="btn-shimmer inline-block px-7 py-3.5 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-[0_0_20px_rgba(59,130,246,0.6)]"
         >
-          Conversar sobre este modelo no WhatsApp →
+          Quero um projeto personalizado →
         </a>
       </div>
     </div>
   </div>
 
+  <!-- SCRIPTS DE INTERATIVIDADE, MOTION & TELEMETRIA -->
   <script>
     const WHATSAPP_NUMBER = "5511999999999";
 
+    // Dados das Demonstrações Conceituais (Preservados na Íntegra)
     const projectsData = {
       lumiere: {
         title: "Lumière Estética & Bem-Estar",
@@ -1359,18 +2079,36 @@
       }
     };
 
-    function setMockupTab(tab) {
-      const btnR = document.getElementById('btnRealtime');
-      const btnI = document.getElementById('btnInsights');
-      if (tab === 'estrutura') {
-        btnR.className = "px-3 py-1 rounded-full bg-blue-600 text-white font-medium shadow";
-        btnI.className = "px-3 py-1 rounded-full text-zinc-400 hover:text-white";
-      } else {
-        btnI.className = "px-3 py-1 rounded-full bg-indigo-600 text-white font-medium shadow";
-        btnR.className = "px-3 py-1 rounded-full text-zinc-400 hover:text-white";
+    // Controle Interativo do Showcase do Hero (Desktop / Mobile / Blueprint)
+    function setHeroMode(mode) {
+      const modeDesktop = document.getElementById('modeDesktop');
+      const modeMobile = document.getElementById('modeMobile');
+      const modeBlueprint = document.getElementById('modeBlueprint');
+      const btnD = document.getElementById('tabDesktop');
+      const btnM = document.getElementById('tabMobile');
+      const btnB = document.getElementById('tabBlueprint');
+
+      // Reset
+      [modeDesktop, modeMobile, modeBlueprint].forEach(el => el.classList.add('hidden'));
+      [btnD, btnM, btnB].forEach(btn => {
+        btn.className = "px-3.5 py-1 rounded-full text-slate-400 hover:text-white transition-all";
+      });
+
+      const activeClass = "px-3.5 py-1 rounded-full bg-blue-600 text-white font-medium shadow-[0_0_12px_rgba(59,130,246,0.6)] transition-all";
+
+      if (mode === 'desktop') {
+        modeDesktop.classList.remove('hidden');
+        btnD.className = activeClass;
+      } else if (mode === 'mobile') {
+        modeMobile.classList.remove('hidden');
+        btnM.className = activeClass;
+      } else if (mode === 'blueprint') {
+        modeBlueprint.classList.remove('hidden');
+        btnB.className = activeClass;
       }
     }
 
+    // Acordeão FAQ Técnico
     function toggleFaq(index) {
       const answer = document.getElementById(`faqAnswer-${index}`);
       const icon = document.getElementById(`faqIcon-${index}`);
@@ -1378,14 +2116,15 @@
       if (answer.classList.contains('hidden')) {
         answer.classList.remove('hidden');
         icon.innerText = '▲';
-        icon.classList.add('text-cyan-300');
+        icon.classList.add('text-cyan-400');
       } else {
         answer.classList.add('hidden');
         icon.innerText = '▼';
-        icon.classList.remove('text-cyan-300');
+        icon.classList.remove('text-cyan-400');
       }
     }
 
+    // Modal de Demonstração
     function openDemoModal(projectKey) {
       const data = projectsData[projectKey];
       if (!data) return;
@@ -1402,12 +2141,12 @@
       data.treatments.forEach(t => {
         const div = document.createElement('div');
         div.className = "p-4 rounded-xl bg-white/[0.03] border border-white/10";
-        div.innerHTML = `<h5 class="text-sm font-bold text-white mb-1">${t.name}</h5><p class="text-xs text-zinc-400 leading-relaxed">${t.desc}</p>`;
+        div.innerHTML = `<h5 class="text-sm font-bold text-white mb-1">${t.name}</h5><p class="text-xs text-slate-400 leading-relaxed">${t.desc}</p>`;
         treatContainer.appendChild(div);
       });
 
       const cleanNum = WHATSAPP_NUMBER.replace(/\D/g, '');
-      const encodedMsg = encodeURIComponent(`Olá! Vi a demonstração "${data.title}" na CodeLabx e gostaria de saber como criar um projeto personalizado para minha empresa.`);
+      const encodedMsg = encodeURIComponent(`Olá! Vi o modelo conceitual "${data.title}" na CodeLabx e gostaria de saber como criar um projeto personalizado para minha empresa.`);
       document.getElementById('modalWhatsAppBtn').href = `https://wa.me/${cleanNum}?text=${encodedMsg}`;
 
       const modal = document.getElementById('demoModal');
@@ -1433,6 +2172,31 @@
         closeDemoModal();
       }
     });
+
+    // Spotlight Interativo que acompanha o mouse nos cards de alta precisão
+    document.querySelectorAll('.interactive-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // Reveal Suave com IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-ready').forEach(el => observer.observe(el));
+    }
   </script>
 </body>
 </html>
